@@ -1,0 +1,133 @@
+/***********************************
+*   -- Overall Document
+*/
+
+* {
+	padding: 0px; 
+	margin: 0px;grid_case_create_available_team_mtable
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;	
+	font-size: 11px;
+	font-family: "Lucida Grande", Arial;			
+}
+
+body {
+	overflow: hidden;
+	//background-color: #72757C; /* FB TOP COLOR #3B5998 */
+	//background-image: url(images/linen.jpg); 
+	//background-image: url(http://www.impressivewebs.com/wp-content/themes/iw-2013/images/bg-header.png);
+	//background-size: 90px;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
+}
+
+/***********************************
+*   -- Document Structure
+*/
+
+#app-head {
+		position: absolute;
+		z-index: 3;
+		display: block; 
+		left: 0px;
+		right: 0px;
+		height: 77px;
+		box-shadow: inset 0px 5px 5px rgba(50,50,50,0.1);
+	}	
+	#app-head div#app-logo {
+		display: inline; 
+		float: left;
+	}
+	#app-head div#app-logo img {
+		float: left; 
+		cursor: default;
+		height: 35px; 
+		margin: 3px 12px; 
+	}
+	#app-head div#app-logo span {
+		cursor: default;
+		display: inline-block;
+		margin-top: 8px;
+		color: #eee;
+		font-size: 21px;
+		text-shadow: 1px 1px 3px #333;
+	}
+
+	#app-head div#app-toolbar {
+		position: absolute;
+		top: 7px;
+		left: 255px;
+		right: 25px;
+		color: #555;
+		white-space: nowrap;
+	}	
+		
+#app-tabs {
+	position: absolute;
+	top: 38px;
+	margin: 4px 0px;
+	padding: 0px 0px;
+	height: 28px;
+	width: 100%;
+	// box-shadow: inset 0px 2px 2px #3D505E;
+	border-top: 1px solid rgba(255,255,255,0.25);
+	background-color: rgba(255,255,255,0.25);
+}
+
+#app-header {
+	position: absolute;
+	z-index: 2;
+	left: 0px; 
+	top: 70px;
+	right: 0px;
+	height: 45px;
+	padding: 10px 15px 0px 15px;
+	font-size: 20px;
+	color: #606060;
+	text-shadow: 1px 1px 1px #efefef;
+	font-family: "Lucida Grande", Arial;	
+	background: -webkit-linear-gradient(#EBEBEB, #D2D4D4); 
+	border-bottom: 1px solid #999;
+	box-shadow: 0px 0px 8px #888;
+}
+
+#app-main {
+	position: absolute;
+	z-index: 1;
+	left: 0px; 
+	top: 115px;
+	right: 0px;
+	bottom: 0px;
+	font-size: 11px;
+	font-family: "Lucida Grande", Arial;	
+	background-color: #E7EBF2;
+}
+
+/* Overwrite standard toolbar css  */
+
+div#app-toolbar div.w2ui-toolbar table.w2ui-tab1 {
+	color: #fff !important;
+	text-shadow: 0px 0px 2px #000 !important;
+}
+div#app-toolbar div.w2ui-toolbar table.w2ui-tab0.over {
+	border: 1px solid #666 !important;
+	background-color: rgba(255,255,255,0.9) !important;
+}
+div#app-toolbar div.w2ui-toolbar table.w2ui-tab1.over {
+	color: #444 !important;
+	text-shadow: 1px 1px 1px #efefef !important;
+}
+div#app-toolbar div.w2ui-toolbar table.w2ui-tab0.checked {
+	border: 1px solid #666 !important;
+	background-color: rgba(255,255,255,0.9) !important;
+}
+div#app-toolbar div.w2ui-toolbar table.w2ui-tab1.checked {
+	color: #444 !important;
+	text-shadow: 1px 1px 1px #efefef !important;
+}
+
+/***********************************
+*   -- Common Classes
+*/
