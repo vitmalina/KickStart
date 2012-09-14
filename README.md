@@ -10,8 +10,8 @@ Directory Structure
 The following application structure is suggested for all projects
 
 /app 			- main application folder <br>
-   /main		- main module <br>
-   /mod1		- any custom module <br>
+&nbsp;&nbsp;&nbsp;/main		- main module <br>
+&nbsp;&nbsp;&nbsp;/mod1		- any custom module <br>
 /libs			- all JavaScript libraries that you want to support <br>
 /media			- root folder for all UPLOADS <br>
 /server			- root folder for all SERVER SIDE scripts <br>
