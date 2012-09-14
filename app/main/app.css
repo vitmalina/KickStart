@@ -4,7 +4,6 @@
 
 * {
 	padding: 0px; 
-	margin: 0px;grid_case_create_available_team_mtable
 	margin: 0px;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -17,7 +16,6 @@
 
 body {
 	overflow: hidden;
-	//background-size: 90px;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
 }
 
