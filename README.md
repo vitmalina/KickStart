@@ -9,12 +9,12 @@ Directory Structure
 
 The following application structure is suggested for all projects
 
-/app 			- main application folder
-   /main		- main module
-   /mod1		- any custom module 
-/libs			- all JavaScript libraries that you want to support
-/media			- root folder for all UPLOADS
-/server			- root folder for all SERVER SIDE scripts
-/setup			- folder for setup scripts
-/index.html  	- starting point
-/index.appcache - cache manifest
+/app 			- main application folder <br>
+   /main		- main module <br>
+   /mod1		- any custom module <br>
+/libs			- all JavaScript libraries that you want to support <br>
+/media			- root folder for all UPLOADS <br>
+/server			- root folder for all SERVER SIDE scripts <br>
+/setup			- folder for setup scripts <br>
+/index.html  	- starting point <br>
+/index.appcache - cache manifest <br>
