@@ -1,4 +1,4 @@
-W2UI BootStrap
+Kick-Start
 ==============
 
 Front-end template for building data-driven web application. This repository servers as a 
