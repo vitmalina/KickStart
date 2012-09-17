@@ -1,0 +1,1926 @@
+.icon-glyph {
+  background-image: url(glyph-icons.png);
+  background-repeat: no-repeat;
+  background-position: 50px 50px;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  display: inline-block;
+  margin: 0px;
+  opacity: 0.9;
+}
+
+.icon1x1,   .glass        { background-position: -1px   1px; }
+.icon1x2,   .leaf         { background-position: -49px  1px; }
+.icon1x3,   .dog          { background-position: -98px  1px; }
+.icon1x4,   .user         { background-position: -146px 1px; }
+.icon1x5,   .girl         { background-position: -193px 1px; }
+.icon1x6,   .car          { background-position: -241px 1px; }
+.icon1x7,   .user_add     { background-position: -288px 1px; }
+.icon1x8,   .user_remove  { background-position: -336px 1px; }
+.icon1x9,   .film         { background-position: -385px 1px; }
+.icon1x10,  .magic        { background-position: -433px 1px; }
+
+.icon2x1,   .envelope       { background-position: -1px   -47px; }
+.icon2x2,   .camera         { background-position: -49px  -47px; }
+.icon2x3,   .heart          { background-position: -97px  -47px; }
+.icon2x4,   .beach_umbrella { background-position: -146px -47px; }
+.icon2x5,   .train          { background-position: -194px -47px; }
+.icon2x6,   .print          { background-position: -241px -47px; }
+.icon2x7,   .bin            { background-position: -289px -47px; }
+.icon2x8,   .music          { background-position: -337px -47px; }
+.icon2x9,   .note           { background-position: -385px -47px; }
+.icon2x10,  .cogwheel       { background-position: -433px -47px; }
+
+.icon3x1,   .home        { background-position: -1px   -94px; }
+.icon3x2,   .snowflake   { background-position: -49px  -94px; }
+.icon3x3,   .fire        { background-position: -98px  -94px; }
+.icon3x4,   .cogwheels   { background-position: -146px -94px; }
+.icon3x5,   .parents     { background-position: -194px -94px; }
+.icon3x6,   .binoculars  { background-position: -241px -94px; }
+.icon3x7,   .road        { background-position: -289px -94px; }
+.icon3x8,   .search      { background-position: -337px -94px; }
+.icon3x9,   .cars        { background-position: -385px -94px; }
+.icon3x10,  .notes_2     { background-position: -433px -94px; }
+
+.icon4x1,   .pencil   { background-position: -1px   -143px; }
+.icon4x2,   .bus      { background-position: -49px  -143px; }
+.icon4x3,   .wifi_alt { background-position: -97px  -143px; }
+.icon4x4,   .luggage  { background-position: -146px -143px; }
+.icon4x5,   .old_man  { background-position: -194px -143px; }
+.icon4x6,   .woman    { background-position: -241px -143px; }
+.icon4x7,   .file     { background-position: -289px -143px; }
+.icon4x8,   .credit   { background-position: -337px -143px; }
+.icon4x9,   .airplane { background-position: -385px -143px; }
+.icon4x10,  .notes    { background-position: -433px -143px; }
+
+.icon5x1,   .stats        { background-position: -1px   -190px; }
+.icon5x2,   .charts       { background-position: -49px  -190px; }
+.icon5x3,   .pie_chart    { background-position: -98px  -190px; }
+.icon5x4,   .group        { background-position: -146px -190px; }
+.icon5x5,   .keys         { background-position: -194px -190px; }
+.icon5x6,   .calendar     { background-position: -241px -190px; }
+.icon5x7,   .router       { background-position: -289px -190px; }
+.icon5x8,   .camera_small { background-position: -337px -190px; }
+.icon5x9,   .dislikes     { background-position: -385px -190px; }
+.icon5x10,  .star         { background-position: -433px -190px; }
+
+.icon6x1,   .link         { background-position: -1px   -238px; }
+.icon6x2,   .eye_open     { background-position: -49px  -238px; }
+.icon6x3,   .eye_close    { background-position: -98px  -238px; }
+.icon6x4,   .alarm        { background-position: -145px -238px; }
+.icon6x5,   .clock        { background-position: -193px -238px; }
+.icon6x6,   .stopwatch    { background-position: -241px -238px; }
+.icon6x7,   .projector    { background-position: -289px -238px; }
+.icon6x8,   .history      { background-position: -337px -238px; }
+.icon6x9,   .truck        { background-position: -385px -238px; }
+.icon6x10,  .cargo        { background-position: -433px -238px; }
+
+.icon7x1,   .compass   { background-position: -1px   -287px; }
+.icon7x2,   .keynote   { background-position: -49px  -286px; }
+.icon7x3,   .attach    { background-position: -98px  -287px; }
+.icon7x4,   .power     { background-position: -145px -287px; }
+.icon7x5,   .lightbulb { background-position: -193px -287px; }
+.icon7x6,   .tag       { background-position: -241px -287px; }
+.icon7x7,   .tags      { background-position: -289px -287px; }
+.icon7x8,   .cleaning  { background-position: -337px -287px; }
+.icon7x9,   .ruller    { background-position: -385px -287px; }
+.icon7x10,  .gift      { background-position: -433px -287px; }
+
+.icon8x1,   .umbrella     { background-position: -1px   -335px; }
+.icon8x2,   .book         { background-position: -49px  -335px; }
+.icon8x3,   .bookmark     { background-position: -98px  -335px; }
+.icon8x4,   .signal       { background-position: -145px -335px; }
+.icon8x5,   .cup          { background-position: -193px -335px; }
+.icon8x6,   .stroller     { background-position: -240px -335px; }
+.icon8x7,   .headphones   { background-position: -289px -335px; }
+.icon8x8,   .headset      { background-position: -337px -335px; }
+.icon8x9,   .warning_sign { background-position: -385px -335px; }
+.icon8x10,  .signal2      { background-position: -433px -335px; }
+
+.icon9x1,   .retweet     { background-position: -1px   -383px; }
+.icon9x2,   .refresh     { background-position: -49px  -383px; }
+.icon9x3,   .roundabout  { background-position: -98px  -383px; }
+.icon9x4,   .random      { background-position: -145px -383px; }
+.icon9x5,   .heat        { background-position: -194px -383px; }
+.icon9x6,   .repeat      { background-position: -240px -383px; }
+.icon9x7,   .display     { background-position: -289px -383px; }
+.icon9x8,   .log_book    { background-position: -337px -383px; }
+.icon9x9,   .adress_book { background-position: -385px -383px; }
+.icon9x10,  .magnet      { background-position: -433px -383px; }
+
+.icon10x1,  .table              { background-position: -1px   -431px; }
+.icon10x2,  .adjust             { background-position: -49px  -431px; }
+.icon10x3,  .tint               { background-position: -97px  -431px; }
+.icon10x4,  .crop               { background-position: -145px -431px; }
+.icon10x5,  .vector_path_square { background-position: -194px -431px; }
+.icon10x6,  .vector_path_circle { background-position: -241px -431px; }
+.icon10x7,  .vector_path_polygon{ background-position: -289px -431px; }
+.icon10x8,  .vector_path_line   { background-position: -337px -431px; }
+.icon10x9,  .vector_path_curve  { background-position: -385px -431px; }
+.icon10x10, .vector_path_all    { background-position: -433px -431px; }
+
+.icon11x1,  .font           { background-position: -1px   -479px; }
+.icon11x2,  .italic         { background-position: -49px  -479px; }
+.icon11x3,  .bold           { background-position: -97px  -479px; }
+.icon11x4,  .text_underline { background-position: -145px -479px; }
+.icon11x5,  .text_strike    { background-position: -194px -479px; }
+.icon11x6,  .text_height    { background-position: -241px -479px; }
+.icon11x7,  .text_width     { background-position: -289px -479px; }
+.icon11x8,  .text_resize    { background-position: -337px -479px; }
+.icon11x9,  .left_indent    { background-position: -385px -479px; }
+.icon11x10, .right_indent   { background-position: -433px -479px; }
+
+.icon12x1,  .align_left   { background-position: -1px   -528px; }
+.icon12x2,  .align_center { background-position: -49px  -528px; }
+.icon12x3,  .align_right  { background-position: -97px  -528px; }
+.icon12x4,  .justify      { background-position: -145px -528px; }
+.icon12x5,  .list         { background-position: -194px -528px; }
+.icon12x6,  .text_smaller { background-position: -241px -528px; }
+.icon12x7,  .text_bigger  { background-position: -289px -528px; }
+.icon12x8,  .embed        { background-position: -337px -528px; }
+.icon12x9,  .embed_close  { background-position: -385px -528px; }
+.icon12x10, .adjust2      { background-position: -433px -528px; }
+
+.icon13x1,  .message_full  { background-position: -1px   -573px; }
+.icon13x2,  .message_empty { background-position: -49px  -573px; }
+.icon13x3,  .message_in    { background-position: -97px  -573px; }
+.icon13x4,  .message_out   { background-position: -145px -573px; }
+.icon13x5,  .message_plus  { background-position: -195px -576px; }
+.icon13x6,  .message_minus { background-position: -243px -576px; }
+.icon13x7,  .message_ban   { background-position: -291px -576px; }
+.icon13x8,  .message_flag  { background-position: -339px -576px; }
+.icon13x9,  .message_lock  { background-position: -387px -576px; }
+.icon13x10, .message_new   { background-position: -435px -576px; }
+
+.icon14x1,  .inbox            { background-position: -1px   -623px; }
+.icon14x2,  .inbox_plus       { background-position: -51px  -622px; }
+.icon14x3,  .inbox_minus      { background-position: -99px  -622px; }
+.icon14x4,  .inbox_lock       { background-position: -147px -622px; }
+.icon14x5,  .inbox_in         { background-position: -193px -622px; }
+.icon14x6,  .inbox_out        { background-position: -241px -622px; }
+.icon14x7,  .computer_locked  { background-position: -289px -623px; }
+.icon14x8,  .computer_service { background-position: -337px -623px; }
+.icon14x9,  .computer_proces  { background-position: -385px -623px; }
+.icon14x10, .phone            { background-position: -432px -623px; }
+
+.icon15x1,  .database_lock { background-position: -1px   -669px; }
+.icon15x2,  .database_plus { background-position: -50px  -670px; }
+.icon15x3,  .database_minus{ background-position: -98px  -670px; }
+.icon15x4,  .database_ban  { background-position: -145px -670px; }
+.icon15x5,  .folder_open   { background-position: -195px -670px; }
+.icon15x6,  .folder_plus   { background-position: -243px -670px; }
+.icon15x7,  .folder_minus  { background-position: -291px -670px; }
+.icon15x8,  .folder_lock   { background-position: -339px -670px; }
+.icon15x9,  .folder_flag   { background-position: -387px -670px; }
+.icon15x10, .folder_new    { background-position: -435px -670px; }
+
+.check {
+  background: url(sprite_icons.png) -543px -486px no-repeat;
+  display: block;
+  width: 22px;
+  height: 17px;
+}
+
+.edit {
+  background: url(sprite_icons.png) -443px -50px no-repeat;
+  display: block;
+  width: 24px;
+  height: 20px;
+}
+
+.new_window {
+  background: url(sprite_icons.png) -339px -55px no-repeat;
+  display: block;
+  width: 26px;
+  height: 21px;
+}
+
+.more_windows {
+  background: url(sprite_icons.png) -152px -494px no-repeat;
+  display: block;
+  width: 23px;
+  height: 22px;
+}
+
+.show_big_thumbnails {
+  background: url(sprite_icons.png) -363px -443px no-repeat;
+  display: block;
+  width: 22px;
+  height: 21px;
+}
+
+.show_thumbnails {
+  background: url(sprite_icons.png) -387px -443px no-repeat;
+  display: block;
+  width: 22px;
+  height: 21px;
+}
+
+.show_thumbnails_with_lines {
+  background: url(sprite_icons.png) -443px -72px no-repeat;
+  display: block;
+  width: 24px;
+  height: 14px;
+}
+
+.show_lines {
+  background: url(sprite_icons.png) -443px -88px no-repeat;
+  display: block;
+  width: 24px;
+  height: 14px;
+}
+
+.playlist {
+  background: url(sprite_icons.png) -164px -52px no-repeat;
+  display: block;
+  width: 29px;
+  height: 23px;
+}
+
+.picture {
+  background: url(sprite_icons.png) -443px -104px no-repeat;
+  display: block;
+  width: 24px;
+  height: 19px;
+}
+
+.imac {
+  background: url(sprite_icons.png) -339px -78px no-repeat;
+  display: block;
+  width: 26px;
+  height: 21px;
+}
+
+.macbook {
+  background: url(sprite_icons.png) -164px -127px no-repeat;
+  display: block;
+  width: 28px;
+  height: 14px;
+}
+
+.ipad {
+  background: url(sprite_icons.png) -339px -101px no-repeat;
+  display: block;
+  width: 20px;
+  height: 26px;
+}
+
+.iphone {
+  background: url(sprite_icons.png) -398px -366px no-repeat;
+  display: block;
+  width: 14px;
+  height: 23px;
+}
+
+.iphone_transfer {
+  background: url(sprite_icons.png) -164px -77px no-repeat;
+  display: block;
+  width: 29px;
+  height: 23px;
+}
+
+.iphone_exchange {
+  background: url(sprite_icons.png) -164px -102px no-repeat;
+  display: block;
+  width: 29px;
+  height: 23px;
+}
+
+.ipod {
+  background: url(sprite_icons.png) -521px -148px no-repeat;
+  display: block;
+  width: 14px;
+  height: 21px;
+}
+
+.ipod_shuffle {
+  background: url(sprite_icons.png) -521px -467px no-repeat;
+  display: block;
+  width: 15px;
+  height: 12px;
+}
+
+.ear_plugs {
+  background: url(sprite_icons.png) -521px 0px no-repeat;
+  display: block;
+  width: 20px;
+  height: 23px;
+}
+
+.albums {
+  background: url(sprite_icons.png) -122px -121px no-repeat;
+  display: block;
+  width: 28px;
+  height: 17px;
+}
+
+.step_backward {
+  background: url(sprite_icons.png) -521px -393px no-repeat;
+  display: block;
+  width: 14px;
+  height: 17px;
+}
+
+.fast_backward {
+  background: url(sprite_icons.png) -143px -205px no-repeat;
+  display: block;
+  width: 25px;
+  height: 17px;
+}
+
+.rewind {
+  background: url(sprite_icons.png) -495px -475px no-repeat;
+  display: block;
+  width: 23px;
+  height: 17px;
+}
+
+.play {
+  background: url(sprite_icons.png) -521px -412px no-repeat;
+  display: block;
+  width: 16px;
+  height: 17px;
+}
+
+.pause {
+  background: url(sprite_icons.png) -521px -481px no-repeat;
+  display: block;
+  width: 10px;
+  height: 15px;
+}
+
+.stop {
+  background: url(sprite_icons.png) -521px -498px no-repeat;
+  display: block;
+  width: 14px;
+  height: 13px;
+}
+
+.forward {
+  background: url(sprite_icons.png) -224px -205px no-repeat;
+  display: block;
+  width: 23px;
+  height: 17px;
+}
+
+.fast_forward {
+  background: url(sprite_icons.png) -170px -205px no-repeat;
+  display: block;
+  width: 25px;
+  height: 17px;
+}
+
+.step_forward {
+  background: url(sprite_icons.png) -521px -431px no-repeat;
+  display: block;
+  width: 14px;
+  height: 17px;
+}
+
+.eject {
+  background: url(sprite_icons.png) -521px -339px no-repeat;
+  display: block;
+  width: 18px;
+  height: 16px;
+}
+
+.facetime_video {
+  background: url(sprite_icons.png) -443px -125px no-repeat;
+  display: block;
+  width: 24px;
+  height: 15px;
+}
+
+.download_alt {
+  background: url(sprite_icons.png) -443px -142px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.mute {
+  background: url(sprite_icons.png) -177px -178px no-repeat;
+  display: block;
+  width: 22px;
+  height: 15px;
+}
+
+.volume_down {
+  background: url(sprite_icons.png) -521px -450px no-repeat;
+  display: block;
+  width: 16px;
+  height: 15px;
+}
+
+.volume_up {
+  background: url(sprite_icons.png) -391px -272px no-repeat;
+  display: block;
+  width: 24px;
+  height: 25px;
+}
+
+.screenshot {
+  background: url(sprite_icons.png) 0px -256px no-repeat;
+  display: block;
+  width: 27px;
+  height: 26px;
+}
+
+.move {
+  background: url(sprite_icons.png) -443px -167px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.more {
+  background: url(sprite_icons.png) -543px -505px no-repeat;
+  display: block;
+  width: 22px;
+  height: 6px;
+}
+
+.brightness_reduce {
+  background: url(sprite_icons.png) -521px -217px no-repeat;
+  display: block;
+  width: 20px;
+  height: 19px;
+}
+
+.brightness_increase {
+  background: url(sprite_icons.png) -443px -192px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.circle_plus {
+  background: url(sprite_icons.png) -339px -129px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_minus {
+  background: url(sprite_icons.png) -339px -156px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_remove {
+  background: url(sprite_icons.png) -339px -183px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_ok {
+  background: url(sprite_icons.png) -339px -210px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_question_mark {
+  background: url(sprite_icons.png) -339px -237px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_info {
+  background: url(sprite_icons.png) -339px -264px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_exclamation_mark {
+  background: url(sprite_icons.png) -339px -291px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.remove {
+  background: url(sprite_icons.png) 0px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.ok {
+  background: url(sprite_icons.png) -28px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.ban {
+  background: url(sprite_icons.png) -56px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.download {
+  background: url(sprite_icons.png) -84px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.upload {
+  background: url(sprite_icons.png) -112px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.shopping_cart {
+  background: url(sprite_icons.png) -81px -284px no-repeat;
+  display: block;
+  width: 26px;
+  height: 22px;
+}
+
+.lock {
+  background: url(sprite_icons.png) -391px -299px no-repeat;
+  display: block;
+  width: 21px;
+  height: 25px;
+}
+
+.unlock {
+  background: url(sprite_icons.png) -391px -326px no-repeat;
+  display: block;
+  width: 21px;
+  height: 25px;
+}
+
+.electricity {
+  background: url(sprite_icons.png) -521px -25px no-repeat;
+  display: block;
+  width: 11px;
+  height: 23px;
+}
+
+.ok_2 {
+  background: url(sprite_icons.png) -144px -256px no-repeat;
+  display: block;
+  width: 25px;
+  height: 18px;
+}
+
+.remove_2 {
+  background: url(sprite_icons.png) -521px -357px no-repeat;
+  display: block;
+  width: 18px;
+  height: 17px;
+}
+
+.cart_out {
+  background: url(sprite_icons.png) -84px -312px no-repeat;
+  display: block;
+  width: 26px;
+  height: 24px;
+}
+
+.cart_in {
+  background: url(sprite_icons.png) -112px -312px no-repeat;
+  display: block;
+  width: 26px;
+  height: 23px;
+}
+
+.left_arrow {
+  background: url(sprite_icons.png) -521px -238px no-repeat;
+  display: block;
+  width: 20px;
+  height: 17px;
+}
+
+.right_arrow {
+  background: url(sprite_icons.png) -521px -257px no-repeat;
+  display: block;
+  width: 20px;
+  height: 17px;
+}
+
+.down_arrow {
+  background: url(sprite_icons.png) -521px -297px no-repeat;
+  display: block;
+  width: 18px;
+  height: 19px;
+}
+
+.up_arrow {
+  background: url(sprite_icons.png) -521px -318px no-repeat;
+  display: block;
+  width: 18px;
+  height: 19px;
+}
+
+.resize_small {
+  background: url(sprite_icons.png) -443px -217px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.resize_full {
+  background: url(sprite_icons.png) -443px -242px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.circle_arrow_left {
+  background: url(sprite_icons.png) -140px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_arrow_right {
+  background: url(sprite_icons.png) -168px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_arrow_top {
+  background: url(sprite_icons.png) -196px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.circle_arrow_down {
+  background: url(sprite_icons.png) -224px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.play_button {
+  background: url(sprite_icons.png) -252px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.unshare {
+  background: url(sprite_icons.png) -443px -267px no-repeat;
+  display: block;
+  width: 24px;
+  height: 17px;
+}
+
+.share {
+  background: url(sprite_icons.png) -443px -286px no-repeat;
+  display: block;
+  width: 24px;
+  height: 17px;
+}
+
+.thin_right_arrow {
+  background: url(sprite_icons.png) -521px -171px no-repeat;
+  display: block;
+  width: 15px;
+  height: 21px;
+}
+
+.thin_arrow_left {
+  background: url(sprite_icons.png) -521px -194px no-repeat;
+  display: block;
+  width: 15px;
+  height: 21px;
+}
+
+.bluetooth {
+  background: url(sprite_icons.png) -521px -50px no-repeat;
+  display: block;
+  width: 14px;
+  height: 23px;
+}
+
+.euro {
+  background: url(sprite_icons.png) -227px -494px no-repeat;
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.usd {
+  background: url(sprite_icons.png) -367px -28px no-repeat;
+  display: block;
+  width: 17px;
+  height: 25px;
+}
+
+.bp {
+  background: url(sprite_icons.png) -521px -75px no-repeat;
+  display: block;
+  width: 17px;
+  height: 23px;
+}
+
+.retweet_2 {
+  background: url(sprite_icons.png) 0px -26px no-repeat;
+  display: block;
+  width: 33px;
+  height: 20px;
+}
+
+.moon {
+  background: url(sprite_icons.png) -443px -305px no-repeat;
+  display: block;
+  width: 22px;
+  height: 24px;
+}
+
+.sun {
+  background: url(sprite_icons.png) -443px -331px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.cloud {
+  background: url(sprite_icons.png) -120px -178px no-repeat;
+  display: block;
+  width: 27px;
+  height: 16px;
+}
+
+.direction {
+  background: url(sprite_icons.png) -280px -339px no-repeat;
+  display: block;
+  width: 26px;
+  height: 25px;
+}
+
+.brush {
+  background: url(sprite_icons.png) -137px -284px no-repeat;
+  display: block;
+  width: 25px;
+  height: 22px;
+}
+
+.pen {
+  background: url(sprite_icons.png) -443px -356px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.zoom_in {
+  background: url(sprite_icons.png) -108px -366px no-repeat;
+  display: block;
+  width: 25px;
+  height: 24px;
+}
+
+.zoom_out {
+  background: url(sprite_icons.png) -135px -366px no-repeat;
+  display: block;
+  width: 25px;
+  height: 24px;
+}
+
+.pin {
+  background: url(sprite_icons.png) -443px -381px no-repeat;
+  display: block;
+  width: 10px;
+  height: 24px;
+}
+
+.riflescope {
+  background: url(sprite_icons.png) -162px -366px no-repeat;
+  display: block;
+  width: 25px;
+  height: 24px;
+}
+
+.rotation_lock {
+  background: url(sprite_icons.png) -145px -228px no-repeat;
+  display: block;
+  width: 27px;
+  height: 23px;
+}
+
+.flash {
+  background: url(sprite_icons.png) -443px -407px no-repeat;
+  display: block;
+  width: 14px;
+  height: 24px;
+}
+
+.google_maps {
+  background: url(sprite_icons.png) -521px -100px no-repeat;
+  display: block;
+  width: 15px;
+  height: 23px;
+}
+
+.anchor {
+  background: url(sprite_icons.png) 0px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.conversation {
+  background: url(sprite_icons.png) -197px -205px no-repeat;
+  display: block;
+  width: 25px;
+  height: 17px;
+}
+
+.chat {
+  background: url(sprite_icons.png) -198px -256px no-repeat;
+  display: block;
+  width: 24px;
+  height: 18px;
+}
+
+.male {
+  background: url(sprite_icons.png) -411px -443px no-repeat;
+  display: block;
+  width: 22px;
+  height: 21px;
+}
+
+.female {
+  background: url(sprite_icons.png) -142px -31px no-repeat;
+  display: block;
+  width: 16px;
+  height: 26px;
+}
+
+.asterisk {
+  background: url(sprite_icons.png) -521px -276px no-repeat;
+  display: block;
+  width: 20px;
+  height: 19px;
+}
+
+.divide {
+  background: url(sprite_icons.png) -521px -376px no-repeat;
+  display: block;
+  width: 18px;
+  height: 15px;
+}
+
+.snorkel_diving {
+  background: url(sprite_icons.png) -29px -256px no-repeat;
+  display: block;
+  width: 27px;
+  height: 24px;
+}
+
+.scuba_diving {
+  background: url(sprite_icons.png) -174px -228px no-repeat;
+  display: block;
+  width: 27px;
+  height: 23px;
+}
+
+.oxygen_bottle {
+  background: url(sprite_icons.png) -367px 0px no-repeat;
+  display: block;
+  width: 22px;
+  height: 26px;
+}
+
+.fins {
+  background: url(sprite_icons.png) -109px 0px no-repeat;
+  display: block;
+  width: 31px;
+  height: 26px;
+}
+
+.fishes {
+  background: url(sprite_icons.png) 0px -147px no-repeat;
+  display: block;
+  width: 28px;
+  height: 29px;
+}
+
+.boat {
+  background: url(sprite_icons.png) -26px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.delete_point {
+  background: url(sprite_icons.png) -339px -318px no-repeat;
+  display: block;
+  width: 26px;
+  height: 16px;
+}
+
+.sheriffs_-star {
+  background: url(sprite_icons.png) -417px 0px no-repeat;
+  display: block;
+  width: 24px;
+  height: 25px;
+}
+
+.qrcode {
+  background: url(sprite_icons.png) -52px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.barcode {
+  background: url(sprite_icons.png) -78px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.pool {
+  background: url(sprite_icons.png) -104px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.buoy {
+  background: url(sprite_icons.png) -130px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.spade {
+  background: url(sprite_icons.png) -156px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.bank {
+  background: url(sprite_icons.png) -182px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.vcard {
+  background: url(sprite_icons.png) -543px 0px no-repeat;
+  display: block;
+  width: 22px;
+  height: 23px;
+}
+
+.electrical_plug {
+  background: url(sprite_icons.png) -367px -81px no-repeat;
+  display: block;
+  width: 18px;
+  height: 24px;
+}
+
+.flag {
+  background: url(sprite_icons.png) -417px -27px no-repeat;
+  display: block;
+  width: 21px;
+  height: 25px;
+}
+
+.credit_card {
+  background: url(sprite_icons.png) -59px -205px no-repeat;
+  display: block;
+  width: 26px;
+  height: 18px;
+}
+
+.keyboard_wireless {
+  background: url(sprite_icons.png) -30px -205px no-repeat;
+  display: block;
+  width: 27px;
+  height: 18px;
+}
+
+.keyboard_wired {
+  background: url(sprite_icons.png) -58px -256px no-repeat;
+  display: block;
+  width: 27px;
+  height: 24px;
+}
+
+.shield {
+  background: url(sprite_icons.png) -543px -25px no-repeat;
+  display: block;
+  width: 22px;
+  height: 23px;
+}
+
+.ring {
+  background: url(sprite_icons.png) -543px -50px no-repeat;
+  display: block;
+  width: 21px;
+  height: 23px;
+}
+
+.cake {
+  background: url(sprite_icons.png) -543px -75px no-repeat;
+  display: block;
+  width: 22px;
+  height: 23px;
+}
+
+.drink {
+  background: url(sprite_icons.png) 0px -519px no-repeat;
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.beer {
+  background: url(sprite_icons.png) -25px -519px no-repeat;
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.fast_food {
+  background: url(sprite_icons.png) -30px -178px no-repeat;
+  display: block;
+  width: 28px;
+  height: 23px;
+}
+
+.cutlery {
+  background: url(sprite_icons.png) -543px -100px no-repeat;
+  display: block;
+  width: 13px;
+  height: 23px;
+}
+
+.pizza {
+  background: url(sprite_icons.png) -225px 0px no-repeat;
+  display: block;
+  width: 26px;
+  height: 28px;
+}
+
+.birthday_cake {
+  background: url(sprite_icons.png) -225px -30px no-repeat;
+  display: block;
+  width: 26px;
+  height: 28px;
+}
+
+.tablet {
+  background: url(sprite_icons.png) -189px -366px no-repeat;
+  display: block;
+  width: 25px;
+  height: 24px;
+}
+
+.settings {
+  background: url(sprite_icons.png) -208px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.bullets {
+  background: url(sprite_icons.png) -203px -228px no-repeat;
+  display: block;
+  width: 27px;
+  height: 22px;
+}
+
+.cardio {
+  background: url(sprite_icons.png) 0px -393px no-repeat;
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.t-shirt {
+  background: url(sprite_icons.png) -60px -178px no-repeat;
+  display: block;
+  width: 28px;
+  height: 22px;
+}
+
+.pants {
+  background: url(sprite_icons.png) -543px -125px no-repeat;
+  display: block;
+  width: 19px;
+  height: 23px;
+}
+
+.sweater {
+  background: url(sprite_icons.png) -30px -147px no-repeat;
+  display: block;
+  width: 29px;
+  height: 23px;
+}
+
+.fabric {
+  background: url(sprite_icons.png) -232px -228px no-repeat;
+  display: block;
+  width: 27px;
+  height: 21px;
+}
+
+.leather {
+  background: url(sprite_icons.png) -50px -519px no-repeat;
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.scissors {
+  background: url(sprite_icons.png) -391px 0px no-repeat;
+  display: block;
+  width: 24px;
+  height: 26px;
+}
+
+.podium {
+  background: url(sprite_icons.png) -90px -178px no-repeat;
+  display: block;
+  width: 28px;
+  height: 20px;
+}
+
+.skull {
+  background: url(sprite_icons.png) -543px -150px no-repeat;
+  display: block;
+  width: 22px;
+  height: 23px;
+}
+
+.celebration {
+  background: url(sprite_icons.png) -469px 0px no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.tea_kettle {
+  background: url(sprite_icons.png) -109px -284px no-repeat;
+  display: block;
+  width: 26px;
+  height: 22px;
+}
+
+.french_press {
+  background: url(sprite_icons.png) -469px -26px no-repeat;
+  display: block;
+  width: 23px;
+  height: 24px;
+}
+
+.coffe_cup {
+  background: url(sprite_icons.png) -171px -256px no-repeat;
+  display: block;
+  width: 25px;
+  height: 18px;
+}
+
+.pot {
+  background: url(sprite_icons.png) -87px -256px no-repeat;
+  display: block;
+  width: 27px;
+  height: 21px;
+}
+
+.grater {
+  background: url(sprite_icons.png) -543px -175px no-repeat;
+  display: block;
+  width: 18px;
+  height: 23px;
+}
+
+.kettle {
+  background: url(sprite_icons.png) -75px -519px no-repeat;
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.hospital {
+  background: url(sprite_icons.png) -469px -52px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.hospital_h {
+  background: url(sprite_icons.png) -469px -77px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.microphone {
+  background: url(sprite_icons.png) -543px -200px no-repeat;
+  display: block;
+  width: 17px;
+  height: 23px;
+}
+
+.webcam {
+  background: url(sprite_icons.png) -543px -225px no-repeat;
+  display: block;
+  width: 19px;
+  height: 23px;
+}
+
+.temple_christianity_church {
+  background: url(sprite_icons.png) -469px -102px no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.temple_islam {
+  background: url(sprite_icons.png) -167px -312px no-repeat;
+  display: block;
+  width: 25px;
+  height: 23px;
+}
+
+.temple_hindu {
+  background: url(sprite_icons.png) -469px -128px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.temple_buddhist {
+  background: url(sprite_icons.png) 0px -205px no-repeat;
+  display: block;
+  width: 28px;
+  height: 21px;
+}
+
+.electrical_socket_eu {
+  background: url(sprite_icons.png) -177px -494px no-repeat;
+  display: block;
+  width: 23px;
+  height: 22px;
+}
+
+.electrical_socket_us {
+  background: url(sprite_icons.png) -202px -494px no-repeat;
+  display: block;
+  width: 23px;
+  height: 22px;
+}
+
+.bomb {
+  background: url(sprite_icons.png) -310px 0px no-repeat;
+  display: block;
+  width: 27px;
+  height: 25px;
+}
+
+.comments {
+  background: url(sprite_icons.png) -469px -153px no-repeat;
+  display: block;
+  width: 24px;
+  height: 22px;
+}
+
+.flower {
+  background: url(sprite_icons.png) -469px -177px no-repeat;
+  display: block;
+  width: 19px;
+  height: 24px;
+}
+
+.baseball {
+  background: url(sprite_icons.png) -27px -393px no-repeat;
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.rugby {
+  background: url(sprite_icons.png) -100px -519px no-repeat;
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.ax {
+  background: url(sprite_icons.png) -310px -27px no-repeat;
+  display: block;
+  width: 27px;
+  height: 24px;
+}
+
+.table_tennis {
+  background: url(sprite_icons.png) -469px -203px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.bowling {
+  background: url(sprite_icons.png) -469px -228px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.tree_conifer {
+  background: url(sprite_icons.png) -543px -250px no-repeat;
+  display: block;
+  width: 21px;
+  height: 23px;
+}
+
+.tree_deciduous {
+  background: url(sprite_icons.png) -469px -253px no-repeat;
+  display: block;
+  width: 20px;
+  height: 24px;
+}
+
+.more-items {
+  background: url(sprite_icons.png) -543px -275px no-repeat;
+  display: block;
+  width: 21px;
+  height: 23px;
+}
+
+.sort {
+  background: url(sprite_icons.png) -216px -366px no-repeat;
+  display: block;
+  width: 25px;
+  height: 24px;
+}
+
+.filter {
+  background: url(sprite_icons.png) -543px -300px no-repeat;
+  display: block;
+  width: 20px;
+  height: 23px;
+}
+
+.gamepad {
+  background: url(sprite_icons.png) -310px -53px no-repeat;
+  display: block;
+  width: 27px;
+  height: 18px;
+}
+
+.playing_dices {
+  background: url(sprite_icons.png) -310px -73px no-repeat;
+  display: block;
+  width: 27px;
+  height: 22px;
+}
+
+.calculator {
+  background: url(sprite_icons.png) -543px -325px no-repeat;
+  display: block;
+  width: 21px;
+  height: 23px;
+}
+
+.tie {
+  background: url(sprite_icons.png) -417px -54px no-repeat;
+  display: block;
+  width: 11px;
+  height: 25px;
+}
+
+.wallet {
+  background: url(sprite_icons.png) -164px -284px no-repeat;
+  display: block;
+  width: 25px;
+  height: 19px;
+}
+
+.share {
+  background: url(sprite_icons.png) -435px -443px no-repeat;
+  display: block;
+  width: 22px;
+  height: 21px;
+}
+
+.sampler {
+  background: url(sprite_icons.png) -310px -97px no-repeat;
+  display: block;
+  width: 27px;
+  height: 21px;
+}
+
+.piano {
+  background: url(sprite_icons.png) -125px -519px no-repeat;
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.web_browser {
+  background: url(sprite_icons.png) -469px -279px no-repeat;
+  display: block;
+  width: 24px;
+  height: 21px;
+}
+
+.blog {
+  background: url(sprite_icons.png) -251px -494px no-repeat;
+  display: block;
+  width: 21px;
+  height: 22px;
+}
+
+.dashboard {
+  background: url(sprite_icons.png) -469px -302px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.certificate {
+  background: url(sprite_icons.png) -469px -327px no-repeat;
+  display: block;
+  width: 17px;
+  height: 24px;
+}
+
+.bell {
+  background: url(sprite_icons.png) -469px -353px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.candle {
+  background: url(sprite_icons.png) -469px -378px no-repeat;
+  display: block;
+  width: 20px;
+  height: 24px;
+}
+
+.pin_classic {
+  background: url(sprite_icons.png) -469px -404px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.iphone_shake {
+  background: url(sprite_icons.png) -469px -429px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.pin_flag {
+  background: url(sprite_icons.png) -66px -71px no-repeat;
+  display: block;
+  width: 30px;
+  height: 21px;
+}
+
+.turtle {
+  background: url(sprite_icons.png) -75px -54px no-repeat;
+  display: block;
+  width: 28px;
+  height: 15px;
+}
+
+.rabbit {
+  background: url(sprite_icons.png) -116px -256px no-repeat;
+  display: block;
+  width: 26px;
+  height: 21px;
+}
+
+.globe {
+  background: url(sprite_icons.png) -234px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.briefcase {
+  background: url(sprite_icons.png) -366px -393px no-repeat;
+  display: block;
+  width: 24px;
+  height: 20px;
+}
+
+.hdd {
+  background: url(sprite_icons.png) -392px -393px no-repeat;
+  display: block;
+  width: 24px;
+  height: 20px;
+}
+
+.thumbs_up {
+  background: url(sprite_icons.png) -26px -420px no-repeat;
+  display: block;
+  width: 24px;
+  height: 20px;
+}
+
+.thumbs_down {
+  background: url(sprite_icons.png) -52px -420px no-repeat;
+  display: block;
+  width: 24px;
+  height: 20px;
+}
+
+.hand_right {
+  background: url(sprite_icons.png) -87px -205px no-repeat;
+  display: block;
+  width: 26px;
+  height: 18px;
+}
+
+.hand_left {
+  background: url(sprite_icons.png) -115px -205px no-repeat;
+  display: block;
+  width: 26px;
+  height: 18px;
+}
+
+.hand_up {
+  background: url(sprite_icons.png) -417px -81px no-repeat;
+  display: block;
+  width: 19px;
+  height: 25px;
+}
+
+.hand_down {
+  background: url(sprite_icons.png) -391px -28px no-repeat;
+  display: block;
+  width: 19px;
+  height: 26px;
+}
+
+.fullscreen {
+  background: url(sprite_icons.png) -260px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.shopping_bag {
+  background: url(sprite_icons.png) -417px -108px no-repeat;
+  display: block;
+  width: 23px;
+  height: 25px;
+}
+
+.book_open {
+  background: url(sprite_icons.png) -194px -312px no-repeat;
+  display: block;
+  width: 25px;
+  height: 22px;
+}
+
+.nameplate {
+  background: url(sprite_icons.png) -78px -420px no-repeat;
+  display: block;
+  width: 24px;
+  height: 20px;
+}
+
+.nameplate_alt {
+  background: url(sprite_icons.png) -286px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 21px;
+}
+
+.vases {
+  background: url(sprite_icons.png) 0px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.announcement {
+  background: url(sprite_icons.png) -191px -284px no-repeat;
+  display: block;
+  width: 25px;
+  height: 19px;
+}
+
+.dumbbell {
+  background: url(sprite_icons.png) -149px -178px no-repeat;
+  display: block;
+  width: 26px;
+  height: 15px;
+}
+
+.suitcase {
+  background: url(sprite_icons.png) -312px -443px no-repeat;
+  display: block;
+  width: 24px;
+  height: 21px;
+}
+
+.file_import {
+  background: url(sprite_icons.png) -543px -350px no-repeat;
+  display: block;
+  width: 22px;
+  height: 23px;
+}
+
+.file_export {
+  background: url(sprite_icons.png) -150px -519px no-repeat;
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.pinterest {
+  background: url(sprite_icons.png) -26px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.dropbox {
+  background: url(sprite_icons.png) -52px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.google+_alt {
+  background: url(sprite_icons.png) -78px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.jolicloud {
+  background: url(sprite_icons.png) -104px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.yahoo {
+  background: url(sprite_icons.png) -130px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.blogger {
+  background: url(sprite_icons.png) -156px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.picasa {
+  background: url(sprite_icons.png) -182px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.amazon {
+  background: url(sprite_icons.png) -208px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.tumblr {
+  background: url(sprite_icons.png) -234px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.wordpress {
+  background: url(sprite_icons.png) -260px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.instapaper {
+  background: url(sprite_icons.png) -286px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.evernote {
+  background: url(sprite_icons.png) -312px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.xing {
+  background: url(sprite_icons.png) -338px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.zootool {
+  background: url(sprite_icons.png) -364px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.dribbble {
+  background: url(sprite_icons.png) -390px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.deviantart {
+  background: url(sprite_icons.png) -416px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.read_it_later {
+  background: url(sprite_icons.png) -442px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.linked_in {
+  background: url(sprite_icons.png) -468px -469px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.forrst {
+  background: url(sprite_icons.png) -495px 0px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.pinboard {
+  background: url(sprite_icons.png) -495px -25px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.behance {
+  background: url(sprite_icons.png) -495px -50px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.github {
+  background: url(sprite_icons.png) -495px -75px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.youtube {
+  background: url(sprite_icons.png) -495px -100px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.skitch {
+  background: url(sprite_icons.png) -495px -125px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.4square {
+  background: url(sprite_icons.png) -495px -150px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.quora {
+  background: url(sprite_icons.png) -495px -175px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.google_plus {
+  background: url(sprite_icons.png) -495px -200px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.spootify {
+  background: url(sprite_icons.png) -495px -225px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.stumbleupon {
+  background: url(sprite_icons.png) -495px -250px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.readability {
+  background: url(sprite_icons.png) -495px -275px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.facebook {
+  background: url(sprite_icons.png) -495px -300px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.twitter_t {
+  background: url(sprite_icons.png) -495px -325px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.twitter {
+  background: url(sprite_icons.png) -495px -350px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.buzz {
+  background: url(sprite_icons.png) -495px -375px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.vimeo {
+  background: url(sprite_icons.png) -495px -400px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.flickr {
+  background: url(sprite_icons.png) -495px -425px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.last_fm {
+  background: url(sprite_icons.png) -495px -450px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.rss {
+  background: url(sprite_icons.png) 0px -494px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.skype {
+  background: url(sprite_icons.png) -26px -494px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}
+
+.e-mail {
+  background: url(sprite_icons.png) -52px -494px no-repeat;
+  display: block;
+  width: 24px;
+  height: 23px;
+}

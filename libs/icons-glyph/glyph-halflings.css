@@ -1,0 +1,162 @@
+.w2ui-icon {
+  background-image: url('glyph-halflings.png');
+  background-repeat: no-repeat; 
+  background-position: -120px 0;
+  width: 14px; 
+  height: 14px; 
+  overflow: hidden; 
+  display: inline-block; 
+  margin: 0px;
+  opacity: 0.8;
+}
+
+.icon-h-white {
+  background-image: url("glyph-halflings-white.png");
+}
+
+.icon-h1x1,  .icon-h-glass      { background-position: 0 0; }
+.icon-h1x2,  .icon-h-music      { background-position: -24px 0; }
+.icon-h1x3,  .icon-h-search     { background-position: -48px 0; }
+.icon-h1x4,  .icon-h-envelope   { background-position: -72px 0; }
+.icon-h1x5,  .icon-h-heart      { background-position: -96px 0; }
+.icon-h1x6,  .icon-h-star       { background-position: -120px 0; }
+.icon-h1x7,  .icon-h-star-empty { background-position: -144px 0; }
+.icon-h1x8,  .icon-h-user       { background-position: -168px 0; }
+.icon-h1x9,  .icon-h-film       { background-position: -192px 0; }
+.icon-h1x10, .icon-h-th-large   { background-position: -216px 0; }
+.icon-h1x11, .icon-h-th         { background-position: -240px 0; }
+.icon-h1x12, .icon-h-th-list    { background-position: -264px 0; }
+.icon-h1x13, .icon-h-ok         { background-position: -288px 0; }
+.icon-h1x14, .icon-h-remove     { background-position: -312px 0; }
+.icon-h1x15, .icon-h-zoom-in    { background-position: -336px 0; }
+.icon-h1x16, .icon-h-zoom-out   { background-position: -360px 0; }
+.icon-h1x17, .icon-h-off        { background-position: -384px 0; }
+.icon-h1x18, .icon-h-signal     { background-position: -408px 0; }
+.icon-h1x19, .icon-h-cog        { background-position: -432px 0; }
+.icon-h1x20, .icon-h-trash      { background-position: -456px 0; }
+
+.icon-h2x1,  .icon-h-home         { background-position: 0 -24px;  }
+.icon-h2x2,  .icon-h-file         { background-position: -24px -24px; }
+.icon-h2x3,  .icon-h-time         { background-position: -48px -24px; }
+.icon-h2x4,  .icon-h-road         { background-position: -72px -24px; }
+.icon-h2x5,  .icon-h-download-alt { background-position: -96px -24px; }
+.icon-h2x6,  .icon-h-download     { background-position: -120px -24px; }
+.icon-h2x7,  .icon-h-upload       { background-position: -144px -24px; }
+.icon-h2x8,  .icon-h-inbox        { background-position: -168px -24px; }
+.icon-h2x9,  .icon-h-play-circle  { background-position: -192px -24px; }
+.icon-h2x10, .icon-h-repeat       { background-position: -216px -24px; }
+.icon-h2x11, .icon-h-refresh      { background-position: -240px -24px; }
+.icon-h2x12, .icon-h-list-alt     { background-position: -264px -24px; }
+.icon-h2x13, .icon-h-lock         { background-position: -287px -24px; }
+.icon-h2x14, .icon-h-flag         { background-position: -312px -24px; }
+.icon-h2x15, .icon-h-headphones   { background-position: -336px -24px; }
+.icon-h2x16, .icon-h-volume-off   { background-position: -360px -24px; }
+.icon-h2x17, .icon-h-volume-down  { background-position: -384px -24px; }
+.icon-h2x18, .icon-h-volume-up    { background-position: -408px -24px; }
+.icon-h2x19, .icon-h-qrcode       { background-position: -432px -24px; }
+.icon-h2x20, .icon-h-barcode      { background-position: -456px -24px; }
+
+.icon-h3x1,  .icon-h-tag            { background-position: 0 -48px; }
+.icon-h3x2,  .icon-h-tags           { background-position: -25px -48px; }
+.icon-h3x3,  .icon-h-book           { background-position: -48px -48px; }
+.icon-h3x4,  .icon-h-bookmark       { background-position: -72px -48px; }
+.icon-h3x5,  .icon-h-print          { background-position: -96px -48px; }
+.icon-h3x6,  .icon-h-camera         { background-position: -120px -48px; }
+.icon-h3x7,  .icon-h-font           { background-position: -144px -48px; }
+.icon-h3x8,  .icon-h-bold           { background-position: -167px -48px; }
+.icon-h3x9,  .icon-h-italic         { background-position: -192px -48px; }
+.icon-h3x10, .icon-h-text-height    { background-position: -216px -48px; }
+.icon-h3x11, .icon-h-text-width     { background-position: -240px -48px; }
+.icon-h3x12, .icon-h-align-left     { background-position: -264px -48px; }
+.icon-h3x13, .icon-h-align-center   { background-position: -288px -48px; }
+.icon-h3x14, .icon-h-align-right    { background-position: -312px -48px; }
+.icon-h3x15, .icon-h-align-justify  { background-position: -336px -48px; }
+.icon-h3x16, .icon-h-list           { background-position: -360px -48px; }
+.icon-h3x17, .icon-h-indent-left    { background-position: -384px -48px; }
+.icon-h3x18, .icon-h-indent-right   { background-position: -408px -48px; }
+.icon-h3x19, .icon-h-facetime-video { background-position: -432px -48px; }
+.icon-h3x20, .icon-h-picture        { background-position: -456px -48px; }
+
+.icon-h4x1,  .icon-h-pencil         { background-position: 0 -72px; }
+.icon-h4x2,  .icon-h-map-marker     { background-position: -24px -72px; }
+.icon-h4x3,  .icon-h-adjust         { background-position: -48px -72px; }
+.icon-h4x4,  .icon-h-tint           { background-position: -72px -72px; }
+.icon-h4x5,  .icon-h-edit           { background-position: -96px -72px; }
+.icon-h4x6,  .icon-h-share          { background-position: -120px -72px; }
+.icon-h4x7,  .icon-h-check          { background-position: -144px -72px; }
+.icon-h4x8,  .icon-h-move           { background-position: -168px -72px; }
+.icon-h4x9,  .icon-h-step-backward  { background-position: -192px -72px; }
+.icon-h4x10, .icon-h-fast-backward  { background-position: -216px -72px; }
+.icon-h4x11, .icon-h-backward       { background-position: -240px -72px; }
+.icon-h4x12, .icon-h-play           { background-position: -264px -72px; }
+.icon-h4x13, .icon-h-pause          { background-position: -288px -72px; }
+.icon-h4x14, .icon-h-stop           { background-position: -312px -72px; }
+.icon-h4x15, .icon-h-forward        { background-position: -336px -72px; }
+.icon-h4x16, .icon-h-fast-forward   { background-position: -360px -72px; }
+.icon-h4x17, .icon-h-step-forward   { background-position: -384px -72px; }
+.icon-h4x18, .icon-h-eject          { background-position: -408px -72px; }
+.icon-h4x19, .icon-h-chevron-left   { background-position: -432px -72px; }
+.icon-h4x20, .icon-h-chevron-right  { background-position: -456px -72px; }
+
+.icon-h5x1,  .icon-h-plus-sign      { background-position: 0 -96px; }
+.icon-h5x2,  .icon-h-minus-sign     { background-position: -24px -96px; }
+.icon-h5x3,  .icon-h-remove-sign    { background-position: -48px -96px; }
+.icon-h5x4,  .icon-h-ok-sign        { background-position: -72px -96px; }
+.icon-h5x5,  .icon-h-question-sign  { background-position: -96px -96px; }
+.icon-h5x6,  .icon-h-info-sign      { background-position: -120px -96px; }
+.icon-h5x7,  .icon-h-screenshot     { background-position: -144px -96px; }
+.icon-h5x8,  .icon-h-remove-circle  { background-position: -168px -96px; }
+.icon-h5x9,  .icon-h-ok-circle      { background-position: -192px -96px; }
+.icon-h5x10, .icon-h-ban-circle     { background-position: -216px -96px; }
+.icon-h5x11, .icon-h-arrow-left     { background-position: -240px -96px; }
+.icon-h5x12, .icon-h-arrow-right    { background-position: -264px -96px; }
+.icon-h5x13, .icon-h-arrow-up       { background-position: -289px -96px; }
+.icon-h5x14, .icon-h-arrow-down     { background-position: -312px -96px; }
+.icon-h5x15, .icon-h-share-alt      { background-position: -336px -96px; }
+.icon-h5x16, .icon-h-resize-full    { background-position: -360px -96px; }
+.icon-h5x17, .icon-h-resize-small   { background-position: -384px -96px; }
+.icon-h5x18, .icon-h-plus           { background-position: -408px -96px; }
+.icon-h5x19, .icon-h-minus          { background-position: -433px -96px; }
+.icon-h5x20, .icon-h-asterisk       { background-position: -456px -96px; }
+
+.icon-h6x1,  .icon-h-exclamation-sign { background-position: 0 -120px; }
+.icon-h6x2,  .icon-h-gift             { background-position: -24px -120px; }
+.icon-h6x3,  .icon-h-leaf             { background-position: -48px -120px; }
+.icon-h6x4,  .icon-h-fire             { background-position: -72px -120px; }
+.icon-h6x5,  .icon-h-eye-open         { background-position: -96px -120px; }
+.icon-h6x6,  .icon-h-eye-close        { background-position: -120px -120px; }
+.icon-h6x7,  .icon-h-warning-sign     { background-position: -144px -120px; }
+.icon-h6x8,  .icon-h-plane            { background-position: -168px -120px; }
+.icon-h6x9,  .icon-h-calendar         { background-position: -192px -120px; }
+.icon-h6x10, .icon-h-random           { background-position: -216px -120px; }
+.icon-h6x11, .icon-h-comment          { background-position: -240px -120px; }
+.icon-h6x12, .icon-h-magnet           { background-position: -264px -120px; }
+.icon-h6x13, .icon-h-chevron-up       { background-position: -288px -120px; }
+.icon-h6x14, .icon-h-chevron-down     { background-position: -313px -119px; }
+.icon-h6x15, .icon-h-retweet          { background-position: -336px -120px; }
+.icon-h6x16, .icon-h-shopping-cart    { background-position: -360px -120px; }
+.icon-h6x17, .icon-h-folder-close     { background-position: -384px -120px; }
+.icon-h6x18, .icon-h-folder-open      { background-position: -408px -120px; }
+.icon-h6x19, .icon-h-resize-vertical  { background-position: -432px -119px; }
+.icon-h6x20, .icon-h-resize-horizontal{ background-position: -456px -118px; }
+
+.icon-h7x1,  .icon-h-hdd                { background-position: 0 -144px; }
+.icon-h7x2,  .icon-h-bullhorn           { background-position: -24px -144px; }
+.icon-h7x3,  .icon-h-bell               { background-position: -48px -144px; }
+.icon-h7x4,  .icon-h-certificate        { background-position: -72px -144px; }
+.icon-h7x5,  .icon-h-thumbs-up          { background-position: -96px -144px; }
+.icon-h7x6,  .icon-h-thumbs-down        { background-position: -120px -144px; }
+.icon-h7x7,  .icon-h-hand-right         { background-position: -144px -144px; }
+.icon-h7x8,  .icon-h-hand-left          { background-position: -168px -144px; }
+.icon-h7x9,  .icon-h-hand-up            { background-position: -192px -144px; }
+.icon-h7x10, .icon-h-hand-down          { background-position: -216px -144px; }
+.icon-h7x11, .icon-h-circle-arrow-right { background-position: -240px -144px; }
+.icon-h7x12, .icon-h-circle-arrow-left  { background-position: -264px -144px; }
+.icon-h7x13, .icon-h-circle-arrow-up    { background-position: -288px -144px; }
+.icon-h7x14, .icon-h-circle-arrow-down  { background-position: -312px -144px; }
+.icon-h7x15, .icon-h-globe              { background-position: -336px -144px; }
+.icon-h7x16, .icon-h-wrench             { background-position: -360px -144px; }
+.icon-h7x17, .icon-h-tasks              { background-position: -384px -144px; }
+.icon-h7x18, .icon-h-filter             { background-position: -408px -144px; }
+.icon-h7x19, .icon-h-briefcase          { background-position: -432px -144px; }
+.icon-h7x20, .icon-h-fullscreen         { background-position: -456px -144px; }
