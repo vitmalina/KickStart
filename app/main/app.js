@@ -3,19 +3,21 @@
 */
 
 var app = { 
-	isLoaded: {},
+	session  : {},
+	isLoaded : {},
 
 	// ===========================================
 	// -- Loads modules or calls .render()
 	// -- if module was previously loaded
 
-	load: function (mod_name, mod_url) {
+	load: function (mod_name, mod_url, callBack) {
 		// check if was loaded before 
 		if (app.isLoaded.hasOwnProperty(mod_name)) {
 			if (typeof app[mod_name].render == 'undefined') {
 				$.error('Loader: module "'+ mod_name + '" has no render() method.');
 			} else {
 				app[mod_name].render();
+				if (typeof callBack == 'function') callBack();
 			}
 		} else {
 			app.ajax({ 
@@ -23,13 +25,15 @@ var app = {
 				dataType: "script", 
 				success	: function (data, status, respObj) {
 					app.isLoaded[mod_name] = true;
+					if (typeof callBack == 'function') callBack();
 				},
 				error 	: function (respObj, err, errData) {
 					if (err == 'error') {
 						$.error('Loader: module "'+ mod_name +'" failed to load ('+ mod_url +').');
 					} else {
-						app.isLoaded[mod_name] = true;
 						$.error('Loader: module "'+ mod_name + '" is loaded ('+ mod_url +'), but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
+						app.isLoaded[mod_name] = true;
+						if (typeof callBack == 'function') callBack();
 					}
 				} 
 			});		
@@ -124,7 +128,29 @@ var app = {
 };
 
 // ===========================================
+// -- Check if user is logged in
+
+$.ajax({
+	url 	: 'server/user',
+	async 	: false,
+	complete: function (xhr, status) {
+		if (status != 'success') {
+			document.location = 'login.html';
+			return;
+		}
+		var data = $.parseJSON(xhr.responseText);
+		if (data.status != 'success') {
+			document.location = 'login.html';
+			return;
+		}
+		delete data.status;
+		app.session = data;
+	}
+});
+
+// ===========================================
 // -- Load main module
-$().ready(function () {
+
+$(function () {
 	app.load('main', 'app/main/main.js');
-})
+});

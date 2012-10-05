@@ -12,9 +12,6 @@ configs = {
 			{ type: 'break' },
 			{ type: 'menu',   id: 'quick-actions', caption: 'Actions', hint: 'Quick actions', items: [
 				{ text: 'Create...', icon: 'icon-' },
-				{ text: 'Create...', icon: 'icon-' },
-				{ text: 'Create...', icon: 'icon-' },
-				{ text: 'Create...', icon: 'icon-' },
 				{ text: 'Create...', icon: 'icon-' }
 			]},
 			{ type: 'spacer' },
@@ -33,12 +30,10 @@ configs = {
 	
 	app_tabs: {
 		name 	: 'app_tabs',
-		active 	: 'dashboard',
+		active 	: 'home',
 		style: 'padding 0px 3px 1px 3px;',
 		tabs: [
-			{ id: 'dashboard', caption: 'Dashboard' },
-			{ id: 'mod1', caption: 'Module 1' },
-			{ id: 'mod2', caption: 'Module 2' }
+			{ id: 'home', caption: 'Home' }
 		],
 		onClick: app.main.appAction
 	},
@@ -68,12 +63,13 @@ configs = {
 		img: null,
 		nodes: [
 			{ id: 'main', text: 'General', group: true, img: 'icon-', expanded: true, nodes: [
-				{ id: 'main-list1',	text: 'List 1', img: 'icon-', selected: true },
-				{ id: 'main-list2', text: 'List 2', img: 'icon-' }
+				{ id: 'main-list1',	text: 'Your Module...', img: 'icon-star', selected: true }
 			]},
-			{ id: 'settings', text: 'Settings', group: true, img: 'icon-cases', expanded: true, nodes: [
-				{ id: 'set-users', 	text: 'Users', 		img: 'icon-user' },
-				{ id: 'set-groups', text: 'Groups', 	img: 'icon-users' }
+			{ id: 'settings', text: 'Administration', group: true, img: 'icon-cases', expanded: true, nodes: [
+				{ id: 'admin-users',   text: 'Users', 	img: 'icon-user' },
+				{ id: 'admin-groups',  text: 'Groups', 	img: 'icon-group' },
+				{ id: 'admin-roles',   text: 'Roles', 	img: 'icon-keys' },
+				{ id: 'admin-services',text: 'Services',img: 'icon-compass' }
 			]},
 		],
 		onClick: app.main.appAction

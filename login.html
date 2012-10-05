@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<title>Login</title>
+	<script type="text/javascript" src="libs/jquery.min.js"></script>	
+	<style>
+		table { font-family: verdana; font-size: 11px; }
+		input[type=text], input[type=password] { border-radius: 4px; padding: 4px; border: 1px solid silver; font-size: 18px; }
+		#login_tbl {
+			z-Index: 1000; 
+			border: 1px solid silver; 
+			background: #ecf3f9; 
+			border-radius: 5px; 
+			-moz-border-radius: 5px; 
+			-webkit-border-radius: 5px;
+			box-shadow: 1px 1px 20px #ddd; 
+			-moz-box-shadow: 1px 1px 20px #ddd;
+			-webkit-box-shadow: 1px 1px 20px #ddd; 
+		}
+	</style>
+	<script>
+		function login (event) {
+			var login 	 = $('#login').val();
+			var password = $('#password').val();
+			$.ajax({
+				url 	: 'server/login',
+				data 	: {	login: login, password: password },
+				complete: function (xhr, status) {
+					if (status != 'success') {
+						$('#message').html('Cannot Login');
+						return;
+					}
+					var data = $.parseJSON(xhr.responseText);
+					if (data['status'] != 'success') {
+						$('#message').html('Incorrect Login or Password');
+						$('#password').val('').focus();
+						return;
+					}
+					document.location = 'index.html';
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<br>
+	<table style="width: 100%">
+	<tr><td align="center">
+		<br>
+		<img>
+		<br><br>
+		<div id="message" style="color: red;">&nbsp;</div>
+		<br><br>
+		
+		<div style="width: 300px;">
+			<table id="login_tbl">
+			<tr><td>
+				<table cellspacing="4" cellpadding="3" style="margin: 15px">
+				<tr>
+					<td style="padding-bottom: 10px;"> 
+						<span style="color: #888;">User Name</span> 
+						<div style="height: 5px; font-size: 1px;">&nbsp;</div> 
+						<input type=text id="login" size="25" autofocus="yes" onkeypress="$('#message').html('&nbsp;'); if (event.keyCode == 13) login();"> 
+					</td>
+				</tr><tr>
+					<td> 
+						<span style="color: #888;">Password</span> 
+						<div style="height: 5px; font-size: 1px;">&nbsp;</div> 
+						<input type=password id="password" size="25" onkeypress="$('#message').html('&nbsp;'); if (event.keyCode == 13) login();"> 
+					</td>
+				</tr><tr>
+					<td></td>
+				</tr><tr>
+					<td style="padding-bottom: 0px;" align="center"> 
+						<input type="button" value="Login" style="width: 60px; font-size: 20pt;" onclick="login()"> 
+					</td>
+				</tr>
+				</table>
+			</td></tr>
+			</table>
+			<div style="text-align: center; padding-top: 10px;">
+				<a href="javascript:" onclick="var email = prompt('Please enter email address you signed up with.'); 
+					if (email == '' || email == null) return; document.location = document.location + '?email=' + email">Forgot Password</a>
+			</div>
+		</div>
+	</td></tr>
+	</table>
+</body>
+</html>

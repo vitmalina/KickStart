@@ -4,15 +4,6 @@ CACHE MANIFEST
 # Cache core items
 CACHE:
 ./libs/jquery.min.js
-./libs/w2ui/jquery.w2editor.js
-./libs/w2ui/jquery.w2fields.js
-./libs/w2ui/jquery.w2grid.js
-./libs/w2ui/jquery.w2layout.js
-./libs/w2ui/jquery.w2popup.js
-./libs/w2ui/jquery.w2tabs.js
-./libs/w2ui/jquery.w2toolbar.js
-./libs/w2ui/jquery.w2tree.js
-./libs/w2ui/jquery.w2utils.js
 
 # Do not cache all other requests
 NETWORK:

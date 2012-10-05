@@ -4,8 +4,9 @@
 
 configs = {
 	grid1: { 
-		name: 'grid1',
-		header: 'Grid 1',
+		name 	: 'grid1',
+		header	: 'Grid 1',
+		url		: 'server/users.php',
 		show: {
 			header: false,
 			toolbar: true,

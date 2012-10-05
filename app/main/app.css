@@ -16,7 +16,22 @@
 
 body {
 	overflow: hidden;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
+	background-image: url(images/linen.jpg);
+	//background-image: url(images/blue-bg.png);
+	//background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
+}
+
+a {
+	color: #3379B8 !important;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+button, input[type=button] {
+	vertical-align: center;
 }
 
 /***********************************
@@ -36,11 +51,14 @@ body {
 		display: inline; 
 		float: left;
 	}
-	#app-head div#app-logo img {
+	#app-head div#app-logo div {
 		float: left; 
 		cursor: default;
 		height: 35px; 
-		margin: 3px 12px; 
+		width: 30px; 
+		height: 30px;
+		margin: 6px 10px; 
+		background-color: #F0F6FF;
 	}
 	#app-head div#app-logo span {
 		cursor: default;
@@ -78,8 +96,8 @@ body {
 	left: 0px; 
 	top: 70px;
 	right: 0px;
-	height: 45px;
-	padding: 10px 15px 0px 15px;
+	height: 55px;
+	padding: 18px 15px 0px 15px;
 	font-size: 20px;
 	color: #606060;
 	text-shadow: 1px 1px 1px #efefef;
@@ -93,7 +111,7 @@ body {
 	position: absolute;
 	z-index: 1;
 	left: 0px; 
-	top: 115px;
+	top: 125px;
 	right: 0px;
 	bottom: 0px;
 	font-size: 11px;
@@ -127,3 +145,36 @@ div#app-toolbar div.w2ui-toolbar table.w2ui-tab1.checked {
 /***********************************
 *   -- Common Classes
 */
+
+
+/***********************************
+*   -- Form Fields
+*/
+
+.w2ui-label {
+	display: inline-block;
+	float: left;
+	margin-top: 3px;
+	padding: 2px;
+	width: 120px;
+	text-align: right;
+	color: #555;
+}
+
+.w2ui-field {
+	padding: 3px;
+	margin-left: 125px;
+}
+
+.w2ui-field input[type=text], .w2ui-field input[type=password], .w2ui-field textarea {
+	border: 1px solid silver;
+	padding: 4px;
+	border-radius: 3px;
+}
+
+.w2ui-field input[type=text][readonly], .w2ui-field input[type=text][disabled], 
+.w2ui-field input[type=password][readonly], .w2ui-field input[type=password][disabled], 
+.w2ui-field textarea[readonly], .w2ui-field textarea[disabled] {
+	background-color: #efefef;
+	color: #666;
+}
