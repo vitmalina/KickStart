@@ -1,17 +1,22 @@
-.icon-glyph {
-	width	: 20px;
-	height	: 20px;
+.w2ui-icon {
+	width	: 22px;
+	height	: 22px;
 	overflow: hidden;
 	display	: inline-block;
 	margin	: 0px;
 	padding : 0px;
-	background-color : #464C50;
+	background-color : #5D6871;
 	-webkit-mask-size: 100% 100%;
 	-webkit-mask-repeat: no-repeat;
 	-webkit-mask-position: center, center;
+	-webkit-mask-image: url('png/glyphicons_049_star.png'); -webkit-mask-size: 78% 75%;
 }
 
-.icon-glyph:hover {
+.w2ui-icon-selected {
+	background-color : #E3F6FF;
+}
+
+.w2ui-icon-hover {
 	background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
 	background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
