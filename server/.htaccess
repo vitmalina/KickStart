@@ -1,0 +1,6 @@
+Options +FollowSymlinks
+Options -Indexes
+RewriteEngine on
+
+# -- All requests go to index.php
+RewriteRule .* php/index.php?%{QUERY_STRING}
