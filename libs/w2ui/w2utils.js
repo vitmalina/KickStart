@@ -13,8 +13,8 @@ var w2ui = w2ui || {}; // w2utils might not be loaded yet
 var w2utils = (function () {
 	var obj = {
 		settings : {
-			format_date	: 'mm/dd/yyyy',
-			format_time	: 'hh:mi pm'
+			date_format	: 'mm/dd/yyyy',
+			time_format	: 'hh:mi pm'
 		},
 		isInt			: isInt,
 		isFloat			: isFloat,
@@ -25,7 +25,8 @@ var w2utils = (function () {
 		isDate			: isDate,
 		isTime			: isTime,
 		formatDate		: formatDate,
-		formatTime		: formatTime,
+		date 			: date,
+		age 			: age,
 		stripTags		: stripTags,
 		base64encode	: base64encode,
 		base64decode	: base64decode,
@@ -34,39 +35,39 @@ var w2utils = (function () {
 	}
 	return obj;
 	
-	function isInt(val) {
+	function isInt (val) {
 		var re =  /^[-]?[0-9]+$/;
 		return re.test(val);		
 	}
 		
-	function isFloat(val) {
+	function isFloat (val) {
 		var re =  /^[-]?[0-9]*[\.]?[0-9]+$/;
 		return re.test(val);		
 	}
 
-	function isMoney(val) {
+	function isMoney (val) {
 		var re =  /^[\$\€\£\¥]?[-]?[0-9]*[\.]?[0-9]+$/;
 		return re.test(val);		
 	}
 		
-	function isHex(val) {
+	function isHex (val) {
 		var re =  /^[a-fA-F0-9]+$/;
 		return re.test(val);		
 	}
 	
-	function isAlphaNumeric(val) {
+	function isAlphaNumeric (val) {
 		var re =  /^[a-zA-Z0-9_-]+$/;
 		return re.test(val);		
 	}
 	
-	function isEmail(val) {
+	function isEmail (val) {
 		var email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
 		return email.test(val); 
 	}
 
-	function isDate(val) {
+	function isDate (val) {
 		// USA format only mm/dd/yy[yy]
-		if (String(val) == 'undefined') return false;
+		if (typeof val == 'undefined' || val == null) return false;
 		if (val.split("/").length != 3) return false; 
 		var month	= val.split("/")[0];
 		var day		= val.split("/")[1];
@@ -76,7 +77,7 @@ var w2utils = (function () {
 		return true;
 	}
 
-	function isTime(val) {
+	function isTime (val) {
 		// Both formats 10:20pm and 22:20
 		if (String(val) == 'undefined') return false;
 		var max;
@@ -92,49 +93,83 @@ var w2utils = (function () {
 		if (tmp[1] == '' || parseInt(tmp[1]) < 0 || parseInt(tmp[1]) > 59 || !methods.isInt(tmp[1])) { return false; }
 		return true;
 	}
+
+	function formatDate (dateStr, format) {
+		if (typeof format == 'undefined') format = this.settings.date_format;
+		if (typeof dateStr == 'undefined' || dateStr == '' || dateStr == null) return '';
+		var dt = new Date(dateStr);
+		var year 	= dt.getFullYear();
+		var month 	= dt.getMonth() + 1;
+		var date 	= dt.getDate();
+		var result  = format.toLowerCase().replace('yyyy', year).replace('mm', month).replace('dd', date);
+		return result;
+	}
 	
-	function formatDate(val) {
-		// comes in mm/dd/yyyy
-		var mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',	'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-		var tmp = val.split('/');
-		var ret = settings.format_date;
-		// month
-		ret = ret.replace('mm', tmp[0]);
-		ret = ret.replace('Mon', mon[parseInt(tmp[0])-1]);
-		// date
-		ret = ret.replace('dd', tmp[1]);
-		// year 
-		ret = ret.replace('yyyy', tmp[2]);
-		ret = ret.replace('yy', tmp[2].substr(2));
-		return ret;
+	function date (dateStr) {
+		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		if (dateStr == '' || typeof dateStr == 'undefined' || dateStr == null) return '';
+		
+		var d1   = new Date(dateStr);
+		if (d1 == 'Invalid Date') return '';
+		var d2   = new Date(); // today
+		var d3   = new Date(); 
+		d3.setTime(d3.getTime() - 86400000); // yesterday
+		
+		var dd1  = months[d1.getMonth()] + ' ' + d1.getDate() + ', ' + d1.getFullYear();
+		var dd2  = months[d2.getMonth()] + ' ' + d2.getDate() + ', ' + d2.getFullYear();
+		var dd3  = months[d3.getMonth()] + ' ' + d3.getDate() + ', ' + d3.getFullYear();
+		
+		var time = (d1.getHours() - (d1.getHours() > 12 ? 12 :0)) + ':' + (d1.getMinutes() < 10 ? '0' : '') + d1.getMinutes() + ' ' + (d1.getHours() >= 12 ? 'pm' : 'am');
+		var time2= (d1.getHours() - (d1.getHours() > 12 ? 12 :0)) + ':' + (d1.getMinutes() < 10 ? '0' : '') + d1.getMinutes() + ':' + (d1.getSeconds() < 10 ? '0' : '') + d1.getSeconds() + ' ' + (d1.getHours() >= 12 ? 'pm' : 'am');
+		var dsp = dd1;
+		if (dd1 == dd2) dsp = time;
+		if (dd1 == dd3) dsp = 'Yesterday';
+
+		return '<span title="'+ dd1 + ' ' + time2 +'">'+ dsp + '</span>';
 	}
 
-	function formatTime(val) {
-		// comes in hh24:mi
-		var tmp = val.split(':');
-		var ret = settings.format_time;
-		// hours
-		ret = ret.replace('hh24', tmp[0]);
-		// minutes
-		ret = ret.replace('mi', tmp[1]);
-		// pm
-		if (ret.indexOf('hh') >= 0) {
-			if (parseInt(tmp[0]) < 12)  { ret = ret.replace('hh', tmp[0]); tm = 'am'; }
-			if (parseInt(tmp[0]) > 12)  { ret = ret.replace('hh', parseInt(tmp[0])-12); tm = 'pm'; }
-			if (parseInt(tmp[0]) == 12) { ret = ret.replace('hh', tmp[0]); tm = 'pm'; }
-			if (parseInt(tmp[0]) == 24) { ret = ret.replace('hh', parseInt(tmp[0])-12); tm = 'am'; }
-			ret = ret.replace('pm', tm);
-			ret = ret.replace('am', tm);
-		}
-		return ret;
-	}
+	function age (timeStr) {
+		if (timeStr == '' || typeof timeStr == 'undefined' || timeStr == null) return '';
+		var d1  = new Date(timeStr);
+		var d2  = new Date();
+		var sec = (d2.getTime() - d1.getTime()) / 1000;
+		var amount = '';
+		var type   = '';
 		
-	function stripTags(html) {
+		if (sec < 60) {
+			amount = Math.floor(sec);
+			type   = 'sec';
+		} else if (sec < 60*60) {
+			amount = Math.floor(sec/60);
+			type   = 'min';
+		} else if (sec < 24*60*60) {
+			amount = Math.floor(sec/60/60);
+			type   = 'hour';
+		} else if (sec < 30*24*60*60) {
+			amount = Math.floor(sec/24/60/60);
+			type   = 'day';
+		} else if (sec < 12*30*24*60*60) {
+			amount = Math.floor(sec/30/24/60/60);
+			type   = 'month';
+		} else if (sec >= 12*30*24*60*60) {
+			amount = Math.floor(sec/12/30/24/60/60);
+			type   = 'year';
+		}		
+		return amount + ' ' + type + (amount > 1 ? 's' : '');
+	}	
+		
+	function stripTags (html) {
 		html = $.trim(String(html).replace(/(<([^>]+)>)/ig, ""));
 		return html;
 	}
+
+	function encodeTags (html) {
+		if (html == null) html = '';
+		if (typeof html == 'undefined') html = '';
+		return String(html).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+	}
 	
-	function base64encode(input) {
+	function base64encode (input) {
 		var output = "";
 		var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
 		var i = 0;
@@ -157,7 +192,7 @@ var w2utils = (function () {
 			output = output + keyStr.charAt(enc1) + keyStr.charAt(enc2) + keyStr.charAt(enc3) + keyStr.charAt(enc4);
 		}
 
-		function utf8_encode(string) {
+		function utf8_encode (string) {
 			var string = string.replace(/\r\n/g,"\n");
 			var utftext = "";
 
@@ -182,7 +217,7 @@ var w2utils = (function () {
 		return output;
 	}
 
-	function base64decode(input) {
+	function base64decode (input) {
 		var output = "";
 		var chr1, chr2, chr3;
 		var enc1, enc2, enc3, enc4;
@@ -208,7 +243,7 @@ var w2utils = (function () {
 		}
 		output = utf8_decode(output);
 
-		function utf8_decode(utftext) {
+		function utf8_decode (utftext) {
 			var string = "";
 			var i = 0;
 			var c = c1 = c2 = 0;
@@ -238,7 +273,7 @@ var w2utils = (function () {
 		return output;
 	}
 	
-	function transition(div_old, div_new, type, callBack) {
+	function transition (div_old, div_new, type, callBack) {
 		var width  = $(div_old).width();
 		var height = $(div_old).height();
 		var time   = 0.5;
@@ -442,24 +477,24 @@ var w2utils = (function () {
 		}
 	}
 	
-	function getSize(el, type) {
+	function getSize (el, type) {
 		var bwidth = {
-			left: 	parseInt($(el).css('border-left-width')),
-			right:  parseInt($(el).css('border-right-width')),
-			top:  	parseInt($(el).css('border-top-width')),
-			bottom: parseInt($(el).css('border-bottom-width'))
+			left: 	parseInt($(el).css('border-left-width')) || 0,
+			right:  parseInt($(el).css('border-right-width')) || 0,
+			top:  	parseInt($(el).css('border-top-width')) || 0,
+			bottom: parseInt($(el).css('border-bottom-width')) || 0
 		}
 		var mwidth = {
-			left: 	parseInt($(el).css('margin-left')),
-			right:  parseInt($(el).css('margin-right')),
-			top:  	parseInt($(el).css('margin-top')),
-			bottom: parseInt($(el).css('margin-bottom'))
+			left: 	parseInt($(el).css('margin-left')) || 0,
+			right:  parseInt($(el).css('margin-right')) || 0,
+			top:  	parseInt($(el).css('margin-top')) || 0,
+			bottom: parseInt($(el).css('margin-bottom')) || 0
 		}
 		var pwidth = {
-			left: 	parseInt($(el).css('padding-left')),
-			right:  parseInt($(el).css('padding-right')),
-			top:  	parseInt($(el).css('padding-top')),
-			bottom: parseInt($(el).css('padding-bottom'))
+			left: 	parseInt($(el).css('padding-left')) || 0,
+			right:  parseInt($(el).css('padding-right')) || 0,
+			top:  	parseInt($(el).css('padding-top')) || 0,
+			bottom: parseInt($(el).css('padding-bottom')) || 0
 		}
 		switch (type) {
 			case 'top': 	return bwidth.top + mwidth.top + pwidth.top; 
@@ -562,15 +597,91 @@ $.w2event = {
 *********************************************************/
 
 (function () {
-	$.fn.w2render = function() {
+
+	$.fn.w2render = function (name) {
+		if ($(this).length > 0) {
+			if (typeof name == 'string' && w2ui[name]) w2ui[name].render($(this)[0]);
+			if (typeof name == 'object') name.render($(this)[0]);
+		}
 	}
 
-	$.fn.w2lite = function() {
+	$.fn.w2destroy = function (name) {
+		if (typeof name == 'string' && w2ui[name]) w2ui[name].destroy();
+		if (typeof name == 'object') name.destroy();
+	}
+
+	$.fn.w2lite = function () {
 	}
 	
-	$.fn.w2tag = function() {
+	$.fn.w2tag = function (text, cssClass) {
+		// remove all tags
+		if ($(this).length == 0) {
+			$('.global-tag').each(function (index, elem) {
+				$('#' + $(elem).data('tagID')).removeClass( $(elem).data('cssClass') );
+				clearInterval($(elem).data('timer'));
+				$(elem).remove();
+			});
+			return;
+		}
+		return $(this).each(function (index, el) {
+			if (typeof cssClass == 'undefined') cssClass = '';
+			// show or hide tag
+			var tagID = el.id;
+			if (text == '' || text == null || typeof text == 'undefined') {
+				$('#global-tag-'+tagID).css('opacity', 0);
+				setTimeout(function () {
+					// remmove element
+					clearInterval($('#global-tag-'+tagID).data('timer'));
+					$('#global-tag-'+tagID).remove();
+				}, 300);
+			} else {
+				// remove elements
+				clearInterval($('#global-tag-'+tagID).data('timer'));
+				$('#global-tag-'+tagID).remove();
+				// insert
+				$('body').append('<div id="global-tag-'+ tagID +'" class="global-tag" '+
+								 '	style="position: absolute; z-index: 1100; opacity: 0; -webkit-transition: opacity .3s"></div>');		
+
+				var timer = setInterval(function () { 
+					// monitor if destroyed
+					if ($(el).length == 0 || ($(el).offset().left == 0 && $(el).offset().top == 0)) {
+						clearInterval($('#global-tag-'+tagID).data('timer'));
+						tmp_hide(); 
+						return;
+					}
+					// monitor if moved
+					if ($('#global-tag-'+tagID).data('position') != ($(el).offset().left + el.offsetWidth) + 'x' + $(el).offset().top) {
+						$('#global-tag-'+tagID).css({
+							'-webkit-transition': '.2s',
+							left: ($(el).offset().left + el.offsetWidth) + 'px',
+							top: $(el).offset().top + 'px'
+						}).data('position', ($(el).offset().left + el.offsetWidth) + 'x' + $(el).offset().top);
+					}
+				}, 500);
+				setTimeout(function () {
+					if (!$(el).offset()) return;
+					$('#global-tag-'+tagID).css({
+						opacity: '1',
+						left: ($(el).offset().left + el.offsetWidth) + 'px',
+						top: $(el).offset().top + 'px'
+					}).html('<div style="margin-top: -2px 0px 0px -2px; white-space: nowrap;"> <div class="bubble-tag">'+ text +'</div> </div>')
+					.data('text', text)
+					.data('tagID', tagID)
+					.data('cssClass', cssClass)
+					.data('position', ($(el).offset().left + el.offsetWidth) + 'x' + $(el).offset().top)
+					.data('timer', timer);
+					$(el).off('keypress', tmp_hide).on('keypress', tmp_hide).off('change', tmp_hide).on('change', tmp_hide).addClass(cssClass);
+				}, 1);
+				// bind event to hide it
+				function tmp_hide() { 
+					clearInterval($('#global-tag-'+tagID).data('timer'));
+					$('#global-tag-'+tagID).remove(); 
+					$(el).off('keypress', tmp_hide).removeClass(cssClass); 
+				}
+			}
+		});
 	}
 	
-	$.fn.w2bubble = function() {
+	$.fn.w2bubble = function () {
 	}
 })();

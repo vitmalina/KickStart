@@ -109,6 +109,10 @@
 					case 'date':
 						var obj = this;
 						// -- insert div for calendar
+						if ($(this).length == 0 || $('#'+$(this)[0].id).length != 1) {
+							console.error('The date field must have a unique id in w2field(\'date\').');
+							return;
+						}
 						$(this).data("options", options)
 							.on('focus', function () {
 								if ($('#global_calendar_div').data('no-refresh') == 'yes') {
@@ -148,12 +152,10 @@
 						
 					case 'color':
 						break;
+
+					case 'enum':
+						break;
 						
-					case 'menu':
-					case 'list':
-						var showOnClick = true;
-						var showAll		= true;
-						$(this).attr('readOnly', true);
 					case 'autocomplete': 
 						var defaults = {
 							url			: '',
@@ -381,7 +383,8 @@
 				var el = $('#w2ui-global-items').data('field');
 				var settings = $(el).data('settings');
 				if (typeof settings['onSelect'] == 'function') settings.onSelect($(event.target).val());
-				$(el).val(event.target.getAttribute('value'));
+				$(el).data('value', event.target.getAttribute('value'));
+				$(el).val(event.target.innerHTML);
 				el.hideItems(0);
 				$(el).trigger('change');
 				$(el).trigger('blur');

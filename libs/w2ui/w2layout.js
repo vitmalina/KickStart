@@ -21,6 +21,7 @@
 		this.onRender	= null;
 		this.onRefresh	= null;
 		this.onResize	= null;
+		this.onResizing = null;
 		this.onShow		= null;
 		this.onHide		= null;
 		this.onDestroy	= null
@@ -677,8 +678,11 @@
 			if (!this.box) return;
 			if (!evnt) evnt = window.event;
 			if (typeof this.tmp_resizing == 'undefined') return;
-			// auto-resize
 			var panel = this.get(this.tmp_resizing);
+			// event before
+			var eventData = this.trigger({ phase: 'before', type: 'resizing', target: this.tmp_resizing, object: panel, event: evnt });	
+			if (eventData.stop === true) return false;
+
 			var p = $('#layout_'+ this.name + '_splitter_'+ this.tmp_resizing);
 			if (!p.hasClass('active')) p.addClass('active');
 			this.tmp_div_x = (evnt.screenX - this.tmp_x); 
@@ -731,6 +735,8 @@
 					if (p.length > 0) p[0].style.left = (this.tmp_value + this.tmp_div_x) + 'px';
 					break;
 			}
+			// event after
+			this.trigger($.extend(eventData, { phase: 'after' }));	
 		},
 	
 		stopResize: function (evnt) {

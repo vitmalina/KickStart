@@ -4,6 +4,12 @@
 * 		- w2ui.w2grid 	- grid widget
 *		- $.w2grid		- jQuery wrapper
 *   - Dependencies: jQuery, w2utils, w2toolbar, w2fields
+*
+*   == NICE TO HAVE
+*       - Column and Search Objects
+* 		- hidden search fields (but still searchable from js)
+* 		- select/unselect function to mark records as selected and unselected
+* 		- doSelect - selects if not selected, otherwise unselects also shift and ctrl keys
 * 
 ************************************************************************/
 
@@ -194,6 +200,13 @@
 			return removed;
 		},
 		
+		getColumn: function (field) {
+ 			for (var i=0; i<this.columns.length; i++) {
+				if (this.columns[i].field == field) return this.columns[i];
+			}
+			return null;
+		},	
+
 		addSearch: function (options) {
 			if (!$.isArray(options)) options = [options];
 			for (var o in options) this.searches.push(options[o]);
@@ -212,6 +225,13 @@
 			return removed;
 		},
 		
+		getSearch: function (field) {
+ 			for (var i=0; i<this.searches.length; i++) {
+				if (this.searches[i].field == field) return this.searches[i];
+			}
+			return null;
+		},	
+
 		add: function (options) { 
 			if (!$.isArray(options)) options = [options];
 			for (var o in options) {
@@ -236,8 +256,8 @@
 					if (this.records[r].recid == arguments[a]) { this.records.splice(r, 1); removed++; }
 				}
 			}
-			this.total = this.records.length;
 			if (this.url == '') {
+				this.total = this.records.length;
 				this.localSearch();
 				this.localSort();
 			}
@@ -345,6 +365,7 @@
 		},
 		
 		find: function (obj) { // NICE TO HAVE: multiple object input
+			if (typeof obj == 'undefined' || obj == null) obj = {};
 			var recs = [];
 			for (var i=0; i<this.records.length; i++) {
 				var flag = true;
@@ -495,6 +516,7 @@
 				if (this.records[i].selected !== true) continue;
 				this.select(this.records[i].recid, false); 
 			}
+			this.last_selected = [];
 		},
 	
 		getSelection: function () {
@@ -695,6 +717,9 @@
 		},
 		
 		request: function (cmd, add_params, url, callBack) {
+			if (typeof add_params == 'undefined') add_params = {};
+			if (typeof url == 'undefined' || url == '' || url == null) url = this.url;
+			if (url == '' || url == null) return;
 			// build parameters list
 			var params = {};
 			// add list params
@@ -711,11 +736,9 @@
 			// append other params
 			$.extend(params, this.postData);
 			$.extend(params, add_params);
-			if (typeof url == 'undefined' || url == '' || url == null) url = this.url;
-			if (url == '' || url == null) return;
 			// event before
 			var eventData = this.trigger({ phase: 'before', type: 'request', target: this.name, url: url, postData: params, cmd: cmd });
-			if (eventData.stop === true) return false;
+			if (eventData.stop === true) { if (typeof callBack == 'function') callBack(); return false; }
 			// default action
 			if (cmd == 'get-records') this.records = [];
 			// call server to get data
@@ -739,7 +762,22 @@
 					if (typeof eventData.data != 'undefined' && eventData.data != '') {
 						var data = 'data = '+ eventData.data; 	// $.parseJSON or $.getJSON did not work because it expect perfect JSON data
 						var data = eval(data);					//  where everything is in double quotes
-						$.extend(obj, data);
+						if (data['status'] != 'success') {
+							// need a time out because message might be already up
+							setTimeout(function () {
+								$().w2popup('open', {
+									width 	: 400,
+									height 	: 180,
+									showMax : false,
+									title 	: 'Error',
+									body 	: '<div style="padding: 15px 5px; text-align: center;">'+ data['message'] +'</div>',
+									buttons : '<input type="button" value="Ok" onclick="$().w2popup(\'close\');" style="width: 60px; margin-right: 5px;">'
+								});
+							}, 300);
+						} else {
+							if (cmd == 'get-records') $.extend(obj, data);
+							if (cmd == 'delete-records') { obj.reload(); return; }
+						}
 					}
 					// event after
 					if (obj.url == '') {
@@ -871,15 +909,24 @@
 			}
 		},
 		
-		doDelete: function () {
+		doDelete: function (force) {
 			// event before
 			var eventData = this.trigger({ phase: 'before', target: this.name, type: 'delete' });	
 			if (eventData.stop === true) return false;
 			// default action
 			var recs = this.getSelection();
 			if (recs.length == 0) return;
-			if (this.msgDelete != '') {
-				if (!confirm(this.msgDelete)) return;
+			if (this.msgDelete != '' && !force) {
+				$().w2popup({
+					width 	: 400,
+					height 	: 160,
+					showMax : false,
+					title 	: 'Delete Confirmation',
+					body 	: '<div style="padding: 20px 5px; text-align: center;">'+ this.msgDelete +'</div>',
+					buttons : '<input type="button" value="No" onclick="$().w2popup(\'close\');" style="width: 60px; margin-right: 5px;">'+
+							  '<input type="button" value="Yes" onclick="w2ui[\''+ this.name +'\'].doDelete(true); $().w2popup(\'close\');" style="width: 60px;">'
+				});
+				return;
 			}
 			// call delete script
 			if (this.url != '') {
@@ -896,6 +943,7 @@
 			var eventData = this.trigger({ phase: 'before', target: this.name, type: 'click', recid: recid, line: line, event: event });	
 			if (eventData.stop === true) return false;
 			// default action
+			$('#grid_'+ this.name +'_check_all').removeAttr('checked');
 			if (this.searchOpened) this.searchOpen(false); // hide search if it is open
 			var record = this.get(recid);
 			if (record) var tmp_previous = record.selected;
@@ -954,6 +1002,7 @@
 							if (event.keyCode == 38) { // up
 								if (ind > 0) {
 									ind--;
+									while (ind > 0 && obj.records[ind].hidden === true) ind--;
 									obj.selectNone();								
 									obj.doClick(obj.records[ind].recid, ind, event);
 									// scroll into view
@@ -969,6 +1018,7 @@
 							if (event.keyCode == 40) { // down
 								if (ind + 1 < obj.records.length) {
 									ind++;
+									while (ind + 1 < obj.records.length && obj.records[ind].hidden === true) ind++;
 									obj.selectNone();								
 									obj.doClick(obj.records[ind].recid, ind, event);
 									// scroll into view
@@ -1064,8 +1114,8 @@
 					}
 				}
 			}
-			if (this.multiSort === false) this.sortData = [];
-			if (!event.ctrlKey && !event.metaKey) this.sortData = [];
+			if (this.multiSort === false) { this.sortData = []; sortIndex = 0; }
+			if (!event.ctrlKey && !event.metaKey) { this.sortData = []; sortIndex = 0; }
 			// set new sort
 			if (typeof this.sortData[sortIndex] == 'undefined') this.sortData[sortIndex] = {};
 			this.sortData[sortIndex].field 	   = field;
@@ -1705,7 +1755,7 @@
 						'</tr>';
 			}
 			html += '<tr>'+
-					'	<td colspan="4" class="caption" style="border-right: 0px; padding: 20px 0px 5px 0px; text-align: center;">'+
+					'	<td colspan="4" class="caption" style="border-right: 0px; padding: 15px 0px 5px 0px !important; text-align: center;">'+
 					'		<input type="button" onclick="obj = w2ui[\''+ this.name +'\']; if (obj) { obj.searchReset(); }" style="width: 60px; margin: 0px 2px;" value="Reset">'+
 					'		<input type="button" onclick="obj = w2ui[\''+ this.name +'\']; if (obj) { obj.search(); }" style="width: 60px; margin: 0px 2px;" value="Search">'+
 					'	</td>'+
@@ -1839,8 +1889,9 @@
 						if (this.show.selectColumn) {
 							html += '<td id="grid_'+ this.name +'_cell_header_select" class="w2ui-head" onclick="event.stopPropagation();">'+
 									'<div style="cursor: default; text-align: center; overflow: hidden; width: 23px; padding-bottom: 0px;">'+
-									'	<input type="checkbox" onclick="if (this.checked) w2ui[\''+ this.name +'\'].selectAll(); '+
-									'			else w2ui[\''+ this.name +'\'].selectNone(); event.stopPropagation();" '+
+									'	<input type="checkbox" id="grid_'+ this.name +'_check_all" '+
+									'		onclick="if (this.checked) w2ui[\''+ this.name +'\'].selectAll(); '+
+									'				 else w2ui[\''+ this.name +'\'].selectNone(); event.stopPropagation();" '+
 									'		style="position: relative; display: inline-block; margin-top: 4px;">'+
 									'</div>'+
 									'</td>';

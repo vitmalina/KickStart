@@ -140,6 +140,7 @@
 			return tmp;
 		},
 		
+		// NICE TO HAVE remove multiple items at once, no parent then
 		remove: function (parent, id) { // can be just called remove(id)
 			if (typeof id == 'undefined') {
 				id = parent;
@@ -151,6 +152,12 @@
 			if (ind == null) return false;
 			tmp.parent.nodes.splice(ind, 1);
 			return true;
+		},
+		
+		hide: function (parent, id) {
+		},
+		
+		show: function (parent, id) {
 		},
 		
 		set: function (parent, id, options) { // can be just called get(id)
@@ -214,7 +221,9 @@
 			this.unselect(this.selected);
 			var new_node = this.get(id);
 			if (!new_node) return false;
-			$('#tree_'+ this.name +' #node_'+id.replace(/\./, '\\.')).addClass('w2ui-selected');
+			$('#tree_'+ this.name +' #node_'+id.replace(/\./, '\\.'))
+				.addClass('w2ui-selected')
+				.find('.w2ui-icon').addClass('w2ui-icon-selected');
 			new_node.selected = true;
 			this.selected = id;
 		},
@@ -223,7 +232,9 @@
 			var current = this.get(id);
 			if (!current) return false;
 			current.selected = false;
-			$('#tree_'+ this.name +' #node_'+id.replace(/\./, '\\.')).removeClass('w2ui-selected');
+			$('#tree_'+ this.name +' #node_'+id.replace(/\./, '\\.'))
+				.removeClass('w2ui-selected')
+				.find('.w2ui-icon').removeClass('w2ui-icon-selected');
 			if (this.selected == id) this.selected = null;
 			return true;
 		},
@@ -239,16 +250,18 @@
 				var nd  = obj.get(nid);
 				if (nd && nd.selected) {
 					nd.selected = false;
-					$(field).removeClass('w2ui-selected');
+					$(field).removeClass('w2ui-selected').find('.w2ui-icon').removeClass('w2ui-icon-selected');
 				}
 			});
-			$('#tree_'+ this.name +' #node_'+id.replace(/\./, '\\.')).addClass('w2ui-selected');
+			$('#tree_'+ this.name +' #node_'+id.replace(/\./, '\\.'))
+				.addClass('w2ui-selected')
+				.find('.w2ui-icon').addClass('w2ui-icon-selected');
 			this.get(id).selected = true;
 			this.selected = id;
 			// event after
 			this.trigger($.extend(eventData, { phase: 'after' }));
 		},
-	
+		
 		doDblClick: function (id, event) {
 			if (window.getSelection) window.getSelection().removeAllRanges(); // clear selection 
 			// event before
@@ -384,14 +397,16 @@
 						'	ondblclick="w2ui[\''+ obj.name +'\'].doDblClick(\''+ nd.id +'\', event); /* event.stopPropagation(); */"'+
 						'	oncontextmenu="w2ui[\''+ obj.name +'\'].doContextMenu(\''+ nd.id +'\', event); /* event.stopPropagation(); */ event.preventDefault();"'+
 						'	onClick="w2ui[\''+ obj.name +'\'].doClick(\''+ nd.id +'\', event); /* event.stopPropagation(); */">'+
-						'<div class="w2ui-node-count" style="width: auto; padding: 2px 5px; float: right">'+ (typeof nd.count != 'undefined' && nd.count != null ? nd.count : '') +'</div>'+
 						'<table cellpadding="0" cellspacing="0" style="margin-left:'+ (level*18) +'px"><tr>'+
 						'<td class="w2ui-node-dots" nowrap onclick="w2ui[\''+ obj.name +'\'].doToggle(\''+ nd.id +'\', event);">'+ 
 							(nd.nodes.length > 0 ? (nd.expanded ? '-' : '+') : '') +
 						'</td>'+
 						'<td class="w2ui-node-data" nowrap>'+ 
-							(typeof img != 'undefined' && img != null ? '<div class="w2ui-node-image w2ui-icon '+ img +'" style="float: left"></div>' : '') +
+							(typeof img != 'undefined' && img != null ? '<div class="w2ui-node-image w2ui-icon '+ img +' '+ 
+								(nd.selected ? "w2ui-icon-selected" : "") +'" style="float: left"></div>' : '') +
 							'<div class="w2ui-node-caption" style="float: left;">'+ nd.text +'</div>'+
+							'<div class="w2ui-node-count" style="width: auto; padding: 2px 5px; float: right">'+ 
+								(typeof nd.count != 'undefined' && nd.count != null ? nd.count : '') +'</div>'+
 						'</td>'+
 						'</tr></table>'+
 					'</div>'+
