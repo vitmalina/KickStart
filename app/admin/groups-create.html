@@ -1,0 +1,38 @@
+<div id="createGroup">
+	<div rel="title">Add or Edit Group</div>
+	<div rel="body">
+		<div style="height: 20px"></div>
+
+		<div class="w2ui-form">
+
+			<div class="w2ui-label">Group Id:</div>
+			<div class="w2ui-field">
+				<input name="groupid" type="text" size="10" readonly/>
+			</div>
+
+			<div style="height: 15px"></div>
+
+			<div class="w2ui-label">Group Name:</div>
+			<div class="w2ui-field">
+				<input name="gname" type="text" maxlength="100" required="yes" style="width: 90%"/>
+			</div>
+			<div class="w2ui-label">Description:</div>
+			<div class="w2ui-field">
+				<textarea name="gdesc" type="text" size="30" maxlength="50" style="width: 90%; height: 90px"/>
+			</div>
+
+			<div style="height: 15px"></div>
+
+			<div class="w2ui-label">Members:</div>
+			<div class="w2ui-field">
+				<input name="members" type="text" size="30" style="width: 90%" w2type="list"/>
+			</div>
+		</div>
+	</div>
+	<div rel="buttons">
+		<div style="text-align: center">
+			<input type="button" id="btnCancel" value="Cancel" onclick="$().w2popup('close');" style="width: 60px; margin: 0px 3px;">
+			<input type="button" id="btnOk" value="Ok" style="width: 60px; margin: 0px 3px;">
+		</div>
+	</div>
+</div>
