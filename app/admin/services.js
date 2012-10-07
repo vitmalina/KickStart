@@ -35,7 +35,7 @@ app.admin_services = (function (obj) {
 		$().w2popup('load', {
 			url 		: 'app/admin/services-create.html',
 			width 		: 610,
-			height 		: 405,
+			height 		: 250,
 			title		: (serviceid == null ? 'Add Service' : 'Edit Service'),
 			showClose	: true,
 			showMax 	: false,

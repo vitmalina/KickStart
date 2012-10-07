@@ -150,7 +150,6 @@ class w2grid_class {
 			return $data;
 		}
 
-		$len = 0;
 		$data['status'] = 'success';
 		$data['record']	= Array();
 		while ($rs && !$rs->EOF) {
@@ -158,8 +157,40 @@ class w2grid_class {
 				if (intval($k) > 0 || $k == "0") continue;
 				$data['record'][$k] = $v;
 			}
-			$len++;
 			break;
+		}
+		return $data;
+	}
+
+	public function getOptions($sql) {
+		global $db;
+		$data = Array();
+
+		// execute sql
+		$rs = $db->execute($sql);
+		// check for error
+		if ($db->res_errMsg != '') {
+			$data = Array();
+			$data['status'] = 'error';
+			$data['message'] = $db->res_errMsg;
+			return $data;
+		}
+
+		$len = 0;
+		$data['status']  = 'success';
+		$data['total'] 	 = $db->res_rowCount;
+		$data['options'] = Array();
+		while ($rs && !$rs->EOF) {
+			$data['options'][$len] = Array();
+			$data['options'][$len]['id']   = $rs->fields[0];
+			$data['options'][$len]['text'] = $rs->fields[1];
+			foreach ($rs->fields as $k => $v) {
+				if (intval($k) > 0 || $k == "0") continue;
+				$data['options'][$len][$k] = $v;
+			}
+			$len++;
+			if ($len >= $_REQUEST['max']) break;
+			$rs->moveNext();
 		}
 		return $data;
 	}

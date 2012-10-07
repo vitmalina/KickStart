@@ -36,7 +36,7 @@ app.main = (function (obj) {
 		w2ui['app_layout'].content('left', w2ui['main_sidebar']);
 		// click first element in first group
 		//w2ui['main_sidebar'].doClick(w2ui['main_sidebar'].nodes[0].nodes[0].id);
-		w2ui['main_sidebar'].doClick('admin-groups');
+		w2ui['main_sidebar'].doClick('admin-roles');
 	}
 
 	function appAction(target, data) {

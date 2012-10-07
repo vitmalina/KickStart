@@ -35,31 +35,19 @@ app.admin_groups = (function (obj) {
 		$().w2popup('load', {
 			url 		: 'app/admin/groups-create.html',
 			width 		: 610,
-			height 		: 405,
+			height 		: 305,
 			title		: (groupid == null ? 'Add Group' : 'Edit Group'),
 			showClose	: true,
 			showMax 	: false,
 			modal 		: true,
+			overflow	: 'auto',
 			onClose: function () { $().w2tag(); },
 			onOpen: function () {
 				$().w2destroy('admin_group_edit');
 				$('#w2ui-screenPopup .w2ui-box1').w2form({ 
 					name 	: 'admin_group_edit',
 					url  	: 'server/admin-groups',
-					recid	: groupid,
-					options	: {
-						'members' : {
-							items: [
-								{ id: 'BY', text: 'Belarus' },
-								{ id: 'BA', text: 'Bangladesh' },
-								{ id: 'RU', text: 'Russia' },
-								{ id: 'UA', text: 'Ukrain' },
-								{ id: 'US', text: 'United States' },
-								{ id: 'UK', text: 'United Kingdom' },
-								{ id: 'UG', text: 'Uganda' }
-							]
-						}
-					}
+					recid	: groupid
 				});
 				$('#w2ui-screenPopup #btnOk').on('click', function () {
 					w2ui['admin_group_edit'].save(null, null, function (data) {

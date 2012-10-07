@@ -91,13 +91,17 @@ var app = {
 		if (typeof options == 'undefined') options = url; else $.extend(options, { url: url });
 		if (typeof options.error != 'undefined') options._error_ = options.error; 
 		// custom error handler
-		options.error = function (respObj, status, error) {
-			switch (respObj.status) {
+		options.error = function (xhr, status, error) {
+			switch (xhr.status) {
+				case 403:
+					document.location = 'login.html';
+					break;
 				case 404: 
 					error = 'File Not Found - '+ this.url;
 					break;
 			}
-			app.error(respObj.status + ': '+ error);
+			app.error(xhr.status + ': '+ error);
+			if (typeof options._error_ == 'function') options._error_(xhr, status, error);
 		}
 		options.cache = false;
 		// submit through jquery

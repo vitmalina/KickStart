@@ -211,16 +211,20 @@
 				url			: url + (url.indexOf('?') > -1 ? '&' : '?') +'t=' + (new Date()).getTime(),
 				data		: String($.param(eventData.postData, false)).replace(/%5B/g, '[').replace(/%5D/g, ']'),
 				dataType	: 'text',
-				complete	: function (respObj, status) {
+				complete	: function (xhr, status) {
 					obj.hideStatus();
 					obj.isLoaded = true;
 					// event before
-					var eventData = obj.trigger({ phase: 'before', target: obj.name, type: 'load', data: respObj.responseText , respObj: respObj, status: status });	
+					var eventData = obj.trigger({ phase: 'before', target: obj.name, type: 'load', data: xhr.responseText , xhr: xhr, status: status });	
 					if (eventData.stop === true) {
 						if (typeof callBack == 'function') callBack();
 						return false;
 					}
 					// default action
+					if (xhr['status'] == 403) {
+						document.location = 'login.html'
+						return;
+					}
 					if (typeof eventData.data != 'undefined' && eventData.data != '') {
 						var data = 'data = '+ eventData.data; 	// $.parseJSON or $.getJSON did not work because it expect perfect JSON data
 						var data = eval(data);					//  where everything is in double quotes
@@ -297,6 +301,25 @@
 								this.record[field.name] = w2utils.formatDate(this.record[field.name], 'yyyy-mm-dd');
 							}
 							break;
+						case 'enum':
+							var sel = $(field.el).data('selected');
+							switch (sel.length) {
+								case 0:
+									this.record[field.name] = null;
+									break;
+								case 1: 
+									this.record[field.name] = sel[0].id;
+									break;
+								default:
+									this.record[field.name] = [];
+									for (var s in sel) {
+										this.record[field.name].push(sel[s].id);
+									}
+									break;
+							}
+							console.log(this.record);
+							return;
+							break;
 					}
 				}
 			}
@@ -325,15 +348,19 @@
 				url			: url + (url.indexOf('?') > -1 ? '&' : '?') +'t=' + (new Date()).getTime(),
 				data		: String($.param(eventData.postData, false)).replace(/%5B/g, '[').replace(/%5D/g, ']'),
 				dataType	: 'text',
-				complete	: function (respObj, status) {
+				complete	: function (xhr, status) {
 					obj.hideStatus();
 					// event before
-					var eventData = obj.trigger({ phase: 'before', target: obj.name, type: 'save', data: respObj.responseText , respObj: respObj, status: status });	
+					var eventData = obj.trigger({ phase: 'before', target: obj.name, type: 'save', data: xhr.responseText , xhr: xhr, status: status });	
 					if (eventData.stop === true) {
 						if (typeof callBack == 'function') callBack();
 						return false;
 					}
 					// default action
+					if (xhr['status'] == 403) {
+						document.location = 'login.html'
+						return;
+					}
 					if (typeof eventData.data != 'undefined' && eventData.data != '') {
 						var data = 'data = '+ eventData.data; 	// $.parseJSON or $.getJSON did not work because it expect perfect JSON data
 						var data = eval(data);					//  where everything is in double quotes
@@ -456,7 +483,7 @@
 								break;
 							}
 							$(field.el).w2field($.extend({}, this.options[field.name], { 
-								type 		: 'autocomplete',
+								type 		: 'enum',
 								multiSelect : true,
 								showOnClick : true
 							}));

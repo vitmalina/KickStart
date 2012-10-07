@@ -657,7 +657,7 @@ $.w2event = {
 							top: $(el).offset().top + 'px'
 						}).data('position', ($(el).offset().left + el.offsetWidth) + 'x' + $(el).offset().top);
 					}
-				}, 500);
+				}, 100);
 				setTimeout(function () {
 					if (!$(el).offset()) return;
 					$('#global-tag-'+tagID).css({

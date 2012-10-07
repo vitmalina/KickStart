@@ -46,7 +46,12 @@ app.admin_roles = (function (obj) {
 				$('#w2ui-screenPopup .w2ui-box1').w2form({ 
 					name 	: 'admin_role_edit',
 					url  	: 'server/admin-roles',
-					recid	: roleid
+					recid	: roleid,
+					options	: {
+						'services': {
+							url: 'server/admin-roles?cmd=get-actions&name=admin_role_edit'
+						}
+					}					
 				});
 				$('#w2ui-screenPopup #btnOk').on('click', function () {
 					w2ui['admin_role_edit'].save(null, null, function (data) {

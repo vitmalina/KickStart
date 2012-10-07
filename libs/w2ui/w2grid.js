@@ -749,11 +749,11 @@
 				url			: url + (url.indexOf('?') > -1 ? '&' : '?') +'t=' + (new Date()).getTime(),
 				data		: String($.param(eventData.postData, false)).replace(/%5B/g, '[').replace(/%5D/g, ']'),
 				dataType	: 'text',
-				complete	: function (respObj, status) {
+				complete	: function (xhr, status) {
 					obj.hideStatus();
 					obj.isLoaded = true;
 					// event before
-					var eventData = obj.trigger({ phase: 'before', target: obj.name, type: 'load', data: respObj.responseText , respObj: respObj, status: status });	
+					var eventData = obj.trigger({ phase: 'before', target: obj.name, type: 'load', data: xhr.responseText , xhr: xhr, status: status });	
 					if (eventData.stop === true) {
 						if (typeof callBack == 'function') callBack();
 						return false;
@@ -763,6 +763,10 @@
 						var data = 'data = '+ eventData.data; 	// $.parseJSON or $.getJSON did not work because it expect perfect JSON data
 						var data = eval(data);					//  where everything is in double quotes
 						if (data['status'] != 'success') {
+							if (xhr['status'] == 403) {
+								document.location = 'login.html'
+								return;
+							}
 							// need a time out because message might be already up
 							setTimeout(function () {
 								$().w2popup('open', {

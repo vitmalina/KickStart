@@ -16,7 +16,9 @@
 
 body {
 	overflow: hidden;
+	//background-color: #5F6D7E;
 	background-image: url(images/linen.jpg);
+	//background-image: -webkit-linear-gradient(bottom, #444B58 0%, #A9BCDB 95%);
 	//background-image: url(images/blue-bg.png);
 	//background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
 }

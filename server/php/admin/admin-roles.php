@@ -32,6 +32,15 @@ switch ($_REQUEST['name']."::".$_REQUEST['cmd']) {
 		$w2grid->outputJSON($res);
 		break;
 
+	case 'admin_role_edit::get-actions':
+		$search = addslashes($_REQUEST['search']);
+		$sql = "SELECT serviceid, service_name FROM sys_services 
+				WHERE service_name LIKE '{$search}%' 
+				ORDER BY service_name";
+		$res = $w2grid->getOptions($sql);
+		$w2grid->outputJSON($res);
+		break;
+
 	default:
 		$res = Array();
 		$res['status']  = 'error';
