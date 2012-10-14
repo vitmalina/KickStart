@@ -159,16 +159,35 @@ var w2utils = (function () {
 	}	
 		
 	function stripTags (html) {
-		html = $.trim(String(html).replace(/(<([^>]+)>)/ig, ""));
+		if (html == null) html = '';
+		switch (typeof html) {
+			case 'number':
+				break;
+			case 'string':
+				html = $.trim(String(html).replace(/(<([^>]+)>)/ig, ""));
+				break;
+			case 'object':
+				for (var a in html) html[a] = this.stripTags(html[a]);
+				break;
+		}
 		return html;
 	}
 
 	function encodeTags (html) {
 		if (html == null) html = '';
-		if (typeof html == 'undefined') html = '';
-		return String(html).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+		switch (typeof html) {
+			case 'number':
+				break;
+			case 'string':
+				html = String(html).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+				break;
+			case 'object':
+				for (var a in html) html[a] = this.encodeTags(html[a]);
+				break;
+		}
+		return html;
 	}
-	
+
 	function base64encode (input) {
 		var output = "";
 		var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
