@@ -1,0 +1,163 @@
+// *************************************************
+// ---- General
+//
+
+* {
+	padding: 0px; 
+	margin: 0px;
+	font-family: "Lucida Sans", Tahoma, Arial, Verdana;			
+	font-size: 11px;
+	.box-sizing();
+}
+
+body {
+	overflow: hidden;
+}
+
+a {
+	color: #3379B8 !important;
+	text-decoration: none;
+
+	:hover {
+		text-decoration: underline;	
+	}
+}
+
+input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
+	background-color: #eee;
+}
+
+// *************************************************
+// ---- Document Structure
+//
+
+#app-container {
+	display: none;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-image: url(../img/linen.jpg);
+	//background-image: url(images/blue-bg.png);
+	//background-image: -webkit-linear-gradient(bottom, #444B58 0%, #A9BCDB 95%);
+	//background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
+}
+
+#app-top {
+	position: absolute;
+	z-index: 3;
+	display: block; 
+	left: 0px;
+	right: 0px;
+	height: 32px;
+	box-shadow: inset 0px 5px 12px rgba(5, 5, 5, 0.2);
+
+	#app-toolbar {
+		position: absolute;
+		top: 1px;
+		left: 8px;
+		right: 8px;
+		display: none;
+	}	
+		
+	#app-tabs {
+		position: absolute;
+		top: 2px;
+		margin: 2px 0px;
+		padding: 3px 0px 0px 0px;
+		height: 32px;
+		width: 100%;
+		background-color: transparent;
+		//box-shadow: inset 0px 2px 2px #3D505E;
+		//border-top: 1px solid rgba(255,255,255,0.25);
+		//background-color: #EBEBEB;
+		//background-color: rgba(255,255,255,0.4);
+		//display: none;
+	}
+}	
+
+#app-header {
+	position: absolute;
+	z-index: 2;
+	left: 0px; 
+	top: 32px;
+	right: 0px;
+	height: 60px;
+	padding: 17px 15px 0px 15px;
+	font-size: 20px;
+	color: #606060;
+	text-shadow: 1px 1px 1px #efefef;
+	.linear-gradient-vertical(#EBEBEB, #D2D4D4); 
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #A5B0BB;
+	box-shadow: 0px 0px 12px #aaa;
+}
+
+#app-main {
+	position: absolute;
+	z-index: 1;
+	left: 0px; 
+	top: 92px;
+	right: 0px;
+	bottom: 0px;
+	font-size: 11px;
+	background-color: #EDF1F6 !important;
+}
+
+// w2ui loayout overide
+
+.w2ui-layout > div {
+
+	.w2ui-resizer {
+		display: none;
+		position: absolute; 
+		background-color: #CCD7E1;
+		z-index: 121;
+		
+		&:hover, &.active {
+			background-color: #999;
+		}
+	}
+}
+
+// w2ui grid overide
+
+.w2ui-grid .w2ui-grid-toolbar {
+	padding-left: 6px;
+	padding-top: 9px;
+	height: 40px;
+}
+
+// w2ui sidebar overide
+
+.w2ui-sidebar .w2ui-sidebar-div {
+	td.w2ui-node-data .w2ui-node-image.w2ui-icon {
+		margin-top: 0px;
+	}
+	.w2ui-node-image {
+		width: 22px;
+		text-align: center;
+	}
+}
+
+// list icons
+
+.w2ui-icon.icon-reload,
+.w2ui-icon.icon-columns,
+.w2ui-icon.icon-add,
+.w2ui-icon.icon-delete,
+.w2ui-icon.icon-save,
+.w2ui-icon.icon-edit,
+.w2ui-icon.icon-edit,
+.w2ui-icon.icon-bullet-black,
+.w2ui-icon.icon-page,
+.w2ui-icon.icon-search,
+.w2ui-icon.icon-search-down
+{
+	mask: none;
+	-webkit-mask: none;
+	-moz-mask: none;
+	-ms-mask: none;
+
+}
