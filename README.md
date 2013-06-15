@@ -14,22 +14,22 @@ Directory Structure
 
 The following application structure is suggested for all projects
 
-	/app 			- main application folder
-		/core		- core file for the application
-			/config - app configuration
-			/css	- app core css files
-			/img	- app core images
-			/login	- login page scripts and css
-		/home		- home module
-			...		- any files or folders you need
+	/app 				- main application folder
+		/core			- core file for the application
+			/config 	- app configuration
+			/css		- app core css files
+			/img		- app core images
+			/login		- login page scripts and css
+		/home			- home module
+			...			- any files or folders you need
 		/your-module
 			...
-	/libs			- all JavaScript libraries that you want to support
+	/libs				- all JavaScript libraries that you want to support
 		...
-	/media			- root folder for all UPLOADS
+	/media				- root folder for all UPLOADS
 		...
-	/server			- root folder for all SERVER SIDE scripts
+	/server				- root folder for all SERVER SIDE scripts
 		...
-	index.html  	- starting point
-	index.appcache - cache manifest
-	login.html  	- login page template
+	index.html  		- starting point
+	index.appcache 		- cache manifest
+	login.html  		- login page template
