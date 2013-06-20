@@ -6,14 +6,20 @@
 #app-toolbar {
 	background-color: transparent;
 	table {
-		padding: 0px 1px;
-		margin: 0px 3px;
+		padding: 3px 3px 2px 3px;
+		margin: 0px 0px;
+		background-color: transparent;
 		&.w2ui-button {
-			border-radius: 2px;
+			border-radius: 0px;
 
-			.w2ui-tb-caption, .w2ui-tb-image > span {
-				color: #fff;
-				text-shadow: 1px 1px 0px black;
+			.w2ui-tb-caption {
+				color: #bbb;
+				text-shadow: 1px 1px 1px #333;
+			}
+
+			.w2ui-tb-image > span {
+				color: #ddd;
+				text-shadow: 1px 1px 1px #333;				
 			}
 
 			.w2ui-tb-down {
@@ -22,16 +28,20 @@
 
 			&.over {
 				border: 1px solid rgba(255,255,255,0.2);
+				border-top: 0px;
+				border-bottom: 0px;
 				background-color: rgba(255,255,255,0.1);
 				& .w2ui-tb-caption, & .w2ui-tb-image > span {
-					//color: #DAF8FF;
+					color: #fff;
 					//text-shadow: none;
 				}
 			}
 
 			&.down {
-				border: 1px solid rgba(255,255,255,0.4);
-				background-color: rgba(255,255,255,0.3);
+				border: 1px solid rgba(0,0,0,0.6);
+				border-top: 0px;
+				border-bottom: 0px;
+				background-color: rgba(0,0,0,0.5);
 				& .w2ui-tb-caption, & .w2ui-tb-image > span {
 					//color: #DAF8FF;
 					//text-shadow: none;
@@ -39,15 +49,17 @@
 			}
 
 			&.checked {
-				border: 1px solid rgba(255,255,255,1);
-				background-color: rgba(255,255,255,0.65);
+				border: 1px solid rgba(0,0,0,1);
+				border-top: 0px;
+				border-bottom: 0px;
+				background-color: rgba(0,0,0,0.3);
 				& .w2ui-tb-caption {
-					color: #000;
-					text-shadow: 1px 1px 0px #ccc;
+					color: #fff;
+					text-shadow: 1px 1px 0px #000;
 				}
 				& .w2ui-tb-image > span {
-					color: #444;
-					text-shadow: 1px 1px 0px #eee;
+					color: #fff;
+					text-shadow: 1px 1px 0px #000;
 				}
 			}
 		}

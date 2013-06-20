@@ -4,13 +4,31 @@
 config = {
 
 	// ==============================
-	// --- Application Top Toolbar
+	// --- Application  Layout
+
+	app_layout: {
+		name: 'app_layout',
+		style: 'background-color: #bbb;',
+		panels: [
+			{ type: 'top', size: '20px', overflow: 'hidden', hidden: true },
+			{ type: 'left', size: '200px', minSize: 100, resizable: true },
+			{ type: 'main', overflow: 'hidden', style: 'background-color: white;' },
+			{ type: 'right', size: '400px', resizable: true, hidden: true },
+			{ type: 'preview', size: '50%', overflow: 'hidden', hidden: true, resizable: true  },
+			{ type: 'bottom', size: '40px', hidden: true }
+		]
+	},
+
+	// ==============================
+	// --- Application Top Toolbar (if any)
 
 	app_toolbar: {
 		name 	: 'app_toolbar',
-		selected: 'home',
 		items 	: [
-			{ id: 'home', caption: 'Home', type: 'radio', group: 1, icon: 'fa-home' },
+			{ id: 'home', caption: 'Home', type: 'radio', icon: 'fa-home', checked: true },
+			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'fa-flag' },
+			{ id: 'invoices', caption: 'Invoices', type: 'radio', icon: 'fa-dollar' },
+			{ id: 'projects', caption: 'Projects', type: 'radio', icon: 'fa-bar-chart' },
 			{ type: 'spacer' },
 			{ id: 'admin', caption: 'Admin', type: 'button' },
 			{ type: 'break', id: 'br1' },
@@ -25,7 +43,7 @@ config = {
 	},
 
 	// ==============================
-	// --- Application Main Tabs
+	// --- Application Main Tabs (if any)
 	
 	app_tabs: {
 		name 	: 'app_tabs',
@@ -36,21 +54,5 @@ config = {
 		],
 		onClose : function () { this.doClick('home'); },		
 		onClick : app.action
-	},
-
-	// ==============================
-	// --- Application  Layout
-
-	app_layout: {
-		name: 'app_layout',
-		style: 'background-color: #bbb;',
-		panels: [
-			{ type: 'top', size: '20px', overflow: 'hidden', hidden: true },
-			{ type: 'left', size: '200px', minSize: 100, resizable: true },
-			{ type: 'main', overflow: 'hidden', style: 'background-color: white;' },
-			{ type: 'right', size: '400px', resizable: true, hidden: true },
-			{ type: 'preview', size: '50%', overflow: 'hidden', hidden: true, resizable: true  },
-			{ type: 'bottom', size: '40px', hidden: true }
-		]
 	}
 }

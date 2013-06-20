@@ -38,10 +38,9 @@ input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	background-image: url(../img/linen.jpg);
-	//background-image: url(images/blue-bg.png);
-	//background-image: -webkit-linear-gradient(bottom, #444B58 0%, #A9BCDB 95%);
-	//background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
+	//background-image: url(../img/linen.jpg);
+	//background-image: url(../img/blue-bg.png);
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
 }
 
 #app-top {
@@ -51,14 +50,14 @@ input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
 	left: 0px;
 	right: 0px;
 	height: 32px;
-	box-shadow: inset 0px 5px 12px rgba(5, 5, 5, 0.2);
+	box-shadow: inset 0px 0px 60px rgba(10, 20, 30, 0.8);
 
 	#app-toolbar {
 		position: absolute;
-		top: 1px;
+		top: -6px;
 		left: 8px;
 		right: 8px;
-		display: none;
+		display: block;
 	}	
 		
 	#app-tabs {
@@ -69,11 +68,7 @@ input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
 		height: 32px;
 		width: 100%;
 		background-color: transparent;
-		//box-shadow: inset 0px 2px 2px #3D505E;
-		//border-top: 1px solid rgba(255,255,255,0.25);
-		//background-color: #EBEBEB;
-		//background-color: rgba(255,255,255,0.4);
-		//display: none;
+		display: none;
 	}
 }	
 
@@ -87,11 +82,11 @@ input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
 	padding: 17px 15px 0px 15px;
 	font-size: 20px;
 	color: #606060;
-	text-shadow: 1px 1px 1px #efefef;
+	text-shadow: 0px 1px 2px #fff;
 	.linear-gradient-vertical(#EBEBEB, #D2D4D4); 
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #A5B0BB;
-	box-shadow: 0px 0px 12px #aaa;
+	border-top: 2px solid #000;
+	border-bottom: 1px solid #a1a1a1;
+	box-shadow: 0px 2px 4px #bbb;
 }
 
 #app-main {
@@ -108,15 +103,14 @@ input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
 // w2ui loayout overide
 
 .w2ui-layout > div {
-
 	.w2ui-resizer {
 		display: none;
 		position: absolute; 
-		background-color: #CCD7E1;
+		background-color: #fdfdfd;
 		z-index: 121;
 		
 		&:hover, &.active {
-			background-color: #999;
+			background-color: #DDE2EC;
 		}
 	}
 }
