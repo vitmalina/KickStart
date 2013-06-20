@@ -1,33 +1,34 @@
 /*!
- *  Font Awesome 3.1.0
+ *  Font Awesome 3.2.1
  *  the iconic font designed for Bootstrap
- *  -------------------------------------------------------
- *  The full suite of pictographic icons, examples, and documentation
- *  can be found at: http://fontawesome.io
+ *  ------------------------------------------------------------------------------
+ *  The full suite of pictographic icons, examples, and documentation can be
+ *  found at http://fontawesome.io.  Stay up to date on Twitter at
+ *  http://twitter.com/fontawesome.
  *
  *  License
- *  -------------------------------------------------------
- *  - The Font Awesome font is licensed under the SIL Open Font License v1.1 -
+ *  ------------------------------------------------------------------------------
+ *  - The Font Awesome font is licensed under SIL OFL 1.1 -
  *    http://scripts.sil.org/OFL
- *  - Font Awesome CSS, LESS, and SASS files are licensed under the MIT License -
+ *  - Font Awesome CSS, LESS, and SASS files are licensed under MIT License -
  *    http://opensource.org/licenses/mit-license.html
- *  - Font Awesome documentation licensed under CC BY 3.0 License -
+ *  - Font Awesome documentation licensed under CC BY 3.0 -
  *    http://creativecommons.org/licenses/by/3.0/
  *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
  *    "Font Awesome by Dave Gandy - http://fontawesome.io"
-
- *  Contact
- *  -------------------------------------------------------
+ *
+ *  Author - Dave Gandy
+ *  ------------------------------------------------------------------------------
  *  Email: dave@fontawesome.io
- *  Twitter: http://twitter.com/fortaweso_me
- *  Work: Lead Product Designer @ http://kyruus.com
+ *  Twitter: http://twitter.com/byscuits
+ *  Work: Lead Product Designer @ Kyruus - http://kyruus.com
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('font/fontawesome-webfont.eot?v=3.1.0');
-  src: url('font/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'), url('font/fontawesome-webfont.woff?v=3.1.0') format('woff'), url('font/fontawesome-webfont.ttf?v=3.1.0') format('truetype'), url('font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
+  src: url('../font/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -55,31 +56,34 @@
 }
 /* makes sure icons active on rollover in links */
 a [class^="fa-"],
-a [class*=" fa-"],
-a [class^="fa-"]:before,
-a [class*=" fa-"]:before {
+a [class*=" fa-"] {
   display: inline;
 }
 /* increased font size for fa-large */
 [class^="fa-"].fa-fixed-width,
 [class*=" fa-"].fa-fixed-width {
   display: inline-block;
-  width: 1.2857142857142858em;
-  text-align: center;
+  width: 1.1428571428571428em;
+  text-align: right;
+  padding-right: 0.2857142857142857em;
 }
 [class^="fa-"].fa-fixed-width.fa-large,
 [class*=" fa-"].fa-fixed-width.fa-large {
-  width: 1.5714285714285714em;
+  width: 1.4285714285714286em;
 }
-ul.icons-ul {
-  list-style-type: none;
-  text-indent: -0.7142857142857143em;
+.icons-ul {
   margin-left: 2.142857142857143em;
+  list-style-type: none;
 }
-ul.icons-ul > li .fa-li {
-  width: 0.7142857142857143em;
-  display: inline-block;
+.icons-ul > li {
+  position: relative;
+}
+.icons-ul .fa-li {
+  position: absolute;
+  left: -2.142857142857143em;
+  width: 2.142857142857143em;
   text-align: center;
+  line-height: inherit;
 }
 [class^="fa-"].hide,
 [class*=" fa-"].hide {
@@ -239,6 +243,11 @@ ul.icons-ul > li .fa-li {
 .btn.btn-large [class*=" fa-"].pull-right.fa-2x {
   margin-left: .2em;
 }
+/* Fixes alignment in nav lists */
+.nav-list [class^="fa-"],
+.nav-list [class*=" fa-"] {
+  line-height: inherit;
+}
 /* EXTRAS
  * -------------------------- */
 /* Stacked and layered icon */
@@ -272,6 +281,12 @@ ul.icons-ul > li .fa-li {
   -o-animation: spin 2s infinite linear;
   -webkit-animation: spin 2s infinite linear;
   animation: spin 2s infinite linear;
+}
+/* Prevent stack and spinners from being taken inline when inside a link */
+a .fa-stack,
+a .fa-spin {
+  display: inline-block;
+  text-decoration: none;
 }
 @-moz-keyframes spin {
   0% {
@@ -352,6 +367,14 @@ ul.icons-ul > li .fa-li {
   -o-transform: scale(1, -1);
   transform: scale(1, -1);
 }
+/* ensure rotation occurs inside anchor tags */
+a .fa-rotate-90:before,
+a .fa-rotate-180:before,
+a .fa-rotate-270:before,
+a .fa-flip-horizontal:before,
+a .fa-flip-vertical:before {
+  display: inline-block;
+}
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
 .fa-glass:before {
@@ -363,7 +386,7 @@ ul.icons-ul > li .fa-li {
 .fa-search:before {
   content: "\f002";
 }
-.fa-envelope:before {
+.fa-envelope-alt:before {
   content: "\f003";
 }
 .fa-heart:before {
@@ -402,12 +425,14 @@ ul.icons-ul > li .fa-li {
 .fa-zoom-out:before {
   content: "\f010";
 }
+.fa-power-off:before,
 .fa-off:before {
   content: "\f011";
 }
 .fa-signal:before {
   content: "\f012";
 }
+.fa-gear:before,
 .fa-cog:before {
   content: "\f013";
 }
@@ -417,7 +442,7 @@ ul.icons-ul > li .fa-li {
 .fa-home:before {
   content: "\f015";
 }
-.fa-file:before {
+.fa-file-alt:before {
   content: "\f016";
 }
 .fa-time:before {
@@ -441,11 +466,10 @@ ul.icons-ul > li .fa-li {
 .fa-play-circle:before {
   content: "\f01d";
 }
-.fa-repeat:before,
-.fa-rotate-right:before {
+.fa-rotate-right:before,
+.fa-repeat:before {
   content: "\f01e";
 }
-/* F020 doesn't work in Safari. all shifted one down */
 .fa-refresh:before {
   content: "\f021";
 }
@@ -638,8 +662,8 @@ ul.icons-ul > li .fa-li {
 .fa-arrow-down:before {
   content: "\f063";
 }
-.fa-share-alt:before,
-.fa-mail-forward:before {
+.fa-mail-forward:before,
+.fa-share-alt:before {
   content: "\f064";
 }
 .fa-resize-full:before {
@@ -732,16 +756,17 @@ ul.icons-ul > li .fa-li {
 .fa-key:before {
   content: "\f084";
 }
+.fa-gears:before,
 .fa-cogs:before {
   content: "\f085";
 }
 .fa-comments:before {
   content: "\f086";
 }
-.fa-thumbs-up:before {
+.fa-thumbs-up-alt:before {
   content: "\f087";
 }
-.fa-thumbs-down:before {
+.fa-thumbs-down-alt:before {
   content: "\f088";
 }
 .fa-star-half:before {
@@ -780,6 +805,7 @@ ul.icons-ul > li .fa-li {
 .fa-phone:before {
   content: "\f095";
 }
+.fa-unchecked:before,
 .fa-check-empty:before {
   content: "\f096";
 }
@@ -879,6 +905,7 @@ ul.icons-ul > li .fa-li {
 .fa-copy:before {
   content: "\f0c5";
 }
+.fa-paperclip:before,
 .fa-paper-clip:before {
   content: "\f0c6";
 }
@@ -951,14 +978,14 @@ ul.icons-ul > li .fa-li {
 .fa-sort-up:before {
   content: "\f0de";
 }
-.fa-envelope-alt:before {
+.fa-envelope:before {
   content: "\f0e0";
 }
 .fa-linkedin:before {
   content: "\f0e1";
 }
-.fa-undo:before,
-.fa-rotate-left:before {
+.fa-rotate-left:before,
+.fa-undo:before {
   content: "\f0e2";
 }
 .fa-legal:before {
@@ -1015,7 +1042,7 @@ ul.icons-ul > li .fa-li {
 .fa-food:before {
   content: "\f0f5";
 }
-.fa-file-alt:before {
+.fa-file-text-alt:before {
   content: "\f0f6";
 }
 .fa-building:before {
@@ -1093,9 +1120,12 @@ ul.icons-ul > li .fa-li {
 .fa-circle:before {
   content: "\f111";
 }
-.fa-reply:before,
-.fa-mail-reply:before {
+.fa-mail-reply:before,
+.fa-reply:before {
   content: "\f112";
+}
+.fa-github-alt:before {
+  content: "\f113";
 }
 .fa-folder-close-alt:before {
   content: "\f114";
@@ -1265,4 +1295,185 @@ ul.icons-ul > li .fa-li {
 }
 .fa-share-sign:before {
   content: "\f14d";
+}
+.fa-compass:before {
+  content: "\f14e";
+}
+.fa-collapse:before {
+  content: "\f150";
+}
+.fa-collapse-top:before {
+  content: "\f151";
+}
+.fa-expand:before {
+  content: "\f152";
+}
+.fa-euro:before,
+.fa-eur:before {
+  content: "\f153";
+}
+.fa-gbp:before {
+  content: "\f154";
+}
+.fa-dollar:before,
+.fa-usd:before {
+  content: "\f155";
+}
+.fa-rupee:before,
+.fa-inr:before {
+  content: "\f156";
+}
+.fa-yen:before,
+.fa-jpy:before {
+  content: "\f157";
+}
+.fa-renminbi:before,
+.fa-cny:before {
+  content: "\f158";
+}
+.fa-won:before,
+.fa-krw:before {
+  content: "\f159";
+}
+.fa-bitcoin:before,
+.fa-btc:before {
+  content: "\f15a";
+}
+.fa-file:before {
+  content: "\f15b";
+}
+.fa-file-text:before {
+  content: "\f15c";
+}
+.fa-sort-by-alphabet:before {
+  content: "\f15d";
+}
+.fa-sort-by-alphabet-alt:before {
+  content: "\f15e";
+}
+.fa-sort-by-attributes:before {
+  content: "\f160";
+}
+.fa-sort-by-attributes-alt:before {
+  content: "\f161";
+}
+.fa-sort-by-order:before {
+  content: "\f162";
+}
+.fa-sort-by-order-alt:before {
+  content: "\f163";
+}
+.fa-thumbs-up:before {
+  content: "\f164";
+}
+.fa-thumbs-down:before {
+  content: "\f165";
+}
+.fa-youtube-sign:before {
+  content: "\f166";
+}
+.fa-youtube:before {
+  content: "\f167";
+}
+.fa-xing:before {
+  content: "\f168";
+}
+.fa-xing-sign:before {
+  content: "\f169";
+}
+.fa-youtube-play:before {
+  content: "\f16a";
+}
+.fa-dropbox:before {
+  content: "\f16b";
+}
+.fa-stackexchange:before {
+  content: "\f16c";
+}
+.fa-instagram:before {
+  content: "\f16d";
+}
+.fa-flickr:before {
+  content: "\f16e";
+}
+.fa-adn:before {
+  content: "\f170";
+}
+.fa-bitbucket:before {
+  content: "\f171";
+}
+.fa-bitbucket-sign:before {
+  content: "\f172";
+}
+.fa-tumblr:before {
+  content: "\f173";
+}
+.fa-tumblr-sign:before {
+  content: "\f174";
+}
+.fa-long-arrow-down:before {
+  content: "\f175";
+}
+.fa-long-arrow-up:before {
+  content: "\f176";
+}
+.fa-long-arrow-left:before {
+  content: "\f177";
+}
+.fa-long-arrow-right:before {
+  content: "\f178";
+}
+.fa-apple:before {
+  content: "\f179";
+}
+.fa-windows:before {
+  content: "\f17a";
+}
+.fa-android:before {
+  content: "\f17b";
+}
+.fa-linux:before {
+  content: "\f17c";
+}
+.fa-dribbble:before {
+  content: "\f17d";
+}
+.fa-skype:before {
+  content: "\f17e";
+}
+.fa-foursquare:before {
+  content: "\f180";
+}
+.fa-trello:before {
+  content: "\f181";
+}
+.fa-female:before {
+  content: "\f182";
+}
+.fa-male:before {
+  content: "\f183";
+}
+.fa-gittip:before {
+  content: "\f184";
+}
+.fa-sun:before {
+  content: "\f185";
+}
+.fa-moon:before {
+  content: "\f186";
+}
+.fa-archive:before {
+  content: "\f187";
+}
+.fa-bug:before {
+  content: "\f188";
+}
+.fa-vk:before {
+  content: "\f189";
+}
+.fa-weibo:before {
+  content: "\f18a";
+}
+.fa-renren:before {
+  content: "\f18b";
 }
