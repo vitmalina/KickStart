@@ -3,9 +3,14 @@
 
 config = {
 
-	// ==============================
-	// --- Application  Layout
+	// --- General settings
+	show: {
+		toolbar : true,
+		tabs 	: false,
+		header 	: true
+	},
 
+	// --- Application  Layout
 	app_layout: {
 		name: 'app_layout',
 		style: 'background-color: #bbb;',
@@ -19,9 +24,7 @@ config = {
 		]
 	},
 
-	// ==============================
 	// --- Application Top Toolbar (if any)
-
 	app_toolbar: {
 		name 	: 'app_toolbar',
 		items 	: [
@@ -42,9 +45,7 @@ config = {
 		onClick: app.action
 	},
 
-	// ==============================
-	// --- Application Main Tabs (if any)
-	
+	// --- Application Main Tabs (if any)	
 	app_tabs: {
 		name 	: 'app_tabs',
 		active	: 'home',

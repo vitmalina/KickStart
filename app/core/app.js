@@ -245,7 +245,30 @@ app.core = (function (obj) {
 		$('#app-container').fadeIn(200);
 		//$('#app-container').css({ '-webkit-transform': 'scale(1)', opacity: 1 });
 		setTimeout(function () {
-			//$().w2popup('close');
+			var top = 0;
+			// app toolbar
+			if (config.show.toolbar) {
+				$('#app-toolbar').css('height', '30px').show();
+				top += 30;
+			} else {
+				$('#app-toolbar').hide();
+			}
+			// app tabs
+			if (config.show.tabs) {
+				$('#app-tabs').css({ 'top': top + 'px', 'height': '30px' }).show();
+				top += 30;
+			} else {
+				$('#app-tabs').hide();
+			}
+			$('#app-top').css('height', top + 'px').show();
+			// app header
+			if (config.show.header) {
+				$('#app-header').css({ 'top': top + 'px', 'height': '60px' }).show();
+				top += 60;
+			} else {
+				$('#app-header').hide();
+			}
+			$('#app-main').css('top', top + 'px');
 			// init app
 			if (typeof app.start == 'function') app.start();
 			var hash = String(document.location.hash);
