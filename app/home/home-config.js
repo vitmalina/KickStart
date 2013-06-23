@@ -21,6 +21,7 @@ config = {
 
 	home_grid : { 
 		name: 'home_grid', 
+		style: 'border: 0px',
 		show: {
 			lineNumbers		: true,
 			footer			: true,

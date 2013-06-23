@@ -16,11 +16,11 @@ config = {
 		style: 'background-color: #bbb;',
 		panels: [
 			{ type: 'top', size: '20px', overflow: 'hidden', hidden: true },
-			{ type: 'left', size: '200px', minSize: 100, resizable: true },
+			{ type: 'left', size: '200px', minSize: 100, resizable: true, style: 'border-right: 1px solid silver' },
 			{ type: 'main', overflow: 'hidden', style: 'background-color: white;' },
-			{ type: 'right', size: '400px', resizable: true, hidden: true },
-			{ type: 'preview', size: '50%', overflow: 'hidden', hidden: true, resizable: true  },
-			{ type: 'bottom', size: '40px', hidden: true }
+			{ type: 'right', size: '400px', resizable: true, hidden: true, style: 'border-left: 1px solid silver' },
+			{ type: 'preview', size: '200px', overflow: 'hidden', hidden: true, resizable: true, style: 'border-top: 1px solid silver' },
+			{ type: 'bottom', size: '40px', hidden: true, style: 'border-top: 1px solid silver' }
 		]
 	},
 
