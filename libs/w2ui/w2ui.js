@@ -21,18 +21,18 @@ var w2obj = w2obj || {}; // expose object to be able to overwrite default functi
 var w2utils = (function () {
 	var obj = {
 		settings : {
-			locale			: "en-us",
-			date_format		: "mm/dd/yyyy",
-			date_display	: "Mon dd, yyyy",
-			time_format		: "hh:mi pm",
-			currency		: "^[\$\€\£\¥]?[-]?[0-9]*[\.]?[0-9]+$",
-			float			: "^[-]?[0-9]*[\.]?[0-9]+$",
-			shortmonths		: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			fullmonths		: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-			shortdays		: ["M", "T", "W", "T", "F", "S","S"],
-			fulldays 		: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-			RESTfull		: false,
-			phrases 		: {} // empty object for english phrases
+			"locale"		: "en-us",
+			"date_format"	: "mm/dd/yyyy",
+			"date_display"	: "Mon dd, yyyy",
+			"time_format"	: "hh:mi pm",
+			"currency"		: "^[\$\€\£\¥]?[-]?[0-9]*[\.]?[0-9]+$",
+			"float"			: "^[-]?[0-9]*[\.]?[0-9]+$",
+			"shortmonths"	: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+			"fullmonths"	: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			"shortdays"		: ["M", "T", "W", "T", "F", "S","S"],
+			"fulldays" 		: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			"RESTfull"		: false,
+			"phrases"		: {} // empty object for english phrases
 		},
 		isInt			: isInt,
 		isFloat			: isFloat,
@@ -65,7 +65,7 @@ var w2utils = (function () {
 	}
 		
 	function isFloat (val) {
-		var re =  new RegExp(w2utils.settings.float);
+		var re =  new RegExp(w2utils.settings["float"]);
 		return re.test(val);		
 	}
 
@@ -566,7 +566,8 @@ var w2utils = (function () {
 		}, time * 1000);
 		
 		function cross(property, value, none_webkit_value) {
-			if (!$.browser.webkit && typeof none_webkit_value != 'undefined') value = none_webkit_value;
+			var isWebkit=!!window.webkitURL; // jQuery no longer supports $.browser - RR
+			if (!isWebkit && typeof none_webkit_value != 'undefined') value = none_webkit_value;
 			return ';'+ property +': '+ value +'; -webkit-'+ property +': '+ value +'; -moz-'+ property +': '+ value +'; '+
 				   '-ms-'+ property +': '+ value +'; -o-'+ property +': '+ value +';';
 		}
@@ -891,7 +892,8 @@ $.w2event = {
 			if (typeof options.onShow == 'function') options.onShow();
 		}, 1);
 	}
-})();/************************************************************************
+})();
+/************************************************************************
 *   Library: Web 2.0 UI for jQuery (using prototypical inheritance)
 *   - Following objects defined
 * 		- w2ui.w2grid 	- grid widget
@@ -901,16 +903,12 @@ $.w2event = {
 * == NICE TO HAVE ==
 *	- global search apply types and drop downs
 *	- editable fields (list) - better inline editing
-*	- infinite scroll (buffered scroll)
 *	- frozen columns
 *	- column autosize based on largest content
 *	- more events in editable fields (onkeypress)
 *	- on/off line number and select column
 *	- subgrid (easy way with keyboard navigation)
-*	- search 1-20 will range numbers
-*	- route all toolbar events thru the grid
-* 	- need to clean up onRequest, onSave, onLoad commands
-* 	- mode record with keyboard, grid does not follow
+* 	- move record with keyboard, grid does not follow
 *
 * == 1.3 changes ==
 *	- added getRecordHTML, refactored, updated set()
@@ -937,6 +935,12 @@ $.w2event = {
 * 	- error when using left/right arrow keys (second click disconnects from the event listener)
 *	- deprecated recordsPerPage, page, goto()
 * 	- added onDeleted, onSaved - when it returns from the server
+* 	- added buffered, limit, offset
+* 	- need to clean up onRequest, onSave, onLoad commands
+*	- added onToolbar event - click on any toolbar button
+*	- route all toolbar events thru the grid
+*	- infinite scroll (buffered scroll)
+*	- search 1-20 will range numbers
 *
 ************************************************************************/
 
@@ -1011,6 +1015,7 @@ $.w2event = {
 		this.onCollapse			= null;
 		this.onError 			= null;
 		this.onKeyboard			= null;
+		this.onToolbar			= null; 	// all events from toolbar
 		this.onRender 			= null;
 		this.onRefresh 			= null;
 		this.onReload			= null;
@@ -1355,6 +1360,10 @@ $.w2event = {
 		},
 
 		localSort: function (silent) {
+			if (this.url != '') {
+				console.log('ERROR: grid.localSort can only be used on local data source, grid.url should be empty.');
+				return;
+			}
 			var time = (new Date()).getTime();
 			var obj = this;
 			this.records.sort(function (a, b) {
@@ -1382,14 +1391,18 @@ $.w2event = {
 		},
 
 		localSearch: function (silent) {
+			if (this.url != '') {
+				console.log('ERROR: grid.localSearch can only be used on local data source, grid.url should be empty.');
+				return;
+			}
 			var time = (new Date()).getTime();
 			var obj = this;
-			this.buffered = this.records.length;
+			this.total = this.records.length;
 			// mark all records as shown
 			this.last.searchIds = [];
 			// hide records that did not match
 			if (this.searchData.length > 0 && this.url == '') {
-				this.buffered = 0;
+				this.total = 0;
 				for (var r in this.records) {
 					var rec = this.records[r];
 					var fl  = 0;
@@ -1444,8 +1457,9 @@ $.w2event = {
 					}
 					if ((this.last.logic == 'OR' && fl != 0) || (this.last.logic == 'AND' && fl == this.searchData.length)) this.last.searchIds.push(parseInt(r));
 				}
-				this.buffered = this.last.searchIds.length;
+				this.total = this.last.searchIds.length;
 			}
+			this.buffered = this.total;
 			time = (new Date()).getTime() - time;
 			if (silent !== true) setTimeout(function () { $('#grid_'+ obj.name +'_footer').find('.w2ui-footer-left').html('Search took ' + time/1000 + ' sec'); }, 10);
 			return time;
@@ -1655,8 +1669,20 @@ $.w2event = {
 							};
 							searchData.push(tmp);
 						}
+						// range in global search box 
+						if (search.type == 'int' && String(value).indexOf('-') != -1) {
+							var t = String(value).split('-');
+							var tmp = {
+								field	 : search.field,
+								type	 : search.type,
+								operator : 'between',
+								value	 : [t[0], t[1]]
+							};
+							searchData.push(tmp);
+						}
 					}
 				}
+				console.log(searchData);
 			}
 			// event before
 			var eventData = this.trigger({ phase: 'before', type: 'search', target: this.name, searchData: searchData });
@@ -1811,7 +1837,7 @@ $.w2event = {
 			}
 		},
 
-		reset: function() {
+		reset: function (noRefresh) {
 			// reset last remembered state
 			this.offset 			= 0;
 			this.searchData			= [];
@@ -1830,7 +1856,7 @@ $.w2event = {
 			// select none without refresh
 			this.set({ selected: false });
 			// refresh
-			this.refresh();
+			if (!noRefresh) this.refresh();
 		},
 
 		request: function (cmd, add_params, url, callBack) {
@@ -1852,8 +1878,12 @@ $.w2event = {
 			$.extend(params, this.postData);
 			$.extend(params, add_params);
 			// event before
-			var eventData = this.trigger({ phase: 'before', type: 'request', target: this.name, url: url, postData: params });
-			if (eventData.stop === true) { if (typeof callBack == 'function') callBack(); return false; }
+			if (cmd == 'get-records') {
+				var eventData = this.trigger({ phase: 'before', type: 'request', target: this.name, url: url, postData: params });
+				if (eventData.stop === true) { if (typeof callBack == 'function') callBack(); return false; }
+			} else {
+				var eventData = { url: this.url, postData: this.postData };
+			}
 			// call server to get data
 			var obj = this;
 			this.lock(this.msgRefresh);
@@ -1867,15 +1897,17 @@ $.w2event = {
 			this.last.xhr_offset = this.offset;
 			this.last.xhr = $.ajax({
 				type		: xhr_type,
-				url			: eventData.url, // + (eventData.url.indexOf('?') > -1 ? '&' : '?') +'t=' + (new Date()).getTime(),
+				url			: eventData.url, 
 				data		: String($.param(eventData.postData, false)).replace(/%5B/g, '[').replace(/%5D/g, ']'),
 				dataType	: 'text',
 				complete	: function (xhr, status) {
 					obj.requestComplete(status, cmd, callBack);
 				}
 			});
-			// event after
-			this.trigger($.extend(eventData, { phase: 'after' }));
+			if (cmd == 'get-records') {
+				// event after
+				this.trigger($.extend(eventData, { phase: 'after' }));
+			}
 		},
 				
 		requestComplete: function(status, cmd, callBack) {
@@ -1923,7 +1955,6 @@ $.w2event = {
 								$.extend(true, this, data);
 								this.buffered = this.records.length;
 							} else {
-								console.log('offset');
 								var records = data.records;
 								delete data.records;
 								$.extend(true, this, data);
@@ -1948,7 +1979,8 @@ $.w2event = {
 				this.localSearch();
 			}
 			this.trigger($.extend(eventData, { phase: 'after' }));
-			this.refresh();
+			// do not refresh if loading on infinite scroll
+			if (this.last.xhr_offset == 0) this.refresh(); else this.doScroll();
 			// call back
 			if (typeof callBack == 'function') callBack();
 		},
@@ -2008,15 +2040,17 @@ $.w2event = {
 		},
 
 		doSave: function () {
+			var obj = this;
 			var changed = this.getChanged();
 			// event before
 			var eventData = this.trigger({ phase: 'before', target: this.name, type: 'save', changed: changed });
 			if (eventData.stop === true) return false;
 			if (this.url != '') {
-				this.request('save-records', { 'changed' : eventData.changed }, null, function () {
-				// event after
-				this.trigger($.extend(eventData, { phase: 'after' }));
-				});
+				this.request('save-records', { 'changed' : eventData.changed }, null, 
+					function () { // event after
+						obj.trigger($.extend(eventData, { phase: 'after' }));
+					}
+				);
 			} else {
 				for (var c in changed) {
 					var record = this.get(changed[c].recid);
@@ -2453,7 +2487,8 @@ $.w2event = {
 			var obj  = this;
 			var time = (new Date()).getTime();
 			// if over the max page, then go to page 1
-			if (this.buffered < 0) this.buffered = this.records.length;
+			if (this.total < 0) this.total = this.records.length;
+			if (this.buffered <= 0 && this.url == '') this.buffered = this.total; 
 
 			if (window.getSelection) window.getSelection().removeAllRanges(); // clear selection
 			if (!this.box) return;
@@ -2571,11 +2606,11 @@ $.w2event = {
 			// send expand events
 			var rows = obj.find({ expanded: true });
 			for (var r in rows) {
-				var eventData = this.trigger({ phase: 'before', type: 'expand', target: this.name, recid: rows[r], 
+				var eventData2 = this.trigger({ phase: 'before', type: 'expand', target: this.name, recid: rows[r], 
 					box_id: 'grid_'+ this.name +'_rec_'+ w2utils.escapeId(rows[r]) +'_expaned' });
-				if (eventData.stop === true) return false; 
+				if (eventData2.stop === true) return false; 
 				// event after
-				this.trigger($.extend(eventData, { phase: 'after' }));
+				this.trigger($.extend(eventData2, { phase: 'after' }));
 			}
 			// event after
 			this.trigger($.extend(eventData, { phase: 'after' }));
@@ -2748,13 +2783,15 @@ $.w2event = {
 
 				var obj = this;
 				this.toolbar.on('click', function (id, data) {
+					var eventData = obj.trigger({ phase: 'before', type: 'toolbar', target: id, data: data });
+					if (eventData.stop === true) return false;
 					switch (id) {
 						case 'reload':
-							var eventData = obj.trigger({ phase: 'before', type: 'reload', target: obj.name });
-							if (eventData.stop === true) return false;
-							obj.reset();
+							var eventData2 = obj.trigger({ phase: 'before', type: 'reload', target: obj.name });
+							if (eventData2.stop === true) return false;
+							obj.reset(true);
 							obj.reload();
-							obj.trigger({ phase: 'after' });
+							obj.trigger($.extend(eventData2, { phase: 'after' }));
 							break;
 						case 'column-on-off':
 							for (var c in obj.columns) {
@@ -2799,6 +2836,8 @@ $.w2event = {
 							obj.doSave();
 							break;
 					}
+					// no default action
+					obj.trigger($.extend(eventData, { phase: 'after' }));
 				});
 			}
 			return;
@@ -3495,7 +3534,7 @@ $.w2event = {
 			// load more if needed
 			var s = Math.floor(records[0].scrollTop / this.recordHeight);
 			var e = s + Math.floor(records.height() / this.recordHeight);
-			if (e + 10 > this.buffered && this.last.pull_more !== true) {
+			if (e + 10 > this.buffered && this.last.pull_more !== true && this.buffered < this.total) {
 				this.last.pull_more = true;
 				this.offset += this.limit;
 				this.request('get-records');
@@ -3748,6 +3787,7 @@ $.w2event = {
 *   - tabs can be array of string, array of tab objects or w2tabs object
 *	- html() method is alias for content()
 *	- el(panel) - returns DOM element for the panel
+*	- resizer should be on top of the panel (for easy styling)
 * 
 ************************************************************************/
 
@@ -3756,7 +3796,7 @@ $.w2event = {
 		this.box		= null		// DOM Element that holds the element
 		this.name		= null;		// unique name for w2ui
 		this.panels		= [];
-		this.padding	= 1;		// panel padding
+		this.padding	= 0;		// panel padding
 		this.resizer	= 4;		// resizer width or height
 		this.style		= '';
 		this.css		= '';		// will display all inside <style> tag
@@ -4209,7 +4249,7 @@ $.w2event = {
 				ptop.height = h;
 				// resizer
 				if (ptop.resizable) {
-					t = ptop.size;
+					t = ptop.size - this.resizer;
 					h = this.resizer;
 					$('#layout_'+ this.name +'_resizer_top').show().css({
 						'display': 'block',
@@ -4229,10 +4269,10 @@ $.w2event = {
 			// left if any
 			if (pleft != null && pleft.hidden != true) {
 				var l = 0;
-				var t = 0 + (stop ? ptop.size + (ptop.resizable ? this.resizer : this.padding) : 0);
+				var t = 0 + (stop ? ptop.size + this.padding : 0);
 				var w = pleft.size;
-				var h = height - (stop ? ptop.size + (ptop.resizable ? this.resizer : this.padding) : 0) - 
-									  (sbottom ? pbottom.size + (pbottom.resizable ? this.resizer : this.padding) : 0);
+				var h = height - (stop ? ptop.size + this.padding : 0) - 
+									  (sbottom ? pbottom.size + this.padding : 0);
 				var e = $('#layout_'+ this.name +'_panel_left');
 				if (window.navigator.userAgent.indexOf('MSIE') > 0 && e.length > 0 && e[0].clientHeight < e[0].scrollHeight) w += 17; // IE hack
 				$('#layout_'+ this.name +'_panel_left').css({
@@ -4246,7 +4286,7 @@ $.w2event = {
 				pleft.height = h;
 				// resizer
 				if (pleft.resizable) {
-					l = pleft.size;
+					l = pleft.size - this.resizer;
 					w = this.resizer;
 					$('#layout_'+ this.name +'_resizer_left').show().css({
 						'display': 'block',
@@ -4267,10 +4307,10 @@ $.w2event = {
 			// right if any
 			if (pright != null && pright.hidden != true) {
 				var l = width - pright.size;
-				var t = 0 + (stop ? ptop.size + (ptop.resizable ? this.resizer : this.padding) : 0);
+				var t = 0 + (stop ? ptop.size + this.padding : 0);
 				var w = pright.size;
-				var h = height - (stop ? ptop.size + (ptop.resizable ? this.resizer : this.padding) : 0) - 
-									  (sbottom ? pbottom.size + (pbottom.resizable ? this.resizer : this.padding) : 0);
+				var h = height - (stop ? ptop.size + this.padding : 0) - 
+									  (sbottom ? pbottom.size + this.padding : 0);
 				$('#layout_'+ this.name +'_panel_right').css({
 					'display': 'block',
 					'left': l + 'px',
@@ -4282,7 +4322,7 @@ $.w2event = {
 				pright.height = h;
 				// resizer
 				if (pright.resizable) {
-					l = l - this.resizer;
+					l = l;
 					w = this.resizer;
 					$('#layout_'+ this.name +'_resizer_right').show().css({
 						'display': 'block',
@@ -4316,7 +4356,7 @@ $.w2event = {
 				pbottom.height = h;
 				// resizer
 				if (pbottom.resizable) {
-					t = t - this.resizer;
+					t = t;
 					h = this.resizer;
 					$('#layout_'+ this.name +'_resizer_bottom').show().css({
 						'display': 'block',
@@ -4334,13 +4374,13 @@ $.w2event = {
 				$('#layout_'+ this.name +'_panel_bottom').hide();
 			}
 			// main - always there
-			var l = 0 + (sleft ? pleft.size + (pleft.resizable ? this.resizer : this.padding) : 0);
-			var t = 0 + (stop ? ptop.size + (ptop.resizable ? this.resizer : this.padding) : 0);
-			var w = width  - (sleft ? pleft.size + (pleft.resizable ? this.resizer : this.padding) : 0) - 
-								  (sright ? pright.size + (pright.resizable ? this.resizer : this.padding): 0);
-			var h = height - (stop ? ptop.size + (ptop.resizable ? this.resizer : this.padding) : 0) - 
-								  (sbottom ? pbottom.size + (pbottom.resizable ? this.resizer : this.padding) : 0) -
-								  (sprev ? pprev.size + (pprev.resizable ? this.resizer : this.padding) : 0);
+			var l = 0 + (sleft ? pleft.size + this.padding : 0);
+			var t = 0 + (stop ? ptop.size + this.padding : 0);
+			var w = width  - (sleft ? pleft.size + this.padding : 0) - 
+								  (sright ? pright.size + this.padding: 0);
+			var h = height - (stop ? ptop.size + this.padding : 0) - 
+								  (sbottom ? pbottom.size + this.padding : 0) -
+								  (sprev ? pprev.size + this.padding : 0);
 			var e = $('#layout_'+ this.name +'_panel_main');
 			if (window.navigator.userAgent.indexOf('MSIE') > 0 && e.length > 0 && e[0].clientHeight < e[0].scrollHeight) w += 17; // IE hack
 			$('#layout_'+ this.name +'_panel_main').css({
@@ -4355,10 +4395,10 @@ $.w2event = {
 			
 			// preview if any
 			if (pprev != null && pprev.hidden != true) {
-				var l = 0 + (sleft ? pleft.size + (pleft.resizable ? this.resizer : this.padding) : 0);
-				var t = height - (sbottom ? pbottom.size + (pbottom.resizable ? this.resizer : this.padding) : 0) - pprev.size;
-				var w = width  - (sleft ? pleft.size + (pleft.resizable ? this.resizer : this.padding) : 0) - 
-									  (sright ? pright.size + (pright.resizable ? this.resizer : this.padding): 0);
+				var l = 0 + (sleft ? pleft.size + this.padding : 0);
+				var t = height - (sbottom ? pbottom.size + this.padding : 0) - pprev.size;
+				var w = width  - (sleft ? pleft.size + this.padding : 0) - 
+									  (sright ? pright.size + this.padding : 0);
 				var h = pprev.size;
 				var e = $('#layout_'+ this.name +'_panel_preview');
 				if (window.navigator.userAgent.indexOf('MSIE') > 0 && e.length > 0 && e[0].clientHeight < e[0].scrollHeight) w += 17; // IE hack
@@ -4373,7 +4413,7 @@ $.w2event = {
 				pprev.height = h;
 				// resizer
 				if (pprev.resizable) {
-					t = t - this.resizer;
+					t = t;
 					h = this.resizer;
 					$('#layout_'+ this.name +'_resizer_preview').show().css({
 						'display': 'block',
