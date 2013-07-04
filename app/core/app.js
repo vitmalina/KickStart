@@ -162,16 +162,24 @@ var app = {
 		
 	},
 
-	alert: function (msg, title) {
+	alert: function (msg, title, callBack) {
+		if (typeof callBack == 'undefined' && typeof title == 'function') {
+			callBack = title; 
+			title = 'Notification';
+		}
 		if (typeof title == 'undefined') {
 			title = 'Notification';
 		}
 		$().w2popup({
-			width 	: 350,
-			height 	: 200,
+			width 	: 400,
+			height 	: 180,
 			title   : title,
-			body    : '<div style="padding: 10px; padding-right: 20px; text-align: center">'+ msg +'</div>',
-			buttons : '<input type="button" value="Ok" style="width: 60px" onclick="$().w2popup(\'close\'); event.stopPropagation();">'
+			body    : '<div style="padding: 20px 5px; padding-right: 20px; text-align: center">'+
+					  '	' + msg +'</div>',
+			buttons : '<input type="button" value="Ok" style="width: 60px" onclick="$().w2popup(\'close\');">',
+			onClose : function () {
+				if (typeof callBack == 'function') callBack();
+			}
 		});
 	},
 
@@ -187,6 +195,7 @@ var app = {
 			width 	: 350,
 			height 	: 200,
 			title   : title,
+			modal	: true,
 			body    : '<div style="padding: 10px; padding-right: 20px; text-align: center">'+ msg +'</div>',
 			buttons : '<input type="button" value="No" style="width: 60px; margin-right: 5px" onclick="$().w2popup(\'close\'); event.stopPropagation();">&nbsp;'+
 					  '<input id="btnYes" type="button" value="Yes" style="width: 60px">'
