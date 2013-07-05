@@ -32,7 +32,7 @@ config = {
 			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'fa-flag' },
 			{ id: 'invoices', caption: 'Invoices', type: 'radio', icon: 'fa-dollar' },
 			{ id: 'projects', caption: 'Projects', type: 'radio', icon: 'fa-bar-chart' },
-			{ type: 'spacer' },
+			{ type: 'spacer', id: 'spacer1' },
 			{ id: 'admin', caption: 'Admin', type: 'button' },
 			{ type: 'break', id: 'br1' },
 			{ type: 'menu',  id: 'user-menu', img: '', caption: 'User Name', overlay: { left: 20 },

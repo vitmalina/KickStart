@@ -22,11 +22,14 @@ app.home = (function (obj) {
 			// init application UI
 			$().w2sidebar(config.home_sidebar);
 			$().w2grid(config.home_grid);
-			render();
+			render(); 
 		});
 	}
 
 	function render () {
+		// do not render if route is different
+		if (app.route.parse()[0] != 'home') return; // not home module requested
+		// default action
 		action('home-grid1', {});
 	}
 
@@ -34,12 +37,13 @@ app.home = (function (obj) {
 		switch (target) {
 			case 'home-grid1':
 				app.header('Home Grid');
-				app.route.set('home');
+				app.route.set('home/grid1');
 				w2ui['app_layout'].content('left', w2ui['home_sidebar']);
 				w2ui['app_layout'].content('main', w2ui['home_grid']);
 				break;
 			default:
 				app.header(target);
+				app.route.set('home/' + target);
 				w2ui['app_layout'].content('main', '<div style="text-align: center; padding: 40px; font-size: 16px; color: #999;">Under Constructions</div>');
 				console.log('No event handler for '+ target +'.');
 				break;

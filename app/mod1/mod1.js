@@ -29,6 +29,15 @@ app.mod1 = (function (obj) {
 	}
 
 	function render() {
+		// check if routes are present
+		if (obj.params && obj.params.route) {
+			console.log('route is present, apply it here');
+			console.log(obj.params.parsed);
+			w2ui.app_layout.content('main', 'Route: ' + obj.params.route);
+			delete obj.params;
+			return;
+		}
+		// default action
 		w2ui['app_layout'].content('main', w2ui['grid1']);
 	}
 

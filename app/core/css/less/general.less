@@ -6,7 +6,6 @@
 	padding: 0px; 
 	margin: 0px;
 	font-family: "Lucida Sans", Tahoma, Arial, Verdana;			
-	font-size: 11px;
 	.box-sizing();
 }
 
@@ -25,6 +24,18 @@ a {
 
 input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
 	background-color: #eee;
+}
+
+.centered {
+	display: table; 
+	width: 100%; 
+	height: 100%;
+	> div {
+		display: table-cell; 
+		padding: 10px 20px 20px 10px; 
+		text-align: center; 
+		vertical-align: middle;
+	}
 }
 
 // *************************************************

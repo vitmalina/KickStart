@@ -31,7 +31,7 @@ var app = {
 				$.error('Loader: module "'+ name + '" has no render() method.');
 			} else {
 				app[name].render();
-				if (typeof callBack == 'function') callBack();
+				if (typeof callBack == 'function') callBack(true);
 			}
 		} else {
 			app.ajax({ 
@@ -39,7 +39,7 @@ var app = {
 				dataType: "script", 
 				success	: function (data, status, respObj) {
 					app.core.modules[name].isLoaded = true;
-					if (typeof callBack == 'function') callBack();
+					if (typeof callBack == 'function') callBack(true);
 				},
 				error 	: function (respObj, err, errData) {
 					if (err == 'error') {
@@ -47,7 +47,7 @@ var app = {
 					} else {
 						$.error('Loader: module "'+ name + '" is loaded ('+ app.core.modules[name].url +'), but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
 						app.core.modules[name].isLoaded = true;
-						if (typeof callBack == 'function') callBack();
+						if (typeof callBack == 'function') callBack(false);
 					}
 				} 
 			});		
@@ -126,7 +126,14 @@ var app = {
 	// ===========================================
 	// -- Dialogs
 
-	error: function (msg, title) {
+	error: function (msg, title, callBack) {
+		if (typeof callBack == 'undefined' && typeof title == 'function') {
+			callBack = title; 
+			title = 'Error';
+		}
+		if (typeof title == 'undefined') {
+			title = 'Error';
+		}
 		// if popup is open
 		if ($('#w2ui-popup').length > 0) {
 			$('#w2ui-popup .w2ui-popup-message').remove();
@@ -135,15 +142,13 @@ var app = {
 				height 	: 200,
 				showMax : false,
 				html 	: 
-					'<div style="padding: 20px; height: 160px; text-align: center; overflow: auto;">'+
-					'	<div style=\'display: inline-block; text-align: left; font-family: Monaco, "Courier New"; color: #555;\'>'+ 
-							String(msg).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;') +
+					'<div class="centered"><div style="padding-bottom: 30px">'+
+					'	<div style=\'display: inline-block; text-align: left; font-size: 12px; font-family: Monaco, "Courier New"; color: #555;\'>'+ 
+							String(msg).replace(/\n/g, '<br>') +
 					'	</div>' +
-					'</div>' +
-					'<div style="padding: 5px; text-align: center;" onclick="event.stopPropagation()">'+
-					'	<input type="button" value="Ok" onclick="$().w2popup(\'message\')" style="width: 60px; margin: 0px 3px;">'+
-					'</div>'
+					'</div></div>'
 			});
+			$('#w2ui-popup .w2ui-popup-message').on('click', function (event) { if (typeof callBack == 'function') callBack(); });
 			return;
 		}
 		// open in as a popup
@@ -152,14 +157,14 @@ var app = {
 			height 	: 245,
 			showMax : false,
 			title 	: (typeof title != 'undefined' ? title : 'Error'),
-			body 	: '<div style="padding: 20px; height: 160px; text-align: center; overflow: auto;">'+
-				 	  '	<div style=\'display: inline-block; text-align: left; font-family: Monaco, "Courier New"; color: #555;\'>'+ 
-				 			String(msg).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;') +
-					  '	</div>' +
-					  '</div>',
-			buttons : '<input type="button" value="Ok" onclick="$().w2popup(\'close\')" style="width: 60px">'
+			body 	: '<div class="centered"><div>'+
+				 	  '  <div style=\'display: inline-block; text-align: left; font-size: 12px; font-family: Monaco, "Courier New"; color: #555;\'>'+ 
+				 			String(msg).replace(/\n/g, '<br>') +
+					  '	 </div>' +
+					  '</div></div>',
+			buttons : '<input type="button" value="Ok" onclick="$().w2popup(\'close\')" style="width: 60px">',
+			onClose : function () { if (typeof callBack == 'function') callBack(); }
 		});
-		
 	},
 
 	alert: function (msg, title, callBack) {
@@ -171,15 +176,12 @@ var app = {
 			title = 'Notification';
 		}
 		$().w2popup({
-			width 	: 400,
-			height 	: 180,
+			width 	: 500,
+			height 	: 245,
 			title   : title,
-			body    : '<div style="padding: 20px 5px; padding-right: 20px; text-align: center">'+
-					  '	' + msg +'</div>',
+			body    : '<div class="centered"><div>'+ msg +'</div></div>',
 			buttons : '<input type="button" value="Ok" style="width: 60px" onclick="$().w2popup(\'close\');">',
-			onClose : function () {
-				if (typeof callBack == 'function') callBack();
-			}
+			onClose : function () { if (typeof callBack == 'function') callBack(); }
 		});
 	},
 
@@ -192,17 +194,18 @@ var app = {
 			title = 'Confirmation';
 		}
 		$().w2popup({
-			width 	: 350,
-			height 	: 200,
+			width 	: 500,
+			height 	: 245,
 			title   : title,
+			showClose : false,
 			modal	: true,
-			body    : '<div style="padding: 10px; padding-right: 20px; text-align: center">'+ msg +'</div>',
-			buttons : '<input type="button" value="No" style="width: 60px; margin-right: 5px" onclick="$().w2popup(\'close\'); event.stopPropagation();">&nbsp;'+
-					  '<input id="btnYes" type="button" value="Yes" style="width: 60px">'
+			body    : '<div class="centered"><div>'+ msg +'</div></div>',
+			buttons : '<input class="btn" type="button" value="No" style="width: 60px; margin-right: 5px">&nbsp;'+
+					  '<input class="btn" type="button" value="Yes" style="width: 60px">'
 		});
-		$('#w2ui-popup #btnYes').on('click', function (event) {
+		$('#w2ui-popup .btn').on('click', function (event) {
 			$().w2popup('close');
-			if (typeof callBack == 'function') callBack();
+			if (typeof callBack == 'function') callBack(this.value);
 			 event.stopPropagation();
 		});
 	}
@@ -238,6 +241,7 @@ app.core = (function (obj) {
 			} catch (e) {
 				app.include(files);
 			}
+			app.core.config  = config;
 			app.core.modules = modules;
 			// init application UI
 			$('#app-toolbar').w2toolbar(config.app_toolbar);
