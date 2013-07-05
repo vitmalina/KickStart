@@ -1,0 +1,100 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+				<li class="nav-header">Modules</li>
+				<li class="active"><a href="#/modules">General</a></li>
+				<li><a href="#/modules/model">The Model</a></li>
+				<li><a href="#/modules/view">The View</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+			<h2>Modules</h2>
+			<p>
+				A module is an isolated unit designed to do a set of functions. It should be written completely 
+				independent from other modules and only call other module's public methods. A module should occupy its own folder
+				and all the files related to this module should be in this folder, for example:
+				<textarea class="javascript">
+app/modName/
+   modName-create.html
+   modName-config.js           - view
+   modName-overview.html
+   modName-model.js            - model
+   modName-styles.css
+   modName.js                  - controller
+				</textarea>
+			</p>
+
+			<h2>The Module Pattern</h2>
+			<p>
+				An example of a moulde:
+				<textarea class="javascript">
+/****************************************************
+*  ---  Module Pattern
+*/
+
+app.modName = (function (obj) {
+	// private scope
+	var config;
+	var model;
+	
+	// public scope
+	obj.render		= render;
+
+	init();
+	return obj;
+
+	// implementation
+
+	function init() {
+		app.get([
+		    'app/modName/modName-config.js',
+		    'app/modName/modName-model.js'
+		 ], 
+		function (files) {
+			for (var i in files) eval(files[i]);
+			// init application UI
+			$().w2grid(config.grid1);
+			render();
+		});
+	}
+
+	function render() {
+		w2ui['app_layout'].content('main', w2ui['grid1']);
+	}
+
+}) (app.modName || {});
+				</textarea>
+				Please note, the module knows where to render itself, not the other way around. Therefore, the render function should be the
+				one that renders the module in the proper place.
+			</p>
+
+			<h2>Loading the Module</h2>
+			<p>
+				The module should be loaded with <a href="#/overview/app-core">app.load()</a> method. 
+				You need to register the module before it is loaded	in <span class="method">/app/core/conf/modules.js</span>.
+				<textarea class="javascript">
+app.load('modName');
+				</textarea>
+				If the module was never loaded before, it will be loaded. When the module is loaded the main module function is executed for the first time, triggering <span class="method">init()</span> function. If module was already loaded, the 
+				<span class="method">render()</span> function will be called.
+			</p>
+			<p>
+				You can pass additional parameters to the module in the following way:
+				<textarea class="javascript">
+app.load('modName', { param1: '1', param2: '2' });
+				</textarea>
+				Please note that params should be deleted in the render function, otherwise they will still be present when you call the module
+				from another place of your code.
+				<textarea class="javascript">
+function render() {
+    console.log('module parameters', obj.params);
+	// do regular actions
+	...
+	// clean up
+	delete obj.params;
+}
+				</textarea>
+		</div>
+	</div>
+</div>

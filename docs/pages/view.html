@@ -1,0 +1,63 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+				<li class="nav-header">Modules</li>
+				<li><a href="#/modules">General</a></li>
+				<li><a href="#/modules/model">The Model</a></li>
+				<li class="active"><a href="#/modules/view">The View</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+			<h2>The View</h2>
+			<p>
+				All widget configurations (layouts, grids, toolbars, tabs, etc.) should be defined in the view. The view
+				is an external file that gets initialized in the <span class="method">init()</span>
+				function of the module and is a simple JavaScript object with properties. Below is the example
+				of a view:
+				<textarea class="javascript">
+/*********************************************
+*  -- Configuration for ...
+*/
+
+config = {
+	grid1: { 
+		name 	: 'grid1',
+		header	: 'Grid 1',
+		show 	: {
+			toolbar 		: true,
+			footer 			: true,
+			emptyRecords	: true,
+			toolbarAdd 		: true,
+			toolbarDelete	: true,
+			toolbarSave		: true
+		},
+		allSearch: true,
+		multiSearch	: true,
+		style: 'border-top: 0px;',
+		columns: [
+			{ field: 'recid', caption: 'ID', size: '90px', sortable: true },
+			{ field: 'firstName', caption: 'First Name', size: '100px', sortable: true },
+			{ field: 'lastName', caption: 'Last Name', size: '50%', sortable: true },
+			{ field: 'manager', caption: 'Manager', size: '50%', sortable: true },
+			{ field: 'email', caption: 'Email', size: '150px', sortable: true }
+		],
+		searches: [
+			{ type: 'int', caption: 'ID', field: 'recid' },
+			{ type: 'text', caption: 'Last Name', field: 'lastName' },
+			{ type: 'text', caption: 'First Name', field: 'firstName' }
+		]
+	},
+
+	grid2: ...
+	...
+}
+				</textarea>
+				Since view holds only a definition for a widget, the same configuration might be used to initialized several
+				widgets with slightly different parameters. At least one property of the widget has to be changed, which is
+				the name.
+			</p>
+
+		</div>
+	</div>
+</div>

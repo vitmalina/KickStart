@@ -1,0 +1,79 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+				<li class="nav-header">Overview</li>
+				<li class="active"><a href="#/overview">General</a></li>
+				<li><a href="#/overview/app-core">App Core</a></li>
+				<li><a href="#/overview/app-layout">App Layout</a></li>
+				<li><a href="#/overview/app-tabs">App Tabs</a></li>
+				<li><a href="#/overview/app-toolbar">App Toolbar</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+			
+			<h2>Overview</h2>
+
+			<p>
+				KickStart is a powerful and slick Front-End framework for building Desktop-Like Web applications. The purpose of this 
+				framework is to get you going quickly by providing solid foundation for your project. This is a 100% JavaScript project. 
+				The Front-End is completely separated from the server side and all communication is done through the REST protocol (not RESTfull). 
+				Your server should return data in JSON format. 
+			</p>
+			<p>
+				There are several open source libraries used within the project, all of which are released under permissible (mostly MIT) 
+				licenses (you can add the ones you like):
+			</p>
+			<ul>
+				<li><a href="http://jquery.com">jQuery (2.0)</a></li>
+				<li><a href="http://w2ui.com">W2UI (1.2)</a></li>
+				<li><a href="http://fontawesome.io">Font Awesome (3.2.1)</a></li>
+				<li><a href="http://fontawesome.io">LESS (1.4.0)</a> (optional)</li>
+				<li><a href="http://codemirror.net">Code Mirror</a> (optional)</li>
+			</ul>
+
+			<h2>File Structure</h2>
+
+			<p>
+				After you unzip the archive you'll find the following file structure:</p>
+			<pre>
+/app                - main application folder
+    /core           - core file for the application
+        /conf	    - app configuration
+        /css        - app core css files
+        /img        - app core images
+        /login      - login page scripts and css
+    /home           - home module
+    /mod1           - sample module
+/libs               - all JavaScript libraries that you want to support
+/media              - root folder for all UPLOADS
+/server             - root folder for all SERVER SIDE scripts
+index.html          - starting point
+index.appcache      - cache manifest
+login.html          - login page template
+			</pre>
+			Open index.html in your browser to see the framework.
+
+			<h2>onReady</h2>
+			<p>
+				All modules you create need to be registered in <span class="method">/app/core/config/modules.js</span>. After you register a module,
+				you can load it with app.load() method providing its name.
+			</p>
+			<p>
+				If you need to execute anything when your application starts, you can add your code to
+				<span class="method">/app/core/config/start.js</span>. It comes with an empty function, but it is the place where you load
+				your default module.
+
+				<textarea class="javascript">
+// ============================================
+// -- Application Start Function
+
+app.start = function () {
+	app.load('home');
+}				</textarea>
+				<br>
+
+			</p>
+		</div>
+	</div>
+</div>

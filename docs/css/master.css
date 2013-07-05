@@ -1,0 +1,54 @@
+body {
+	padding-top: 40px;
+	background-color: #efefef !important;
+}
+
+#main {
+	padding: 10px 0px 30px 0px;
+	min-height: 200px;
+	background-color: white;
+}
+
+.left-menu {
+	padding-top: 30px;
+}
+
+.footer {
+	border-top: 1px solid #e1e1e1;
+	padding: 10px;
+}
+
+h1, h2, h3 {
+	margin-top: 25px;
+}
+
+.method {
+	display: inline-block;
+	padding: 2px 7px;
+	border-radius: 4px;
+	background-color: #eee;
+	color: #176092;
+}
+
+.property {
+	padding: 15px 0px 5px 0px;
+	font-size: 16px;
+	color: #555;
+}
+
+.property .deff {
+	color: #176092;
+	font-weight: bold;
+}
+
+.prop-desc {
+	padding: 5px 0px 15px 30px;
+	border-bottom: 1px solid #eee;
+}
+
+.CodeMirror {
+	border-radius: 3px;
+	border: 1px solid #e1e1e1;
+	margin: 10px 0px;
+	font-family: monospace, "Courier New", Courier;
+}
