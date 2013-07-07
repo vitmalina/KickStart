@@ -19,8 +19,8 @@
 				<span class="deff">app.action</span> - function (target, data)
 			</div>
 			<div class="prop-desc">
-				Main application event loop. This is where all events from application level layout, toolbar, tabs and sidebar
-				are coming. It is define in <span class="method">/app/core/conf/action.js</span>.
+				Main application event loop. This is where all events from application level layout, toolbar and tabs are coming. 
+				It is define in <span class="method">/app/core/conf/action.js</span>.
 			</div>
 
 			<div class="property">
@@ -34,10 +34,10 @@
 			</div>
 
 			<div class="property">
-				<span class="deff">app.ajax_error</span> - function (xhr, status, error)
+				<span class="deff">app.ajaxError</span> - function (xhr, status, error)
 			</div>
 			<div class="prop-desc">
-				Allows you to define your own error_handler. See <span class="method">app/core/conf/utils.js</span>
+				Allows you to define your own error handler for ajax requests. See <span class="method">app/core/conf/utils.js</span>
 			</div>
 
 			<div class="property">
@@ -54,9 +54,9 @@ app.alert('Your changes are saved.');
 				<span class="deff">app.confirm (msg, [title], [callBack])</span>
 			</div>
 			<div class="prop-desc">
-				Common popup for confirm messages. The <span class="method">callBack</span> function will recieve one parameter, 
-				true if user clicked Yes and false otherwise. If 
-				you need a more complicated login, you can use <span class="method">$().w2popup()</span>
+				Common popup for confirm messages. The <span class="method">callBack</span> function will receive one parameter, 
+				true if user clicked Yes and false otherwise. If you need a more complicated popup, you can 
+				use <span class="method">$().w2popup()</span>
 				<textarea class="javascript">
 app.confirm('Are you sure you want to do this?', function (action) {
 	console.log(action);
@@ -77,7 +77,7 @@ app.confirm('Are you sure you want to do this?', function (action) {
 			</div>
 			<div class="prop-desc">
 				Common popup for error messages. If popup is already open, it will slide down the error message within the opened
-				popup.
+				popup. If you use app.alert or app.confirm - it will not preserve currently opened popup.
 			</div>
 
 			<div class="property">
@@ -155,7 +155,7 @@ app.get([
 			</div>
 			<div class="prop-desc">
 				Function that will be called when application is initialized and ready. This funciton is defined in 
-				<span class="method">/app/core/conf/start.js</span> file and by default is empty.
+				<span class="method">/app/core/conf/start.js</span> file and by default loads home module.
 			</div>
 
 		</div>

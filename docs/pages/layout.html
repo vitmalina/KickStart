@@ -21,34 +21,34 @@
 
 			<h2>Common Actions</h2>
 			<p>
-				To show the right panel and display there some content do the following:
+				Show the right panel and render some HTML in it:
 				<textarea class="javascript">
 w2ui.app_layout.show('right');
 w2ui.app_layout.content('right', '<div style="padding: 10px;">Some HTML</div>');
 				</textarea>
 				<br>
 
-				To hide right panel:
+				Hide right panel:
 				<textarea class="javascript">
 w2ui.app_layout.hide('right');
 				</textarea>
 				<br>
 
-				To load some html from a file:
+				Load some HTML from a file into the right panel:
 				<textarea class="javascript">
 w2ui.app_layout.show('right');
 w2ui.app_layout.load('right', 'path/to/the/file.html');
 				</textarea>
 				<br>
 
-				To chage size of the right panel and make it not resizable:
+				Chage size of the right panel and make it not resizable:
 				<textarea class="javascript">
 w2ui.app_layout.set('right', { size: 150, resizable: false });
 w2ui.app_layout.show('right');
 				</textarea>
 				<br>
 
-				To display a grid in a main panel:
+				Display a grid in a main panel:
 				<textarea class="javascript">
 w2ui.app_layout.content('main', w2ui.grid1);
 				</textarea>
@@ -57,7 +57,7 @@ w2ui.app_layout.content('main', w2ui.grid1);
 
 			<h2>Nested Layouts</h2>
 			<p>
-				If you do not have enough panels in the defaul application layout (not common), you may create additional layouts and
+				If you need more layout panels in the defaul application layout (not common), you may create additional layouts and
 				nest them in the main panel.
 				<textarea class="javascript">
 $().w2layout({

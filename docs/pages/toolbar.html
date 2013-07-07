@@ -19,13 +19,13 @@
 				<a href="http://w2ui.com">w2ui.com</a> for more information.
 			</p>
 			<p>
-				All events from the toolbar will be sent to app.action() function defined in <span class="method">/app/core/conf/action.js</span>, 
-				which you may extend with your application logic.
+				All button click events from toolbar will be sent to app.action() function defined in 
+				<span class="method">/app/core/conf/action.js</span>, which you may extend with your own code.
 			</p>
 
 			<h2>Common Actions</h2>
 			<p>
-				To add item to the toolbar:
+				Add button to the toolbar:
 				<textarea class="javascript">
 w2ui.app_toolbar.insert('spacer1', 
     { id: 'id1', type: 'button', caption: 'Button 1', icon: 'fa-star-empty' }
@@ -33,7 +33,7 @@ w2ui.app_toolbar.insert('spacer1',
 				</textarea>
 				<br>
 
-				To add items to the User menu:
+				Add item to the User menu:
 				<textarea class="javascript">
 w2ui.app_toolbar.get('user-menu').items.push(
     { id: 'my-item', text: 'My Item', icon: 'fa-home' }
@@ -42,8 +42,9 @@ w2ui.app_toolbar.refresh();
 				</textarea>
 			</p>
 			<p>
-				Thought you can customize toolbar dynamically, it is probably better to define it in the 
-				<span class="method">/app/core/conf/config.js</span> because it is unlikely your main toolbar will change much.
+				Thought you can customize toolbar any where in the code, it is probably better to define it in the 
+				<span class="method">/app/core/conf/config.js</span> because it is unlikely your main toolbar will change 
+				during the course of the application.
 		</div>
 	</div>
 </div>
