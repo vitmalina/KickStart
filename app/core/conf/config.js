@@ -29,16 +29,16 @@ config = {
 		name 	: 'app_toolbar',
 		items 	: [
 			{ id: 'home', caption: 'Home', type: 'radio', icon: 'fa-home', checked: true },
-			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'fa-flag' },
 			{ id: 'invoices', caption: 'Invoices', type: 'radio', icon: 'fa-dollar' },
 			{ id: 'projects', caption: 'Projects', type: 'radio', icon: 'fa-bar-chart' },
+			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'fa-flag' },
 			{ type: 'spacer', id: 'spacer1' },
 			{ id: 'admin', caption: 'Admin', type: 'button' },
 			{ type: 'break', id: 'br1' },
-			{ type: 'menu',  id: 'user-menu', img: '', caption: 'User Name', overlay: { left: 20 },
+			{ type: 'menu',  id: 'user-menu', caption: 'User Name', overlay: { left: 5 },
 				items: [
-					{ id: 'prefs', text: 'Preferences', icon: 'icon-favorites' },
-					{ id: 'log-out', text: 'Log Out', icon: 'icon-arrow-right' }
+					{ id: 'prefs', text: 'Preferences', icon: 'fa-ok-sign' },
+					{ id: 'logout', text: 'Log Out', icon: 'fa-off' }
 				]
 			}
 		],

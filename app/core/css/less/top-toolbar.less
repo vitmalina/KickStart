@@ -11,6 +11,7 @@
 		margin: 0px;
 		background-color: transparent;
 		&.w2ui-button {
+			height: 28px;
 			padding: 3px 5px 4px 5px;
 			border-radius: 0px;
 			margin: -1px 0px 0px 0px;
@@ -22,7 +23,7 @@
 
 			.w2ui-tb-image > span {
 				color: #ddd;
-				text-shadow: 1px 1px 1px #333;				
+				text-shadow: 1px 1px 1px #333;
 			}
 
 			.w2ui-tb-down {
@@ -31,8 +32,8 @@
 
 			&.over {
 				border: 1px solid rgba(255,255,255,0.2);
-				border-top: 0px;
-				border-bottom: 0px;
+				border-top: 1px solid transparent;
+				border-bottom: 1px solid transparent;
 				background-color: rgba(255,255,255,0.1);
 				& .w2ui-tb-caption, & .w2ui-tb-image > span {
 					color: #fff;
@@ -42,8 +43,8 @@
 
 			&.down {
 				border: 1px solid rgba(0,0,0,0.6);
-				border-top: 0px;
-				border-bottom: 0px;
+				border-top: 1px solid transparent;
+				border-bottom: 1px solid transparent;
 				background-color: rgba(0,0,0,0.5);
 				& .w2ui-tb-caption, & .w2ui-tb-image > span {
 					//color: #DAF8FF;
@@ -53,8 +54,8 @@
 
 			&.checked {
 				border: 1px solid rgba(0,0,0,1);
-				border-top: 0px;
-				border-bottom: 0px;
+				border-top: 1px solid transparent;
+				border-bottom: 1px solid transparent;
 				background-color: rgba(0,0,0,0.3);
 				& .w2ui-tb-caption {
 					color: #fff;
