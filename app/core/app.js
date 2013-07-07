@@ -115,7 +115,7 @@ var app = {
 		if (typeof options.error != 'undefined') options._error_ = options.error; 
 		// custom error handler
 		options.error = function (xhr, status, error) {
-			if (typeof app.ajax_error == 'function') app.ajax_error(xhr, status, error);
+			if (typeof app.ajaxError == 'function') app.ajaxError(xhr, status, error);
 			if (typeof options._error_ == 'function') options._error_(xhr, status, error);
 		}
 		options.cache = false;

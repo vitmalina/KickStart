@@ -1,7 +1,7 @@
 // ===========================================
 // -- General Application Utilities
 
-app.ajax_error = function (xhr, status, error) {
+app.ajaxError = function (xhr, status, error) {
 	switch (xhr.status) {
 		case 403:
 			document.location = 'login.html';

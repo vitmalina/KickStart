@@ -27,10 +27,10 @@ app.home = (function (obj) {
 	}
 
 	function render () {
-		// do not render if route is different
-		if (app.route.parse()[0] != 'home') return; // not home module requested
-		// default action
-		action('home-grid1', {});
+		// only render if home moulde (or blank) is requested) 
+		if (app.route.parse()[0] == 'home' || app.route.parse()[0] == '') {
+			action('home-grid1', {});
+		} 
 	}
 
 	function action (target, data) {
@@ -44,7 +44,8 @@ app.home = (function (obj) {
 			default:
 				app.header(target);
 				app.route.set('home/' + target);
-				w2ui['app_layout'].content('main', '<div style="text-align: center; padding: 40px; font-size: 16px; color: #999;">Under Constructions</div>');
+				w2ui['app_layout'].content('main', 
+					'<div style="text-align: center; padding: 40px; width: 100%; font-size: 16px; color: #999;">Under Constructions</div>');
 				console.log('No event handler for '+ target +'.');
 				break;
 		}
