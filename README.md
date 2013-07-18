@@ -1,7 +1,7 @@
 KickStart (v 0.2)
 ==================
 
-Front-end template for building desktop-like web application. This repository servers as a 
+Front-end template for building desktop-like SPAs. This repository servers as a 
 starting point and provides structure for your next project. It includes:
 
 - jQuery

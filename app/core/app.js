@@ -102,6 +102,7 @@ var app = {
 	// -- Includes all files as scripts in order to see error line
 
 	include: function (files) {
+		if (typeof files == 'string') files = [files];
 		for (var i in files) {
 			$(document).append('<script type="text/javascript" src="'+ files[i] +'"></script>');
 		}
@@ -286,15 +287,7 @@ app.core = (function (obj) {
 			if (typeof app.start == 'function') app.start();
 			var hash = String(document.location.hash);
 			if (hash.length > 1) hash = hash.substr(1);
-			if ($.trim(hash) != '') {
-				app.route.go(hash);
-			} else {
-				// load first module
-				for (var mod in app.core.modules) {
-					app.load(mod);
-					break;
-				}
-			}
+			if ($.trim(hash) != '')	app.route.go(hash);
 		}, 200);
 	}
 

@@ -38,7 +38,8 @@ app.mod1 = (function (obj) {
 			return;
 		}
 		// default action
-		w2ui['app_layout'].content('main', w2ui['grid1']);
+		// w2ui['app_layout'].content('main', w2ui['grid1']);
+		w2ui['app_layout'].content('main', 'some html');
 	}
 
 }) (app.mod1 || {});

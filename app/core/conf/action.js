@@ -14,7 +14,7 @@ app.action = function (target, info) {
 				app.alert('User preferences');
 			}
 			if (info.subItem && info.subItem.id == 'logout') {
-				app.alert('Logout');
+				app.logout();
 			}
 			break;
 

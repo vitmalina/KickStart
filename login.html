@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="app/core/login/login.css"/>
-	<script type="text/javascript" src="libs/jquery.min.js"></script>
-	<script type="text/javascript" src="app/core/login/login.js"></script>
+	<link rel="stylesheet" type="text/css" href="app/core/css/login.css"/>
+	<script type="text/javascript" src="libs/jquery/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="app/core/conf/utils.js"></script>
 </head>
 <body>
 	<br>
@@ -21,12 +21,12 @@
 			<div class="login-input">
 				<span>Login</span> 
 				<input type="text" id="login" size="25" autofocus="yes" 
-					onkeypress="$('#message').html('&nbsp;'); if (event.keyCode == 13) login();"> 
+					onkeypress="$('#message').html('&nbsp;'); if (event.keyCode == 13) app.login();"> 
 				<span>Password</span> 
 				<input type="password" id="password" size="25" 
-					onkeypress="$('#message').html('&nbsp;'); if (event.keyCode == 13) login();"> 
+					onkeypress="$('#message').html('&nbsp;'); if (event.keyCode == 13) app.login();"> 
 				<div style="height: 25px; font-size: 1px;">&nbsp;</div> 
-				<input type="button" value="Login" style="width: 60px;" onclick="login()"> 
+				<input type="button" value="Login" style="width: 60px;" onclick="app.login()"> 
 			</div>
 			<div style="text-align: center; padding-top: 10px;">
 			</div>
@@ -34,8 +34,7 @@
 
 		<div style="height: 25px; font-size: 1px;">&nbsp;</div> 
 		<div class="footer">
-			<a href="javascript:" onclick="var email = prompt('Please enter email address you signed up with.'); 
-				if (email == '' || email == null) return; document.location = document.location + '?email=' + email">Forgot Password?</a>
+			<a href="javascript:" onclick="app.forgot()">Forgot Password?</a>
 			&nbsp;&nbsp; | &nbsp;&nbsp;Powered by 
 			<a href="http://w2ui.com" target="_blank">w2ui</a>
 		</div>
