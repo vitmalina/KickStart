@@ -28,17 +28,17 @@ config = {
 	app_toolbar: {
 		name 	: 'app_toolbar',
 		items 	: [
-			{ id: 'home', caption: 'Home', type: 'radio', icon: 'fa-home', checked: true },
-			{ id: 'invoices', caption: 'Invoices', type: 'radio', icon: 'fa-dollar' },
-			{ id: 'projects', caption: 'Projects', type: 'radio', icon: 'fa-bar-chart' },
-			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'fa-flag' },
+			{ id: 'home', caption: 'Home', type: 'radio', icon: 'icon-home', checked: true },
+			{ id: 'invoices', caption: 'Invoices', type: 'radio', icon: 'icon-dollar' },
+			{ id: 'projects', caption: 'Projects', type: 'radio', icon: 'icon-tasks' },
+			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'icon-flag' },
 			{ type: 'spacer', id: 'spacer1' },
 			{ id: 'admin', caption: 'Admin', type: 'button' },
 			{ type: 'break', id: 'br1' },
 			{ type: 'menu',  id: 'user-menu', caption: 'User Name', overlay: { left: 5 },
 				items: [
-					{ id: 'prefs', text: 'Preferences', icon: 'fa-ok-sign' },
-					{ id: 'logout', text: 'Log Out', icon: 'fa-off' }
+					{ id: 'prefs', text: 'Preferences', icon: 'icon-tools' },
+					{ id: 'logout', text: 'Log Out', icon: 'icon-switch' }
 				]
 			}
 		],

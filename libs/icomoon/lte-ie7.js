@@ -6,14 +6,12 @@ window.onload = function() {
 		el.innerHTML = '<span style="font-family: \'icomoon\'">' + entity + '</span>' + html;
 	}
 	var icons = {
-			'icon-home' : '&#xe000;',
 			'icon-newspaper' : '&#xe001;',
 			'icon-pencil' : '&#xe002;',
 			'icon-quill' : '&#xe003;',
 			'icon-paint-format' : '&#xe004;',
 			'icon-image' : '&#xe005;',
 			'icon-images' : '&#xe006;',
-			'icon-camera' : '&#xe007;',
 			'icon-music' : '&#xe008;',
 			'icon-headphones' : '&#xe009;',
 			'icon-dice' : '&#xe00b;',
@@ -91,8 +89,6 @@ window.onload = function() {
 			'icon-wrench' : '&#xe055;',
 			'icon-settings' : '&#xe056;',
 			'icon-equalizer' : '&#xe057;',
-			'icon-cogs' : '&#xe058;',
-			'icon-cog' : '&#xe059;',
 			'icon-hammer' : '&#xe05a;',
 			'icon-wand' : '&#xe05b;',
 			'icon-aid' : '&#xe05c;',
@@ -112,11 +108,9 @@ window.onload = function() {
 			'icon-fire' : '&#xe06a;',
 			'icon-lab' : '&#xe06b;',
 			'icon-magnet' : '&#xe06c;',
-			'icon-remove' : '&#xe06d;',
 			'icon-airplane' : '&#xe06e;',
 			'icon-truck' : '&#xe06f;',
 			'icon-lightning' : '&#xe070;',
-			'icon-switch' : '&#xe071;',
 			'icon-power-cord' : '&#xe072;',
 			'icon-signup' : '&#xe073;',
 			'icon-list' : '&#xe074;',
@@ -204,10 +198,8 @@ window.onload = function() {
 			'icon-android' : '&#xe0c9;',
 			'icon-windows8' : '&#xe0cb;',
 			'icon-skype' : '&#xe0ca;',
-			'icon-switch-2' : '&#xe0cc;',
+			'icon-switch' : '&#xe0cc;',
 			'icon-chart' : '&#xe0cd;',
-			'icon-checkmark-3' : '&#xe0ce;',
-			'icon-cancel' : '&#xe0cf;',
 			'icon-coffee' : '&#xe0d0;',
 			'icon-trashcan' : '&#xe0d1;',
 			'icon-grid' : '&#xe0d2;',
@@ -233,10 +225,7 @@ window.onload = function() {
 			'icon-tools' : '&#xe0e8;',
 			'icon-graduation' : '&#xe0e9;',
 			'icon-database-2' : '&#xe0ea;',
-			'icon-checkmark-4' : '&#xe0eb;',
-			'icon-cross' : '&#xe0ec;',
 			'icon-statistics' : '&#xe0ed;',
-			'icon-pie-2' : '&#xe0ee;',
 			'icon-bars-3' : '&#xe0ef;',
 			'icon-cw' : '&#xe0f0;',
 			'icon-ccw' : '&#xe0f1;',
@@ -250,14 +239,14 @@ window.onload = function() {
 			'icon-th' : '&#xf00a;',
 			'icon-th-list' : '&#xf00b;',
 			'icon-ok' : '&#xf00c;',
-			'icon-remove-2' : '&#xf00d;',
-			'icon-cog-2' : '&#xf013;',
+			'icon-remove' : '&#xf00d;',
+			'icon-cog' : '&#xf013;',
 			'icon-trash' : '&#xf014;',
 			'icon-repeat' : '&#xf01e;',
 			'icon-refresh' : '&#xf021;',
 			'icon-tag-2' : '&#xf02b;',
 			'icon-tags-2' : '&#xf02c;',
-			'icon-camera-2' : '&#xf030;',
+			'icon-camera' : '&#xf030;',
 			'icon-facetime-video' : '&#xf03d;',
 			'icon-check' : '&#xf046;',
 			'icon-move-2' : '&#xf047;',
@@ -274,7 +263,7 @@ window.onload = function() {
 			'icon-folder-close' : '&#xf07b;',
 			'icon-folder-open-2' : '&#xf07c;',
 			'icon-bar-chart' : '&#xf080;',
-			'icon-cogs-2' : '&#xf085;',
+			'icon-cogs' : '&#xf085;',
 			'icon-comments' : '&#xf086;',
 			'icon-comment' : '&#xf087;',
 			'icon-chat' : '&#xf088;',
@@ -289,7 +278,6 @@ window.onload = function() {
 			'icon-legal' : '&#xf0e3;',
 			'icon-umbrella' : '&#xf0e9;',
 			'icon-wrench-2' : '&#xf0f3;',
-			'icon-coffee-2' : '&#xf0f4;',
 			'icon-food-2' : '&#xf0f5;',
 			'icon-medkit' : '&#xf0fa;',
 			'icon-beer' : '&#xf0fc;',
@@ -312,9 +300,27 @@ window.onload = function() {
 			'icon-dribbble' : '&#xf17d;',
 			'icon-female' : '&#xf182;',
 			'icon-male' : '&#xf183;',
-			'icon-bug' : '&#xf188;'
+			'icon-bug' : '&#xf188;',
+			'icon-home' : '&#xe00a;'
 		},
 		els = document.getElementsByTagName('*'),
+		i, attr, html, c, el;
+	for (i = 0; ; i += 1) {
+		el = els[i];
+		if(!el) {
+			break;
+		}
+		attr = el.getAttribute('data-icon');
+		if (attr) {
+			addIcon(el, attr);
+		}
+		c = el.className;
+		c = c.match(/icon-[^\s'"]+/);
+		if (c && icons[c[0]]) {
+			addIcon(el, icons[c[0]]);
+		}
+	}
+};= document.getElementsByTagName('*'),
 		i, attr, html, c, el;
 	for (i = 0; ; i += 1) {
 		el = els[i];

@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-home, .icon-newspaper, .icon-pencil, .icon-quill, .icon-paint-format, .icon-image, .icon-images, .icon-camera, .icon-music, .icon-headphones, .icon-dice, .icon-spades, .icon-clubs, .icon-diamonds, .icon-bullhorn, .icon-connection, .icon-feed, .icon-book, .icon-books, .icon-file, .icon-copy, .icon-stack, .icon-folder, .icon-folder-open, .icon-tag, .icon-tags, .icon-barcode, .icon-qrcode, .icon-coin, .icon-credit, .icon-calculate, .icon-support, .icon-phone, .icon-phone-hang-up, .icon-notebook, .icon-envelop, .icon-pushpin, .icon-compass, .icon-map, .icon-map-2, .icon-location, .icon-location-2, .icon-history, .icon-clock, .icon-alarm, .icon-bell, .icon-stopwatch, .icon-calendar, .icon-calendar-2, .icon-keyboard, .icon-screen, .icon-mobile, .icon-tablet, .icon-drawer, .icon-drawer-2, .icon-drawer-3, .icon-box-add, .icon-box-remove, .icon-download, .icon-upload, .icon-undo, .icon-redo, .icon-forward, .icon-reply, .icon-bubble, .icon-bubbles, .icon-bubbles-2, .icon-bubbles-3, .icon-bubble-2, .icon-bubbles-4, .icon-user, .icon-users, .icon-spinner, .icon-binoculars, .icon-search, .icon-zoom-in, .icon-zoom-out, .icon-expand, .icon-contract, .icon-key, .icon-lock, .icon-unlocked, .icon-wrench, .icon-settings, .icon-equalizer, .icon-cogs, .icon-cog, .icon-hammer, .icon-wand, .icon-aid, .icon-pie, .icon-stats, .icon-bars, .icon-bars-2, .icon-gift, .icon-trophy, .icon-mug, .icon-food, .icon-leaf, .icon-rocket, .icon-meter, .icon-dashboard, .icon-hammer-2, .icon-fire, .icon-lab, .icon-magnet, .icon-remove, .icon-airplane, .icon-truck, .icon-lightning, .icon-switch, .icon-power-cord, .icon-signup, .icon-list, .icon-list-2, .icon-numbered-list, .icon-tree, .icon-cloud, .icon-cloud-download, .icon-cloud-upload, .icon-download-2, .icon-upload-2, .icon-download-3, .icon-upload-3, .icon-earth, .icon-link, .icon-flag, .icon-eye, .icon-bookmark, .icon-brightness-medium, .icon-brightness-contrast, .icon-contrast, .icon-star, .icon-star-2, .icon-star-3, .icon-heart, .icon-heart-2, .icon-heart-broken, .icon-smiley, .icon-sad, .icon-info, .icon-close, .icon-checkmark, .icon-checkmark-2, .icon-minus, .icon-plus, .icon-enter, .icon-exit, .icon-play, .icon-pause, .icon-stop, .icon-backward, .icon-forward-2, .icon-first, .icon-last, .icon-previous, .icon-eject, .icon-volume-medium, .icon-volume-mute, .icon-volume-mute-2, .icon-volume-increase, .icon-volume-decrease, .icon-loop, .icon-loop-2, .icon-loop-3, .icon-shuffle, .icon-arrow-up-left, .icon-arrow-up, .icon-arrow-up-right, .icon-arrow-down-right, .icon-arrow-right, .icon-arrow-down, .icon-arrow-down-left, .icon-arrow-left, .icon-tab, .icon-checkbox-checked, .icon-checkbox-unchecked, .icon-checkbox-partial, .icon-radio-checked, .icon-radio-unchecked, .icon-scissors, .icon-filter, .icon-table, .icon-insert-template, .icon-pilcrow, .icon-new-tab, .icon-embed, .icon-code, .icon-share, .icon-facebook, .icon-twitter, .icon-feed-2, .icon-github, .icon-tux, .icon-apple, .icon-android, .icon-windows8, .icon-skype, .icon-switch-2, .icon-chart, .icon-checkmark-3, .icon-cancel, .icon-coffee, .icon-trashcan, .icon-grid, .icon-paperclip, .icon-database, .icon-atom, .icon-battery, .icon-sunrise, .icon-move, .icon-loop-alt1, .icon-loop-alt3, .icon-transfer, .icon-layers, .icon-fork, .icon-paperplane, .icon-user-2, .icon-user-add, .icon-sharable, .icon-thumbs-up, .icon-thumbs-down, .icon-thumbs-down-2, .icon-thumbs-up-2, .icon-tools, .icon-graduation, .icon-database-2, .icon-checkmark-4, .icon-cross, .icon-statistics, .icon-pie-2, .icon-bars-3, .icon-cw, .icon-ccw, .icon-shuffle-2, .icon-arrow, .icon-retweet, .icon-history-2, .icon-add-to-list, .icon-layout, .icon-list-3, .icon-th, .icon-th-list, .icon-ok, .icon-remove-2, .icon-cog-2, .icon-trash, .icon-repeat, .icon-refresh, .icon-tag-2, .icon-tags-2, .icon-camera-2, .icon-facetime-video, .icon-check, .icon-move-2, .icon-arrow-left-2, .icon-arrow-down-2, .icon-arrow-up-2, .icon-arrow-right-2, .icon-resize-full, .icon-resize-small, .icon-plus-2, .icon-minus-2, .icon-magnet-2, .icon-shopping-cart, .icon-folder-close, .icon-folder-open-2, .icon-bar-chart, .icon-cogs-2, .icon-comments, .icon-comment, .icon-chat, .icon-bell-2, .icon-bell-alt, .icon-tasks, .icon-filter-2, .icon-cut, .icon-paper-clip, .icon-magic, .icon-undo-2, .icon-legal, .icon-umbrella, .icon-wrench-2, .icon-coffee-2, .icon-food-2, .icon-medkit, .icon-beer, .icon-folder-close-alt, .icon-folder-open-alt, .icon-flag-alt, .icon-flag-checkered, .icon-superscript, .icon-subscript, .icon-microphone, .icon-microphone-off, .icon-fire-extinguisher, .icon-html5, .icon-anchor, .icon-euro, .icon-gbp, .icon-dollar, .icon-yen, .icon-linux, .icon-dribbble, .icon-female, .icon-male, .icon-bug {
+.icon-newspaper, .icon-pencil, .icon-quill, .icon-paint-format, .icon-image, .icon-images, .icon-music, .icon-headphones, .icon-dice, .icon-spades, .icon-clubs, .icon-diamonds, .icon-bullhorn, .icon-connection, .icon-feed, .icon-book, .icon-books, .icon-file, .icon-copy, .icon-stack, .icon-folder, .icon-folder-open, .icon-tag, .icon-tags, .icon-barcode, .icon-qrcode, .icon-coin, .icon-credit, .icon-calculate, .icon-support, .icon-phone, .icon-phone-hang-up, .icon-notebook, .icon-envelop, .icon-pushpin, .icon-compass, .icon-map, .icon-map-2, .icon-location, .icon-location-2, .icon-history, .icon-clock, .icon-alarm, .icon-bell, .icon-stopwatch, .icon-calendar, .icon-calendar-2, .icon-keyboard, .icon-screen, .icon-mobile, .icon-tablet, .icon-drawer, .icon-drawer-2, .icon-drawer-3, .icon-box-add, .icon-box-remove, .icon-download, .icon-upload, .icon-undo, .icon-redo, .icon-forward, .icon-reply, .icon-bubble, .icon-bubbles, .icon-bubbles-2, .icon-bubbles-3, .icon-bubble-2, .icon-bubbles-4, .icon-user, .icon-users, .icon-spinner, .icon-binoculars, .icon-search, .icon-zoom-in, .icon-zoom-out, .icon-expand, .icon-contract, .icon-key, .icon-lock, .icon-unlocked, .icon-wrench, .icon-settings, .icon-equalizer, .icon-hammer, .icon-wand, .icon-aid, .icon-pie, .icon-stats, .icon-bars, .icon-bars-2, .icon-gift, .icon-trophy, .icon-mug, .icon-food, .icon-leaf, .icon-rocket, .icon-meter, .icon-dashboard, .icon-hammer-2, .icon-fire, .icon-lab, .icon-magnet, .icon-airplane, .icon-truck, .icon-lightning, .icon-power-cord, .icon-signup, .icon-list, .icon-list-2, .icon-numbered-list, .icon-tree, .icon-cloud, .icon-cloud-download, .icon-cloud-upload, .icon-download-2, .icon-upload-2, .icon-download-3, .icon-upload-3, .icon-earth, .icon-link, .icon-flag, .icon-eye, .icon-bookmark, .icon-brightness-medium, .icon-brightness-contrast, .icon-contrast, .icon-star, .icon-star-2, .icon-star-3, .icon-heart, .icon-heart-2, .icon-heart-broken, .icon-smiley, .icon-sad, .icon-info, .icon-close, .icon-checkmark, .icon-checkmark-2, .icon-minus, .icon-plus, .icon-enter, .icon-exit, .icon-play, .icon-pause, .icon-stop, .icon-backward, .icon-forward-2, .icon-first, .icon-last, .icon-previous, .icon-eject, .icon-volume-medium, .icon-volume-mute, .icon-volume-mute-2, .icon-volume-increase, .icon-volume-decrease, .icon-loop, .icon-loop-2, .icon-loop-3, .icon-shuffle, .icon-arrow-up-left, .icon-arrow-up, .icon-arrow-up-right, .icon-arrow-down-right, .icon-arrow-right, .icon-arrow-down, .icon-arrow-down-left, .icon-arrow-left, .icon-tab, .icon-checkbox-checked, .icon-checkbox-unchecked, .icon-checkbox-partial, .icon-radio-checked, .icon-radio-unchecked, .icon-scissors, .icon-filter, .icon-table, .icon-insert-template, .icon-pilcrow, .icon-new-tab, .icon-embed, .icon-code, .icon-share, .icon-facebook, .icon-twitter, .icon-feed-2, .icon-github, .icon-tux, .icon-apple, .icon-android, .icon-windows8, .icon-skype, .icon-switch, .icon-chart, .icon-coffee, .icon-trashcan, .icon-grid, .icon-paperclip, .icon-database, .icon-atom, .icon-battery, .icon-sunrise, .icon-move, .icon-loop-alt1, .icon-loop-alt3, .icon-transfer, .icon-layers, .icon-fork, .icon-paperplane, .icon-user-2, .icon-user-add, .icon-sharable, .icon-thumbs-up, .icon-thumbs-down, .icon-thumbs-down-2, .icon-thumbs-up-2, .icon-tools, .icon-graduation, .icon-database-2, .icon-statistics, .icon-bars-3, .icon-cw, .icon-ccw, .icon-shuffle-2, .icon-arrow, .icon-retweet, .icon-history-2, .icon-add-to-list, .icon-layout, .icon-list-3, .icon-th, .icon-th-list, .icon-ok, .icon-remove, .icon-cog, .icon-trash, .icon-repeat, .icon-refresh, .icon-tag-2, .icon-tags-2, .icon-camera, .icon-facetime-video, .icon-check, .icon-move-2, .icon-arrow-left-2, .icon-arrow-down-2, .icon-arrow-up-2, .icon-arrow-right-2, .icon-resize-full, .icon-resize-small, .icon-plus-2, .icon-minus-2, .icon-magnet-2, .icon-shopping-cart, .icon-folder-close, .icon-folder-open-2, .icon-bar-chart, .icon-cogs, .icon-comments, .icon-comment, .icon-chat, .icon-bell-2, .icon-bell-alt, .icon-tasks, .icon-filter-2, .icon-cut, .icon-paper-clip, .icon-magic, .icon-undo-2, .icon-legal, .icon-umbrella, .icon-wrench-2, .icon-food-2, .icon-medkit, .icon-beer, .icon-folder-close-alt, .icon-folder-open-alt, .icon-flag-alt, .icon-flag-checkered, .icon-superscript, .icon-subscript, .icon-microphone, .icon-microphone-off, .icon-fire-extinguisher, .icon-html5, .icon-anchor, .icon-euro, .icon-gbp, .icon-dollar, .icon-yen, .icon-linux, .icon-dribbble, .icon-female, .icon-male, .icon-bug, .icon-home {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -36,9 +36,6 @@ you can use the generic selector below, but it's slower:
 	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
-}
-.icon-home:before {
-	content: "\e000";
 }
 .icon-newspaper:before {
 	content: "\e001";
@@ -57,9 +54,6 @@ you can use the generic selector below, but it's slower:
 }
 .icon-images:before {
 	content: "\e006";
-}
-.icon-camera:before {
-	content: "\e007";
 }
 .icon-music:before {
 	content: "\e008";
@@ -292,12 +286,6 @@ you can use the generic selector below, but it's slower:
 .icon-equalizer:before {
 	content: "\e057";
 }
-.icon-cogs:before {
-	content: "\e058";
-}
-.icon-cog:before {
-	content: "\e059";
-}
 .icon-hammer:before {
 	content: "\e05a";
 }
@@ -355,9 +343,6 @@ you can use the generic selector below, but it's slower:
 .icon-magnet:before {
 	content: "\e06c";
 }
-.icon-remove:before {
-	content: "\e06d";
-}
 .icon-airplane:before {
 	content: "\e06e";
 }
@@ -366,9 +351,6 @@ you can use the generic selector below, but it's slower:
 }
 .icon-lightning:before {
 	content: "\e070";
-}
-.icon-switch:before {
-	content: "\e071";
 }
 .icon-power-cord:before {
 	content: "\e072";
@@ -631,17 +613,11 @@ you can use the generic selector below, but it's slower:
 .icon-skype:before {
 	content: "\e0ca";
 }
-.icon-switch-2:before {
+.icon-switch:before {
 	content: "\e0cc";
 }
 .icon-chart:before {
 	content: "\e0cd";
-}
-.icon-checkmark-3:before {
-	content: "\e0ce";
-}
-.icon-cancel:before {
-	content: "\e0cf";
 }
 .icon-coffee:before {
 	content: "\e0d0";
@@ -718,17 +694,8 @@ you can use the generic selector below, but it's slower:
 .icon-database-2:before {
 	content: "\e0ea";
 }
-.icon-checkmark-4:before {
-	content: "\e0eb";
-}
-.icon-cross:before {
-	content: "\e0ec";
-}
 .icon-statistics:before {
 	content: "\e0ed";
-}
-.icon-pie-2:before {
-	content: "\e0ee";
 }
 .icon-bars-3:before {
 	content: "\e0ef";
@@ -769,10 +736,10 @@ you can use the generic selector below, but it's slower:
 .icon-ok:before {
 	content: "\f00c";
 }
-.icon-remove-2:before {
+.icon-remove:before {
 	content: "\f00d";
 }
-.icon-cog-2:before {
+.icon-cog:before {
 	content: "\f013";
 }
 .icon-trash:before {
@@ -790,7 +757,7 @@ you can use the generic selector below, but it's slower:
 .icon-tags-2:before {
 	content: "\f02c";
 }
-.icon-camera-2:before {
+.icon-camera:before {
 	content: "\f030";
 }
 .icon-facetime-video:before {
@@ -841,7 +808,7 @@ you can use the generic selector below, but it's slower:
 .icon-bar-chart:before {
 	content: "\f080";
 }
-.icon-cogs-2:before {
+.icon-cogs:before {
 	content: "\f085";
 }
 .icon-comments:before {
@@ -885,9 +852,6 @@ you can use the generic selector below, but it's slower:
 }
 .icon-wrench-2:before {
 	content: "\f0f3";
-}
-.icon-coffee-2:before {
-	content: "\f0f4";
 }
 .icon-food-2:before {
 	content: "\f0f5";
@@ -957,4 +921,49 @@ you can use the generic selector below, but it's slower:
 }
 .icon-bug:before {
 	content: "\f188";
+}
+.icon-home:before {
+	content: "\e00a";
+}
+ophone-off:before {
+	content: "\f131";
+}
+.icon-fire-extinguisher:before {
+	content: "\f134";
+}
+.icon-html5:before {
+	content: "\f13b";
+}
+.icon-anchor:before {
+	content: "\f13d";
+}
+.icon-euro:before {
+	content: "\f153";
+}
+.icon-gbp:before {
+	content: "\f154";
+}
+.icon-dollar:before {
+	content: "\f155";
+}
+.icon-yen:before {
+	content: "\f157";
+}
+.icon-linux:before {
+	content: "\f17c";
+}
+.icon-dribbble:before {
+	content: "\f17d";
+}
+.icon-female:before {
+	content: "\f182";
+}
+.icon-male:before {
+	content: "\f183";
+}
+.icon-bug:before {
+	content: "\f188";
+}
+.icon-home:before {
+	content: "\e00a";
 }

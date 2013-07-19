@@ -11,8 +11,8 @@ config = {
 		nodes: [
 			{ id: 'main', text: 'Current', group: true,  expanded: true, 
 				nodes: [
-					{ id: 'home-grid1',	text: 'Grid 1', icon: 'fa-home', selected: true },
-					{ id: 'home-grid2',	text: 'Grid 2', icon: 'fa-star-empty' }
+					{ id: 'home-grid1',	text: 'Grid 1', icon: 'icon-home', selected: true },
+					{ id: 'home-grid2',	text: 'Grid 2', icon: 'icon-star' }
 				]
 			}
 		],
