@@ -6,8 +6,8 @@
 **/
 
 require("conf.php");
-require("lib/dbConn.php");
-require('lib/w2lib.php');
+require("libs/dbConn.php");
+require('libs/w2lib.php');
 
 $db = new dbConnection('mysql');
 $db->connect($db_ip, $db_user, $db_pass, $db_name, $db_port);
