@@ -35,7 +35,7 @@ config = {
 			{ type: 'spacer', id: 'spacer1' },
 			{ id: 'admin', caption: 'Admin', type: 'button' },
 			{ type: 'break', id: 'br1' },
-			{ type: 'menu',  id: 'user-menu', caption: 'User Name', overlay: { left: 5 },
+			{ type: 'menu',  id: 'user-menu', caption: app.core.user.fname + ' ' + app.core.user.lname, overlay: { left: -10 },
 				items: [
 					{ id: 'prefs', text: 'Preferences', icon: 'icon-tools' },
 					{ id: 'logout', text: 'Log Out', icon: 'icon-switch' }

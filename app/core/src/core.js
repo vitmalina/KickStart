@@ -14,22 +14,22 @@ app.core = (function (obj) {
 	return obj;
 
 	function init() {
-		// if login page - do not init
-		if (document.location.href.indexOf('login.html') > 0) {
-			app.get(['app/conf/utils.js'], function (data) {
-				try { 
-					for (var i in data) eval(data[i]); 
-				} catch (e) {
-
-				}
-			});
-		} else {
+		// -- load utils
+		app.get(['app/conf/session.js'], function (data) {
+			try { for (var i in data) eval(data[i]); } catch (e) { }
+			// if login page - do not init
+			if (document.location.href.indexOf('login.html') > 0) return;
+			// -- if no user info
+			app.core.user = app.session();
+			if ($.isEmptyObject(app.core.user)) {
+				document.location = 'login.html';
+				return;
+			}
 			// -- load dependencies
 			var files = [
 				'app/conf/action.js', 
 				'app/conf/config.js', 
 				'app/conf/modules.js', 
-				'app/conf/utils.js', 
 				'app/conf/start.js' 
 			];
 			app.get(files, function (data) {
@@ -50,7 +50,7 @@ app.core = (function (obj) {
 				//	'<div style="font-size: 18px; color: #666; text-align: center; padding-top: 15px">Loading....</div>'} );
 				setTimeout(popin, 100);
 			});
-		}
+		});
 	}
 
 	function popin() {

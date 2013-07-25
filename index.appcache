@@ -1,9 +1,9 @@
 CACHE MANIFEST
-# Version 1.0
+# Version 0.5.0
 
 # Cache core items
 CACHE:
-./libs/jquery.min.js
+./libs/*
 
 # Do not cache all other requests
 NETWORK:
