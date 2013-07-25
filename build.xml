@@ -1,0 +1,49 @@
+<project name="kickstart" basedir="." default="build">
+	<property name="kickstart.version" value="/* KickStart 0.5 (c) http://w2ui.com/kickstart, vitmalina@gmail.com */"/>
+
+	<target name="clean">
+		<delete file="app/core/kickstart.css"/>
+		<delete file="app/core/kickstart.min.css"/>
+		<delete file="app/core/kickstart.js"/>
+		<delete file="app/core/kickstart.min.js"/>
+	</target>
+
+	<target name="css">
+		<!-- Compile app.less files -->
+		<echo message="LESS: app/core/less/app.less ==> app/core/kickstart.css"/>
+		<exec executable="lessc">
+			<arg value="app/core/less/app.less"/>
+			<arg value="app/core/kickstart.css"/>
+		</exec>
+		<!-- Minify app.css files -->
+		<echo message="CleanCSS: app/core/kickstart.css ==> app/core/kickstart.min.css"/>
+		<exec executable="cleancss" output="app/core/kickstart.min.css">
+			<arg value="app/core/kickstart.css"/>
+		</exec>
+		<echo message="Add Copyright Statement"/>
+		<replaceregexp match="^" replace="${kickstart.version}${line.separator}" flags="s">
+			<fileset dir="app/core" includes="kickstart.min.css" />
+		</replaceregexp>
+	</target>
+
+	<target name="js">
+		<echo message="Concatenate JS Files"/>
+		<concat destfile="app/core/kickstart.js">
+			 <filelist dir="app/core/src/" files="app.js core.js route.js"/>
+		</concat>
+
+		<!-- Minify JS files -->
+		<echo message="Uglify-JS: app/core/kickstart.js ==> app/core/kickstart.min.js"/>
+		<exec executable="uglifyjs" output="app/core/kickstart.min.js">
+			<arg value="app/core/kickstart.js"/>
+		</exec>
+		<echo message="Add Copyright Statement"/>
+		<replaceregexp match="^" replace="${kickstart.version}${line.separator}" flags="s">
+			<fileset dir="app/core" includes="kickstart.min.js" />
+		</replaceregexp>
+	</target>
+
+	<target name="build" depends="clean,js,css">
+		<echo message="Wrapping Up"/>
+	</target>
+</project>
