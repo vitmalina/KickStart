@@ -1,6 +1,5 @@
 // ===========================================
 // -- General Application Utilities
-if (typeof app == 'undefined') app = {};
 
 app.ajaxError = function (xhr, status, error) {
 	switch (xhr.status) {
@@ -24,12 +23,12 @@ app.login = function () {
 		data 	: {	login: login, password: password },
 		complete: function (xhr, status) {
 			if (status != 'success') {
-				$('#message').html('Cannot Login');
+				$('.login-box .login-msg').html('Cannot Login');
 				return;
 			}
 			var data = $.parseJSON(xhr.responseText);
 			if (data['status'] != 'success') {
-				$('#message').html('Incorrect Login or Password');
+				$('.login-box .login-msg').html('Incorrect Login or Password');
 				$('#password').val('').focus();
 				return;
 			}

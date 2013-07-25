@@ -3,7 +3,7 @@
 
 app.start = function () {
 	// load initial module
-	app.load('mod1');
+	app.load('home');
 	// open welcome screen
 	// setTimeout(function () {
 	// 	$().w2popup({
