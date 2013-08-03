@@ -11,7 +11,7 @@ app.action = function (target, info) {
 
 		case 'user-menu':
 			if (info.subItem && info.subItem.id == 'prefs') {
-				app.alert('User preferences');
+				w2alert('User preferences');
 			}
 			if (info.subItem && info.subItem.id == 'logout') {
 				app.logout();

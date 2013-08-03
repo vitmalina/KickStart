@@ -25,7 +25,7 @@ app.load = function (name, params, callBack) {
 	// check if was loaded before 
 	if (app.core.modules[name] && app.core.modules[name].isLoaded === true) {
 		if (typeof app[name].render == 'undefined') {
-			$.error('Loader: module "'+ name + '" has no render() method.');
+			console.log('ERROR: Loader: module "'+ name + '" has no render() method.');
 		} else {
 			app[name].render();
 			if (typeof callBack == 'function') callBack(true);
@@ -40,9 +40,9 @@ app.load = function (name, params, callBack) {
 			},
 			error 	: function (respObj, err, errData) {
 				if (err == 'error') {
-					$.error('Loader: module "'+ name +'" failed to load ('+ app.core.modules[name].url +').');
+					console.log('ERROR: Loader: module "'+ name +'" failed to load ('+ app.core.modules[name].url +').');
 				} else {
-					$.error('Loader: module "'+ name + '" is loaded ('+ app.core.modules[name].url +'), but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
+					console.log('ERROR: Loader: module "'+ name + '" is loaded ('+ app.core.modules[name].url +'), but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
 					app.core.modules[name].isLoaded = true;
 					if (typeof callBack == 'function') callBack(false);
 				}
@@ -69,7 +69,7 @@ app.get = function (files, callBack) {
 				dataType: 'text',
 				success : function (data, success, responseObj) {
 					if (success != 'success') {
-						$.error('Loader: error while getting a file '+ path +'.');
+						console.log('ERROR: Loader: error while getting a file '+ path +'.');
 						return;
 					}
 					bufferObj[index] = responseObj.responseText;
@@ -78,9 +78,9 @@ app.get = function (files, callBack) {
 				},
 				error : function (data, err, errData) {
 					if (err == 'error') {
-						$.error('Loader: failed to load '+ files[i] +'.');
+						console.log('ERROR: Loader: failed to load '+ files[i] +'.');
 					} else {
-						$.error('Loader: file "'+ files[i] + '" is loaded, but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
+						console.log('ERROR: Loader: file "'+ files[i] + '" is loaded, but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
 						bufferObj[index] = responseObj.responseText;
 						loadDone();
 					}
@@ -162,48 +162,5 @@ app.error = function (msg, title, callBack) {
 				  '</div></div>',
 		buttons : '<input type="button" value="Ok" onclick="$().w2popup(\'close\')" style="width: 60px">',
 		onClose : function () { if (typeof callBack == 'function') callBack(); }
-	});
-};
-
-app.alert = function (msg, title, callBack) {
-	if (typeof callBack == 'undefined' && typeof title == 'function') {
-		callBack = title; 
-		title = 'Notification';
-	}
-	if (typeof title == 'undefined') {
-		title = 'Notification';
-	}
-	$().w2popup({
-		width 	: 500,
-		height 	: 245,
-		title   : title,
-		body    : '<div class="centered"><div>'+ msg +'</div></div>',
-		buttons : '<input type="button" value="Ok" style="width: 60px" onclick="$().w2popup(\'close\');">',
-		onClose : function () { if (typeof callBack == 'function') callBack(); }
-	});
-};
-
-app.confirm = function (msg, title, callBack) { // can be called (msg, callBack)
-	if (typeof callBack == 'undefined' || typeof title == 'function') {
-		callBack = title; 
-		title = 'Confirmation';
-	}
-	if (typeof title == 'undefined') {
-		title = 'Confirmation';
-	}
-	$().w2popup({
-		width 	: 500,
-		height 	: 245,
-		title   : title,
-		showClose : false,
-		modal	: true,
-		body    : '<div class="centered"><div>'+ msg +'</div></div>',
-		buttons : '<input class="btn" type="button" value="No" style="width: 60px; margin-right: 5px">&nbsp;'+
-				  '<input class="btn" type="button" value="Yes" style="width: 60px">'
-	});
-	$('#w2ui-popup .btn').on('click', function (event) {
-		$().w2popup('close');
-		if (typeof callBack == 'function') callBack(this.value);
-		 event.stopPropagation();
 	});
 }
