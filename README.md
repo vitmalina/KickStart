@@ -6,7 +6,7 @@ starting point and provides structure for your next project. It includes:
 
 - jQuery
 - w2ui
-- font-awesome
+- icomoon (icon font)
 - less
 
 Directory Structure
