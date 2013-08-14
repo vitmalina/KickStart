@@ -1,16 +1,15 @@
+// ===================================
+// -- Init on start
+
 $(function () {
-	console.log('ready');
-	web_hash_change();
+	setTimeout(web_hash_change, 1);
+	$(window).on('hashchange', web_hash_change);
 });
 
 function initCode() {
 	$("textarea.javascript").each(function (index, el) {
 		var obj = this;
-		// resize to context
-		var ta = $(this);
-		$(ta).height(ta.scrollHeight + 2);
-		// init Code Mirror
-		var codeMirror = CodeMirror(
+		var cm  = CodeMirror(
 			function (elt) {
 		  		obj.parentNode.replaceChild(elt, obj);
 			}, {
@@ -21,6 +20,7 @@ function initCode() {
 				lineNumbers	: true
 			}
 		);
+		cm.setSize(null, cm.doc.height + 15);		
 	});
 }
 
@@ -34,6 +34,7 @@ function loadPage(url) {
 			}
 			$('#main').html(xhr.responseText);
 			initCode();
+			setTimeout(initCode, 1000);
 		}
 	});
 
@@ -102,4 +103,3 @@ function web_hash_change () {
 			break;
 	}
 }
-$(window).on('hashchange', web_hash_change);
