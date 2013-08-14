@@ -1,49 +1,39 @@
-<project name="kickstart" basedir="." default="build">
-	<property name="kickstart.version" value="/* KickStart 0.5 (c) http://w2ui.com/kickstart, vitmalina@gmail.com */"/>
+<project basedir="." default="build">
+	<property name="project"	value="KickStart"/>
+	<property name="build.dir"	value="BUILD"/>
+
+	<property name="ftp-host"	value=""/>
+	<property name="ftp-user"	value=""/>
+	<property name="ftp-pass"	value=""/>
+	<property name="ftp-dir"	value=""/>
 
 	<target name="clean">
-		<delete file="app/core/kickstart.css"/>
-		<delete file="app/core/kickstart.min.css"/>
-		<delete file="app/core/kickstart.js"/>
-		<delete file="app/core/kickstart.min.js"/>
+		<delete dir="${build.dir}"/>
 	</target>
 
-	<target name="css">
-		<!-- Compile app.less files -->
-		<echo message="LESS: app/core/less/app.less ==> app/core/kickstart.css"/>
-		<exec executable="lessc">
-			<arg value="app/core/less/app.less"/>
-			<arg value="app/core/kickstart.css"/>
-		</exec>
-		<!-- Minify app.css files -->
-		<echo message="CleanCSS: app/core/kickstart.css ==> app/core/kickstart.min.css"/>
-		<exec executable="cleancss" output="app/core/kickstart.min.css">
-			<arg value="app/core/kickstart.css"/>
-		</exec>
-		<echo message="Add Copyright Statement"/>
-		<replaceregexp match="^" replace="${kickstart.version}${line.separator}" flags="s">
-			<fileset dir="app/core" includes="kickstart.min.css" />
-		</replaceregexp>
+	<target name="build" depends="clean">
+		<mkdir dir="${build.dir}"/>
+		<!-- Archive Only Relevant File -->
+		<tar destfile="${build.dir}/${project}.tar">
+			<tarfileset dir=".">
+				<exclude name="docs/**"/>
+				<exclude name="BUILD/**"/>
+				<exclude name="setup/**"/>
+				<exclude name="test/**"/>
+				<exclude name="tmp/**"/>
+				<exclude name="build.xml"/>
+				<exclude name="package.json"/>				
+				<exclude name="README.md"/>				
+			</tarfileset>
+		</tar>
+		<gzip src="${build.dir}/${project}.tar" destfile="${build.dir}/${project}.tar.gz"/>
 	</target>
 
-	<target name="js">
-		<echo message="Concatenate JS Files"/>
-		<concat destfile="app/core/kickstart.js">
-			 <filelist dir="app/core/src/" files="app.js core.js route.js"/>
-		</concat>
-
-		<!-- Minify JS files -->
-		<echo message="Uglify-JS: app/core/kickstart.js ==> app/core/kickstart.min.js"/>
-		<exec executable="uglifyjs" output="app/core/kickstart.min.js">
-			<arg value="app/core/kickstart.js"/>
-		</exec>
-		<echo message="Add Copyright Statement"/>
-		<replaceregexp match="^" replace="${kickstart.version}${line.separator}" flags="s">
-			<fileset dir="app/core" includes="kickstart.min.js" />
-		</replaceregexp>
-	</target>
-
-	<target name="build" depends="clean,js,css">
-		<echo message="Wrapping Up"/>
+	<target name="deploy" depends="clean,build">
+		<!-- Upload to FTP -->
+		<scp file="${build.dir}/${project}.tar.gz" todir="${ftp-user}:${ftp-pass}@${ftp-host}:${ftp-dir}" trust="true"/>
+		<!-- Extract uploaded file -->
+		<sshexec host="${ftp-host}" username="${ftp-user}" password="${ftp-pass}"
+			command="cd ${ftp-dir}; tar -xzvf ${project}.tar.gz > /dev/null; rm -f ${ftp-dir}/${project}.tar.gz;"/>
 	</target>
 </project>
