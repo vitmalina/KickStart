@@ -1,9 +1,7 @@
 // ===========================================
-// -- Application start up actions
+// -- This function is called on start
 
 app.start = function () {
-	// load initial module
-	app.load('home');
 	// open welcome screen
 	// setTimeout(function () {
 	// 	$().w2popup({

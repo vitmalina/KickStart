@@ -1,5 +1,5 @@
 // ============================================
-// -- Main Action Loop
+// -- Main Action Loop for app layout, toolbar, tabs
 
 app.action = function (target, info) {
 

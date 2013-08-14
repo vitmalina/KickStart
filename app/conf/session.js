@@ -1,6 +1,10 @@
 // ===========================================
 // -- General Application Utilities
 
+// ===========================================
+// This function is called on start and if it returns empty object 
+// the system will call app.logout()
+
 app.session = function () {
 
 	// --- CLIENT ONLY CODE ---
@@ -10,7 +14,25 @@ app.session = function () {
 	}
 
 	// --- REPLACE: SERVER SIDE GET USER INFO CODE
+
+	// var userInfo;
+	// $.ajax({
+	// 	url 	: 'server/user',
+	// 	type 	: 'post',
+	//	async	: false,
+	// 	complete: function (xhr, status) {
+	// 		if (status != 'success') {
+	// 			app.error('Error while retrieving user information');
+	// 			return;
+	// 		}
+	// 		userInfo = $.parseJSON(xhr.responseText);
+	// 	}
+	// });
+	// return userInfo;
 }
+
+// ===========================================
+// This function is only called in login.html
 
 app.login = function () {
 	var login = $('#login').val().toLowerCase();
@@ -51,14 +73,25 @@ app.login = function () {
 	// });
 }
 
+// ===========================================
+// This function is only called in login.html
+
 app.logout = function () {
+
+	// --- CLIENT ONLY CODE ---
+
+	delete sessionStorage['ks-user'];
 
 	// --- REPLACE: SERVER SESSION REMOVAL CODE ---
 
+	// $.ajax({ url : 'server/logout' });
+
 	app.core.user = {};
-	delete sessionStorage['ks-user'];
 	document.location = 'login.html';
 }
+
+// ===========================================
+// This function is only called in login.html
 
 app.forgot = function () {
 	$().w2popup({
@@ -89,6 +122,10 @@ app.forgot = function () {
 	});
 
 }
+
+// ===========================================
+// This function is only on any app.ajax() error
+// which provide a common route for all server calls
 
 app.ajaxError = function (xhr, status, error) {
 	switch (xhr.status) {
