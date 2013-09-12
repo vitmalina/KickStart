@@ -104,20 +104,22 @@ app.forgot = function () {
 				  '<input type="button" value="Request" id="request">',
 		width	: 450,
 		height 	: 220,
-		onOpen	: function () {
-			$('#w2ui-popup #email')[0].focus();
-			$('#w2ui-popup #request').on('click', function () {
-				var email = $('#w2ui-popup #email').val();
-				if (email == '' || email == null) {
-					$('#w2ui-popup #email').w2tag('Cannot be empty')[0].focus();
-					return; 
-				}
-				$().w2popup('close');
+		onOpen	: function (event) {
+			event.onComplete = function () {
+				$('#w2ui-popup #email')[0].focus();
+				$('#w2ui-popup #request').on('click', function () {
+					var email = $('#w2ui-popup #email').val();
+					if (email == '' || email == null) {
+						$('#w2ui-popup #email').w2tag('Cannot be empty')[0].focus();
+						return; 
+					}
+					$().w2popup('close');
 
-				// --- REPLACE: REQUEST PASSWORD RESET ---
+					// --- REPLACE: REQUEST PASSWORD RESET ---
 
-				console.log('Request password reset for '+ email);
-			});
+					console.log('Request password reset for '+ email);
+				});
+			}
 		}
 	});
 
