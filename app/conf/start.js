@@ -2,6 +2,13 @@
 // -- This function is called on start
 
 app.start = function () {
+	// update user name
+	w2ui.app_toolbar.set('user', { 
+		caption : app.core.user.fname + ' ' + app.core.user.lname 
+	});
+	// load first module
+	app.load('home');
+	
 	// open welcome screen
 	// setTimeout(function () {
 	// 	$().w2popup({

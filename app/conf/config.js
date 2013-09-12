@@ -32,15 +32,10 @@ config = {
 			{ id: 'invoices', caption: 'Invoices', type: 'radio', icon: 'icon-dollar' },
 			{ id: 'projects', caption: 'Projects', type: 'radio', icon: 'icon-tasks' },
 			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'icon-flag' },
-			{ type: 'spacer', id: 'spacer1' },
-			{ id: 'admin', caption: 'Admin', type: 'button' },
-			{ type: 'break', id: 'br1' },
-			{ type: 'menu',  id: 'user-menu', caption: app.core.user.fname + ' ' + app.core.user.lname, overlay: { left: -10 },
-				items: [
-					{ id: 'prefs', text: 'Preferences', icon: 'icon-tools' },
-					{ id: 'logout', text: 'Log Out', icon: 'icon-switch' }
-				]
-			}
+			{ id: 'spacer1', type: 'spacer' },
+			{ id: 'user', caption: '--', type: 'button' },
+			{ id: 'br1', type: 'break' },
+			{ id: 'logout', caption: 'Logout', type: 'button', icon: 'icon-switch' }
 		],
 		onClick: app.action
 	},

@@ -9,13 +9,12 @@ app.action = function (target, info) {
 			app.load('home');
 			break;
 
-		case 'user-menu':
-			if (info.subItem && info.subItem.id == 'prefs') {
-				w2alert('User preferences');
-			}
-			if (info.subItem && info.subItem.id == 'logout') {
-				app.logout();
-			}
+		case 'user':
+			w2alert('User preferences');
+			break;
+
+		case 'logout':
+			app.logout();
 			break;
 
 		default:
