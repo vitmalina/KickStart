@@ -34,8 +34,8 @@ configs = {
 		],
 		toolbar: {
 			items: [ 
-				{ type: 'add', caption: 'Add User', img: 'icon-circle_plus' },
-				{ type: 'delete', caption: 'Delete', img: 'icon-remove_2' }
+				{ id: 'add-user', type: 'add', caption: 'Add User', img: 'icon-circle_plus' },
+				{ id: 'delete-user', type: 'delete', caption: 'Delete', img: 'icon-remove_2' }
 			],
 		},
 		onAdd: function (target, data) {
