@@ -14,7 +14,7 @@ model = {
 	},
 	
 	fetch: function (callBack) {
-		app.ajax({
+		$.ajax({
 			type: 'POST',
 			url: 'action',
 			data: {
@@ -26,7 +26,7 @@ model = {
 	},
 	
 	save: function() {
-		app.ajax({
+		$.ajax({
 			type: 'POST',
 			url: 'action',
 			data: {

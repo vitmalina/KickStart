@@ -1,5 +1,21 @@
 // ===========================================
-// -- General Application Utilities
+// -- Application session functions
+
+// ===========================================
+// Global AJAX Error catcher
+
+$(document).ajaxError(function (event, xhr, options) {
+	switch (xhr.status) {
+		case 403:
+			document.location = 'login.html';
+			return;
+			break;
+		case 404: 
+			error = 'File Not Found - '+ xhr.url;
+			break;
+	}
+	app.error(xhr.status + ': '+ error);
+});
 
 // ===========================================
 // This function is called on start and if it returns empty object 
@@ -123,21 +139,4 @@ app.forgot = function () {
 		}
 	});
 
-}
-
-// ===========================================
-// This function is only on any app.ajax() error
-// which provide a common route for all server calls
-
-app.ajaxError = function (xhr, status, error) {
-	switch (xhr.status) {
-		case 403:
-			document.location = 'login.html';
-			return;
-			break;
-		case 404: 
-			error = 'File Not Found - '+ xhr.url;
-			break;
-	}
-	app.error(xhr.status + ': '+ error);
 }
