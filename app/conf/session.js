@@ -57,11 +57,11 @@ app.login = function () {
 	// --- CLIENT ONLY CODE ---
 
 	if (login == 'admin' && pass == 'admin') {
-		app.core.user = {
+		app.user = {
 			fname: 'Jane',
 			lname: 'Doe'
 		}
-		sessionStorage['ks-user'] = JSON.stringify(app.core.user);
+		sessionStorage['ks-user'] = JSON.stringify(app.user);
 		document.location = 'index.html';
 	} else {
 		$('.login-box .login-msg').html('Incorrect Login or Password');
@@ -102,7 +102,7 @@ app.logout = function () {
 
 	// $.ajax({ url : 'server/logout' });
 
-	app.core.user = {};
+	app.user = {};
 	document.location = 'login.html';
 }
 

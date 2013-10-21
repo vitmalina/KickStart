@@ -4,10 +4,12 @@
 app.start = function () {
 	// update user name
 	w2ui.app_toolbar.set('user', { 
-		caption : app.core.user.fname + ' ' + app.core.user.lname 
+		caption : app.user.fname + ' ' + app.user.lname 
 	});
 	// load first module
-	app.load('home');
+	app.load('home', function () {
+		app.home.render();
+	});
 	
 	// open welcome screen
 	// setTimeout(function () {

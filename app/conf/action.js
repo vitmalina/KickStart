@@ -1,11 +1,10 @@
 // ============================================
 // -- Main Action Loop for app layout, toolbar, tabs
 
-app.action = function (target, info) {
-
-	switch(target) {
+app.action = function (event) {
+	
+	switch(event.target) {
 		case 'home':
-			app.route.set('home');
 			app.load('home');
 			break;
 

@@ -1,12 +1,15 @@
 // ============================================
 // -- Application Modules
 
-modules = {	
+app.modules = {	
 	home : {
-		autoLoad: true, // will load on start unless there is a hash (...#/mod_name)
-		url	: "app/home/home.js"
+		url		: "app/home/home.js",
+		assets	: [
+			"app/home/home-config.js"
+		]
 	},
 	mod1 : {
-		url: "app/mod1/mod1.js"
+		url		: "app/mod1/mod1.js",
+		assets	: []
 	}
 }

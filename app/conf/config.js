@@ -1,7 +1,7 @@
 // ============================================
 // -- Application Configuration
 
-config = {
+app.config = {
 
 	// --- General settings
 	show: {
