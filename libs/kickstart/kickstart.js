@@ -1,9 +1,11 @@
-var app = (function (app) {
+/* kicstart 0.x (c) http://w2ui.com/kickstart, vitmalina@gmail.com */
+var app = (function () {
 	// private scope
 	var timer_start;
 	var timer_lap;
 
 	// public scope
+	var app	= {};
 	app.user 		= {};
 	app.config 		= {};
 	app.modules 	= {};
@@ -30,6 +32,7 @@ var app = (function (app) {
 	*/
 
 	function header(msg) {
+		$(document).attr('title', $('<div/>').html(msg).text());
 		$('#app-header').html(msg);
 	}
 
@@ -48,81 +51,122 @@ var app = (function (app) {
 	// ===========================================
 	// -- Register module
 
-	function register(name, module) {
+	function register(name, moduleFunction) {
 		// check if modules id defined
-		if (!app.modules.hasOwnProperty(name)) {
-			console.log('ERROR: Module '+ name +' is not defined. You need to define the module in /app/conf/modules.js');
+		if (app.hasOwnProperty(name)) {
+			console.log('ERROR: Namespace '+ name +' is already registered');
 			return false;
 		}
-		// check if the module already registered
-		if (app.hasOwnProperty(name) && app[name].render == 'function') {
-			console.log('ERROR: Module '+ name +' is already registered.');
-			return false;
+		// register module
+		var mod = null;
+		for (var m in app.modules) {
+			if (app.modules[m].name == name) mod = app.modules[m];
 		}
-		// load module assets
-		app.get(app.modules[name].assets, function (files) {
-			// initiate module
-			var callBack = app[name].callBack;
-			app[name] = module(files, app[name].params);
-			callBack();
-		});
+		// init module
+		app[name] = moduleFunction(mod.files, mod);
+		return;
 	}
 
 	// ===========================================
-	// -- Loads modules or calls .render()
-	// -- if module was previously loaded
+	// -- Load Modules
 
-	function load(names, params, callBack) {
+	function load(names) { // returns promise
 		if (!$.isArray(names)) names = [names];
-		if (typeof params == 'function') {
-			callBack = params;
-			params   = {};
-		}
-		if (!params) params = {};
 		var modCount = names.length;
-		for (var n in names) {
-			var name = names[n];
-			if (typeof app.modules[name] == 'undefined') {
-				modCount--;
-				console.log('ERROR: module "'+ name +'" is not defined. Define it in app/conf/modules.js.');
-				return;
+		var failed	 = false;
+		var promise  = {
+			ready: function (callBack) { 	// a module loaded
+				promise._ready = callBack;
+				return promise;
+			},
+			fail: function (callBack) { 	// a module loading failed
+				promise._fail = callBack;
+				return promise;
+			},
+			done: function (callBack) {		// all loaded
+				promise._done = callBack;
+				return promise;
+			},
+			always: function (callBack) {
+				promise._always = callBack;
+				return promise;
 			}
-			// init module and pass params
-			app[name] = app[name] || {};
-			app[name].params = $.extend({}, params);
-			app[name].callBack = callBack;
-			// check if was loaded before 
-			if (app.modules[name] && app.modules[name].isLoaded === true) {
-				modCount--;
-				if (typeof app[name].render == 'undefined') {
-					console.log('ERROR: Loader: module "'+ name + '" has no render() method.');
-				} else {
-					app[name].render();
+		};
+		setTimeout(function () {
+			for (var n in names) {
+				var name = names[n];
+				// check if module is already loaded
+				if (typeof app.modules[name] != 'undefined') {
+					modCount--;
 					isFinished();
-				}
-			} else {
-				$.ajax({ url : app.modules[name].url, dataType: "script" })
-					.always(function () { // arguments are either same as done or fail
-						modCount--;
-					})
-					.done(function (data, status, xhr) {
-						app.modules[name].isLoaded = true;
-						isFinished();
-					})
-					.fail(function (xhr, err, errData) {
-						if (err == 'error') {
-							console.log('ERROR: Loader: module "'+ name +'" failed to load ('+ app.modules[name].url +').');
-						} else {
-							console.log('ERROR: Loader: module "'+ name + '" is loaded ('+ app.modules[name].url +'), but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
-							app.modules[name].isLoaded = true;
+				} else { // load config
+					$.ajax({ url : name + '/module.json', dataType: "json" })
+						.done(function (data, status, xhr) {
+							if (data.main.substr(0, 1) != '/') data.main = name + '/' + data.main;
+							for (var a in data.assets) {
+								if (data.assets[a].substr(0, 1) != '/') data.assets[a] = name + '/' + data.assets[a];
+							}
+							app.modules[name] = data;
+							// load dependencies
+							app.get(data.assets.concat([data.main]), function (files) {
+								var main = files[data.main];
+								delete files[data.main];
+								// register assets
+								app.modules[name].files = files;
+								app.modules[name].status = 'loaded';
+								// execute main file
+								try { 
+									eval(main); 
+								} catch (e) { 
+									failed = true;
+									// find error line
+									var err = e.stack.split('\n');
+									var tmp = err[1].match(/<anonymous>:([\d]){1,10}:([\d]{1,10})/gi);
+									if (tmp) tmp = tmp[0].split(':');
+									if (tmp) {
+										// display error
+										console.error('ERROR: ' + err[0] + ' ==> ' + data.main + ', line: '+ tmp[1] + ', character: '+ tmp[2]);
+										console.log(e.stack);
+									} else {
+										console.error('ERROR: ' + data.main);
+										console.log(e.stack);
+									}
+									if (typeof app.config.fail == 'function') app.config.fail(app.modules[name]);
+									if (typeof promise._fail == 'function') promise._fail(app.modules[name]);
+								}
+								// check ready
+								if (typeof app.config.ready == 'function') app.config.ready(app.modules[name]);
+								if (typeof promise._ready == 'function') promise._ready(app.modules[name]);
+								modCount--;
+								isFinished();
+							});
+						})
+						.fail(function (xhr, err, errData) {
+							app.modules[name] = {
+								status	: 'error',
+								msg		: 'Error while loading cofing'
+							}
+							failed = true;
+							if (typeof app.config.fail == 'function') app.config.fail(app.modules[name]);
+							if (typeof promise._fail == 'function') promise._fail(app.modules[name]);
+							modCount--;
 							isFinished();
-						}
-					});
+						});
+				}
 			}
-		}
+		}, 1);
+		// promise need to be returned immidiately
+		return promise;
 
 		function isFinished() {
-			if (typeof callBack == 'function' && modCount == 0) callBack(true);
+			if (modCount == 0) {
+				if (failed !== true) {
+					if (typeof app.config.done == 'function') app.config.done(app.modules[name]);
+					if (typeof promise._done == 'function') promise._done(app.modules[name]);
+				}
+				if (typeof app.config.always == 'function') app.config.always(app.modules[name]);
+				if (typeof promise._always == 'function') promise._always();
+			}
 		}
 	}
 
@@ -144,19 +188,19 @@ var app = (function (app) {
 					dataType: 'text',
 					success : function (data, success, responseObj) {
 						if (success != 'success') {
-							console.log('ERROR: Loader: error while getting a file '+ path +'.');
+							console.log('ERROR: error while getting a file '+ path +'.');
 							return;
 						}
-						bufferObj[index] = responseObj.responseText;
+						bufferObj[path] = responseObj.responseText;
 						loadDone();
 
 					},
 					error : function (data, err, errData) {
 						if (err == 'error') {
-							console.log('ERROR: Loader: failed to load '+ files[i] +'.');
+							console.log('ERROR: failed to load '+ files[i] +'.');
 						} else {
-							console.log('ERROR: Loader: file "'+ files[i] + '" is loaded, but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
-							bufferObj[index] = responseObj.responseText;
+							console.log('ERROR: file "'+ files[i] + '" is loaded, but with a parsing error(s) in line '+ errData.line +': '+ errData.message);
+							bufferObj[path] = responseObj.responseText;
 							loadDone();
 						}
 					}
@@ -184,6 +228,19 @@ var app = (function (app) {
 	// -- INTERNAL METHODS
 
 	function init() {
+		if (document.location.href.indexOf('login.html') == -1) {
+			setTimeout(function () {
+				w2popup.open({ 
+					width	: 300,
+					height 	: 60,
+					modal 	: true, 
+					body	: '<div style="text-align: center; font-size: 16px; padding-top: 20px; padding-left: 35px;">'+
+							  '		<div class="w2ui-spinner" style="width: 26px; height: 26px; position: absolute; margin-left: -35px; margin-top: -5px;"></div>'+
+							  '		Loading...'+
+							  '</div>'
+				});
+			}, 1);
+		}
 		// -- load utils
 		app.get(['app/conf/session.js'], function (data) {
 			try { for (var i in data) eval(data[i]); } catch (e) { }
@@ -198,7 +255,6 @@ var app = (function (app) {
 			// -- load dependencies
 			var files = [
 				'app/conf/action.js', 
-				'app/conf/modules.js', 
 				'app/conf/config.js', 
 				'app/conf/start.js' 
 			];
@@ -208,45 +264,49 @@ var app = (function (app) {
 				} catch (e) {
 					app.include(files);
 				}
-				// init application UI
-				$('#app-toolbar').w2toolbar(app.config.app_toolbar);
-				$('#app-tabs').w2tabs(app.config.app_tabs);
-				$('#app-main').w2layout(app.config.app_layout);
-				// popin
-				//$().w2popup({ width: 300, height: 65, body: 
-				//	'<div style="font-size: 18px; color: #666; text-align: center; padding-top: 15px">Loading....</div>'} );
-				setTimeout(function () {
-					$('#app-container').fadeIn(200);
-					//$('#app-container').css({ '-webkit-transform': 'scale(1)', opacity: 1 });
+				initApp();
+				return;
+
+				function initApp() {
+					// check if ready
+					if ($('#app-main').length == 0) {
+						setTimeout(initApp, 100);
+						return;
+					}
+					// init application UI
+					$('#app-toolbar').w2toolbar(app.config.app_toolbar);
+					$('#app-tabs').w2tabs(app.config.app_tabs);
+					$('#app-main').w2layout(app.config.app_layout);
+					var top = 0;
+					// app toolbar
+					if (app.config.show.toolbar) {
+						$('#app-toolbar').css('height', '30px').show();
+						top += 30;
+					} else {
+						$('#app-toolbar').hide();
+					}
+					// app tabs
+					if (app.config.show.tabs) {
+						$('#app-tabs').css({ 'top': top + 'px', 'height': '30px' }).show();
+						top += 30;
+					} else {
+						$('#app-tabs').hide();
+					}
+					$('#app-top').css('height', top + 'px').show();
+					// app header
+					if (app.config.show.header) {
+						$('#app-header').css({ 'top': top + 'px', 'height': '60px' }).show();
+						top += 60;
+					} else {
+						$('#app-header').hide();
+					}
+					$('#app-main').css('top', top + 'px');
 					setTimeout(function () {
-						var top = 0;
-						// app toolbar
-						if (app.config.show.toolbar) {
-							$('#app-toolbar').css('height', '30px').show();
-							top += 30;
-						} else {
-							$('#app-toolbar').hide();
-						}
-						// app tabs
-						if (app.config.show.tabs) {
-							$('#app-tabs').css({ 'top': top + 'px', 'height': '30px' }).show();
-							top += 30;
-						} else {
-							$('#app-tabs').hide();
-						}
-						$('#app-top').css('height', top + 'px').show();
-						// app header
-						if (app.config.show.header) {
-							$('#app-header').css({ 'top': top + 'px', 'height': '60px' }).show();
-							top += 60;
-						} else {
-							$('#app-header').hide();
-						}
-						$('#app-main').css('top', top + 'px');
-						// init app
-						if (typeof app.start == 'function') app.start();
-					}, 200);
-				}, 100);
+						$('#app-container').fadeIn(300);
+						if (typeof app.start == 'function') app.start(); // init app
+						setTimeout(function () { w2popup.close(); }, 300);
+					}, 300);
+				}
 			});
 		});
 	}
