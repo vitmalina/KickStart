@@ -1,10 +1,17 @@
 // ===========================================
 // -- Application session functions
 
+//app.context = 'http://w2ui.com:3000';
+app.context = 'http://localhost:3000';
+
+var loc = String(document.location);
+if (loc.substr(0, 5) != 'file:' && loc.substr(0, 16) != 'http://localhost') app.context = '';
+
 // ===========================================
 // Global AJAX Error catcher
 
 $(document).ajaxError(function (event, xhr, options) {
+	var error = '';
 	switch (xhr.status) {
 		case 403:
 			document.location = 'login.html';
@@ -14,7 +21,10 @@ $(document).ajaxError(function (event, xhr, options) {
 			error = 'File Not Found - '+ xhr.url;
 			break;
 	}
-	app.error(xhr.status + ': '+ error);
+	setTimeout(function () { 
+		if (xhr.status == 0) return; // canceled request
+		w2alert('Error', xhr.status + ': '+ error);
+	}, 100);
 });
 
 // ===========================================

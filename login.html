@@ -3,17 +3,18 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="libs/w2ui/w2ui.css" />
+	<link rel="stylesheet" type="text/css" href="libs/w2ui/w2ui.min.css" />
 	<link rel="stylesheet" type="text/css" href="libs/kickstart/kickstart.min.css"/>
+	<link rel="stylesheet" type="text/css" href="app/conf/global.css"/>
 	<script type="text/javascript" src="libs/jquery/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="libs/w2ui/w2ui.js"></script>
-	<script type="text/javascript" src="libs/kickstart/kickstart.min.js"></script>
+	<script type="text/javascript" src="libs/w2ui/w2ui.min.js"></script>
+	<script type="text/javascript" src="libs/kickstart/kickstart.js"></script>
 </head>
 <body>
 	<div class="login-box">
 		<div class="login-msg">&nbsp;</div>
 		<br><br>		
-		<div class="login-center">
+		<div class="login-center" style="position: relative">
 			<div class="login-img">
 				<div> Welcome </div>
 			</div>
@@ -25,7 +26,7 @@
 				<input type="password" id="password" size="25" 
 					onkeypress="$('#message').html('&nbsp;'); if (event.keyCode == 13) app.login();"> 
 				<div style="height: 25px; font-size: 1px;">&nbsp;</div> 
-				<input type="button" value="Login" style="width: 60px;" onclick="app.login()"> 
+				<button id="submit" class="btn" style="width: 60px;" onclick="app.login()">Login</button>
 			</div>
 			<div style="text-align: center; padding-top: 10px;">
 			</div>

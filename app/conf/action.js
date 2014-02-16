@@ -1,11 +1,16 @@
 // ============================================
 // -- Main Action Loop for app layout, toolbar, tabs
 
-app.action = function (event) {
+app.action = function (target, info) {
 	
-	switch(event.target) {
+	switch(target) {
+
 		case 'home':
-			app.load('home');
+			app.route.go('/home');
+			break;
+
+		case 'project':
+			app.route.go('/project');
 			break;
 
 		case 'user':
@@ -18,6 +23,7 @@ app.action = function (event) {
 
 		default:
 			app.header(target);
+			w2ui['app_layout'].hide('right', true);
 			w2ui['app_layout'].content('main', '<div style="text-align: center; width: 100%; padding: 40px; font-size: 16px; color: #999;">Under Constructions</div>');
 			console.log('No event handler for '+ target +'.');
 			break;

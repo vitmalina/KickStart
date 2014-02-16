@@ -2,12 +2,17 @@
 // -- Application Configuration
 
 app.config = {
-
 	// --- General settings
 	show: {
 		toolbar : true,
 		tabs 	: false,
 		header 	: true
+	},
+
+	fail: function (mod) {
+		w2alert('Failed to load module '+ mod.name, 'Error');
+		console.log('ERROR: Failed to load module');
+		console.log(mod);
 	},
 
 	// --- Application  Layout
@@ -29,9 +34,7 @@ app.config = {
 		name 	: 'app_toolbar',
 		items 	: [
 			{ id: 'home', caption: 'Home', type: 'radio', icon: 'icon-home', checked: true },
-			{ id: 'invoices', caption: 'Invoices', type: 'radio', icon: 'icon-dollar' },
-			{ id: 'projects', caption: 'Projects', type: 'radio', icon: 'icon-tasks' },
-			{ id: 'customers', caption: 'Customers', type: 'radio', icon: 'icon-flag' },
+			{ id: 'project', caption: 'Projects', type: 'radio', icon: 'icon-tasks' },
 			{ id: 'spacer1', type: 'spacer' },
 			{ id: 'user', caption: '--', type: 'button' },
 			{ id: 'br1', type: 'break' },
