@@ -1,0 +1,7 @@
+{
+	"name"	: "project",
+	"main"	: "project.js",
+	"assets": [
+		"project-config.js"
+	]
+}
