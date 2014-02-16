@@ -11,12 +11,18 @@ config = {
 		nodes: [
 			{ id: 'main', text: 'Current', group: true,  expanded: true, 
 				nodes: [
-					{ id: 'home-grid1',	text: 'Grid 1', icon: 'icon-home', selected: true },
-					{ id: 'home-grid2',	text: 'Grid 2', icon: 'icon-star' }
+					{ id: 'home-grid1',	text: 'Grid 1', icon: 'icon-home', selected: true, route: '/home' },
+					{ id: 'home-grid2',	text: 'Grid 2', icon: 'icon-star', route: '/home/grid2' }
 				]
 			}
 		],
-		onClick: app.home.action
+		onClick: function (event) {
+			if (event.object.route) {
+				app.route.go(event.object.route);
+			} else {
+				action.call(this, event);
+			}
+		}
 	},
 
 	home_grid : { 
@@ -36,6 +42,19 @@ config = {
 				render: function(record) { return record.isTemplate ? 'yes' : ''; } },
 			{ field: 'isOnline', caption: 'Online', size: '70px', attr: 'align=center', hidden: true,
 				render: function(record) { return record.isOnline ? 'yes' : ''; } },
+		]
+	}, 
+
+	home_grid2 : { 
+		name	: 'home_grid2', 
+		style	: 'border: 0px',
+		show	: {
+			header	: false,
+			toolbar	: true,
+			footer	: true,
+		},
+		columns: [				
+			{ field: 'name', caption: 'Name', size: '100%', sortable: true, searchable: true }
 		]
 	}
 }
