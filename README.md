@@ -1,4 +1,4 @@
-KickStart (v 0.5)
+KickStart (v 0.1)
 ==================
 
 Front-end template for building desktop-like SPAs. This repository servers as a 
