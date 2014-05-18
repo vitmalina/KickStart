@@ -9,6 +9,7 @@ var app = (function () {
 	app.user 		= {};
 	app.config 		= {};
 	app.modules 	= {};
+	app.server		= 'server/php'; // The folder for server ajax calls, 'none' if there aren't. 'server/php' for default php server.
 	app.header		= header;
 	app.timer		= timer;
 	app.lap			= lap;

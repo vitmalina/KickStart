@@ -33,28 +33,31 @@ $(document).ajaxError(function (event, xhr, options) {
 
 app.session = function () {
 
-	// --- CLIENT ONLY CODE ---
+	if ( app.server == 'none' ) { 
+		// --- CLIENT ONLY CODE ---
 
-	if (typeof sessionStorage['ks-user'] != 'undefined') {
-		return $.parseJSON(sessionStorage['ks-user']);
+		if (typeof sessionStorage['ks-user'] != 'undefined') {
+			return $.parseJSON(sessionStorage['ks-user']);
+		}
+
+	} else {
+		// --- REPLACE: SERVER SIDE GET USER INFO CODE
+
+		var userInfo;
+		$.ajax({
+			url 	: app.server + '/user',
+			type 	: 'post',
+			async	: false,
+			complete: function (xhr, status) {
+				if (status != 'success') {
+					app.error('Error while retrieving user information');
+					return;
+				}
+				userInfo = $.parseJSON(xhr.responseText);
+			}
+		});
+		return userInfo;
 	}
-
-	// --- REPLACE: SERVER SIDE GET USER INFO CODE
-
-	// var userInfo;
-	// $.ajax({
-	// 	url 	: 'server/user',
-	// 	type 	: 'post',
-	//	async	: false,
-	// 	complete: function (xhr, status) {
-	// 		if (status != 'success') {
-	// 			app.error('Error while retrieving user information');
-	// 			return;
-	// 		}
-	// 		userInfo = $.parseJSON(xhr.responseText);
-	// 	}
-	// });
-	// return userInfo;
 }
 
 // ===========================================
@@ -64,39 +67,42 @@ app.login = function () {
 	var login = $('#login').val().toLowerCase();
 	var pass  = $('#password').val().toLowerCase();
 
-	// --- CLIENT ONLY CODE ---
+	if ( app.server == 'none' ) { 
+		// --- CLIENT ONLY CODE ---
 
-	if (login == 'admin' && pass == 'admin') {
-		app.user = {
-			fname: 'Jane',
-			lname: 'Doe'
+		if (login == 'admin' && pass == 'admin') {
+			app.user = {
+				fname: 'Jane',
+				lname: 'Doe'
+			}
+			sessionStorage['ks-user'] = JSON.stringify(app.user);
+			document.location = 'index.html';
+		} else {
+			$('.login-box .login-msg').html('Incorrect Login or Password');
 		}
-		sessionStorage['ks-user'] = JSON.stringify(app.user);
-		document.location = 'index.html';
-	} else {
-		$('.login-box .login-msg').html('Incorrect Login or Password');
+
+	} else { 
+		// --- REPLACE: SERVER SIDE LOGIN CODE ---
+
+		$.ajax({
+			url 	: app.server + '/login',
+			type 	: 'post',
+			data 	: {	login: login, pass: pass },
+			complete: function (xhr, status) {
+				if (status != 'success') {
+					$('.login-box .login-msg').html('Cannot Login');
+					return;
+				}
+				var data = $.parseJSON(xhr.responseText);
+				if (data['status'] != 'success') {
+					$('.login-box .login-msg').html('Incorrect Login or Password');
+					$('#password').val('').focus();
+					return;
+				}
+				document.location = 'index.html';
+			}
+		});
 	}
-
-	// --- REPLACE: SERVER SIDE LOGIN CODE ---
-
-	// $.ajax({
-	// 	url 	: 'server/login',
-	// 	type 	: 'post',
-	// 	data 	: {	login: login, pass: pass },
-	// 	complete: function (xhr, status) {
-	// 		if (status != 'success') {
-	// 			$('.login-box .login-msg').html('Cannot Login');
-	// 			return;
-	// 		}
-	// 		var data = $.parseJSON(xhr.responseText);
-	// 		if (data['status'] != 'success') {
-	// 			$('.login-box .login-msg').html('Incorrect Login or Password');
-	// 			$('#password').val('').focus();
-	// 			return;
-	// 		}
-	// 		document.location = 'index.html';
-	// 	}
-	// });
 }
 
 // ===========================================
@@ -104,13 +110,17 @@ app.login = function () {
 
 app.logout = function () {
 
-	// --- CLIENT ONLY CODE ---
+	
+	if ( app.server == 'none' ) { 
+		// --- CLIENT ONLY CODE ---
 
-	delete sessionStorage['ks-user'];
+		delete sessionStorage['ks-user'];
 
-	// --- REPLACE: SERVER SESSION REMOVAL CODE ---
+	} else {
+		// --- REPLACE: SERVER SESSION REMOVAL CODE ---
 
-	// $.ajax({ url : 'server/logout' });
+		$.ajax({ url : app.server + '/logout' });
+	}
 
 	app.user = {};
 	document.location = 'login.html';
