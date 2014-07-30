@@ -6,7 +6,7 @@ module.exports = {
 
     '/api/users': function (req, res, next) {
         // prepend search fields with MST.
-        w2ui.prependSearch(req.params.search, 'MST.');
+        w2ui.prependSearch(req.data.search, 'MST.');
         
         var sql = 'SELECT \
                 MST.userid, \
@@ -47,7 +47,7 @@ module.exports = {
     },
 
     '/api/user/:id/photo': function (req, res, next) {
-        var userid = req.biport.params.id
+        var userid = req.info.route.id
         var sql = 'SELECT photo FROM users \
                    WHERE userid = ' + userid;
         w2db.exec(sql, function (err, result) {
@@ -65,7 +65,7 @@ module.exports = {
 
     '/api/groups': function (req, res, next) {
         // prepend search fields with MST.
-        w2ui.prependSearch(req.params.search, 'MST.');
+        w2ui.prependSearch(req.data.search, 'MST.');
 
         var sql = 'SELECT \
                 MST.groupid, \
@@ -98,9 +98,9 @@ module.exports = {
 
     '/api/group/:id/members': function (req, res, next) {
         // prepend search fields with MST.
-        w2ui.prependSearch(req.params.search, 'MST.');
+        w2ui.prependSearch(req.data.search, 'MST.');
 
-        var groupid = req.biport.params.id;
+        var groupid = req.info.route.id;
         var sql = 'SELECT \
                 MST.userid, \
                 MST.fname, \
@@ -140,7 +140,7 @@ module.exports = {
     },    
 
     '/api/group/:id/join': function (req, res, next) {
-        var groupid = req.biport.params.id;
+        var groupid = req.info.route.id;
         var sql = 'SELECT groupid, published, closed, \
                     (SELECT count(1)  FROM user_groups WHERE groupid = '+ groupid + ' AND userid = '+ req.session.user.userid + ') as isMember \
                    FROM groups \
@@ -180,7 +180,7 @@ module.exports = {
     },
 
     '/api/group/:id/leave': function (req, res, next) {
-        var groupid = req.biport.params.id;
+        var groupid = req.info.route.id;
         // prepare sql
         var sql = 'DELETE FROM user_groups WHERE groupid = '+ groupid +' AND userid = '+ req.session.user.userid;
         w2db.exec(sql, function (err, result) {

@@ -49,7 +49,6 @@ var loggerAccess = new (winston.Logger) ({
         })
     ]
 });
-loggerAccess.info('================= Server Started ==================');
 server.use(function (req, res, next) {
     loggerAccess.info(req.ip + ' - ' + req.url + ', sesid:' + req.session.id + ', agent:"' + req.headers['user-agent'] + '"');
     next();
@@ -63,7 +62,7 @@ global.logger = new (winston.Logger) ({
         }),
         new (winston.transports.DailyRotateFile)({ 
             maxsize     : 100 * 1024 * 1024, // 100MB
-            filename    : './log/error',
+            filename    : './log/log',
             datePattern : '.dd-MM-yyyy.log',
             json        : false 
         })
@@ -73,10 +72,13 @@ global.logger = new (winston.Logger) ({
 // public folder
 server.use('/',  express.static(__dirname.substr(0, __dirname.length - 4) + '/web'));
 
+logger.info('================= Server Started ==================');
+
 // security check
+security.init();
 server.use(security.check);
 server.use(security.process);
 
 // START THE SERVER
 server.listen(conf.port);
-loggerAccess.info('LISTENING on port ' + conf.port);
+logger.info('LISTENING on port ' + conf.port);

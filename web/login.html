@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="libs/w2ui/w2ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="libs/kickstart/kickstart.min.css"/>
+	<link rel="stylesheet" type="text/css" href="app/main/global.css"/>
+	<script type="text/javascript" src="libs/jquery/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="libs/w2ui/w2ui.min.js"></script>
+	<script type="text/javascript" src="libs/kickstart/kickstart.min.js"></script>
+</head>
+<body>
+	<div class="login-box">
+		<div class="login-msg">&nbsp;</div>
+		<br><br>		
+		<div class="login-center" style="position: relative">
+			<div class="login-img">
+				<div> Welcome </div>
+			</div>
+			<div class="login-input">
+				<span>Login</span> 
+				<input type="text" id="login" size="25" autofocus="yes"> 
+				<span>Password</span> 
+				<input type="password" id="password" size="25"> 
+				<div style="height: 25px; font-size: 1px;">&nbsp;</div> 
+				<button id="submit" class="btn" style="width: 60px;">Login</button>
+			</div>
+			<div style="text-align: center; padding-top: 10px;">
+			</div>
+		</div>
+
+		<div class="login-footer">
+			<a href="javascript:" onclick="app.main.forgot()">Forgot Password?</a>
+			&nbsp;&nbsp; | &nbsp;&nbsp;Powered by 
+			<a href="http://w2ui.com" target="_blank">w2ui</a>
+		</div>
+
+		<!-- REMOVE -->
+		<div style="padding-top: 50px; text-align: center; font-size: 16px; color: #666">
+			Use admin/admin as a test user login
+		</div>
+		<!-- /REMOVE -->
+		
+	</div>
+	<script>
+	$(function () {
+		// define a shorter namespace
+		window.app = window.kickStart;
+
+		// load main interface
+		app.define({
+			name	: 'main',
+			main	: 'app/main/main.js',
+			assets	: [
+				'app/main/config.js'
+			]
+		});
+
+		// load main module
+		app.require('main', function () {
+			$('#login, #password').on('keypress', function () {
+				$('#message').html('&nbsp;'); 
+				if (event.keyCode == 13) $('#submit').click();
+			});
+			$('#submit').on('click', function () {
+				var login = $('#login').val().toLowerCase();
+				var pass  = $('#password').val().toLowerCase();
+				if (app.main.login(login, pass)) {
+					document.location = 'index.html';
+				} else {
+					$('.login-box .login-msg').html('Incorrect Login or Password');
+					$('#password').val('').focus();
+				}
+			});
+		});
+	});
+	</script>
+</body>
+</html>

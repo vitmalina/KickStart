@@ -1,0 +1,83 @@
+
+<div class="general">
+	<div class="left">
+		<div class="w2ui-field">
+			<label>Description</label>
+			<div>
+				<input type="text" name="description">
+			</div>
+		</div>
+		<div class="w2ui-field">
+			<label>Approver</label>
+			<div>
+				<input type="text" name="approver" readonly>
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="w2ui-field">
+			<label>Start Date</label>
+			<div>
+				<input type="text" name="start_date">
+			</div>
+		</div>
+		<div class="w2ui-field">
+			<label>End Date</label>
+			<div>
+				<input type="text" name="end_date" readonly>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" name="hours">
+	<input type="hidden" name="userid">
+	<div style="clear: both"></div>
+</div>
+
+<div class="report">
+	<table cellpadding="0" cellspacing="0">
+		<tr name="title">
+			<td>Project</td>
+			<td>SUN</td>
+			<td>MON</td>
+			<td>TUE</td>
+			<td>WED</td>
+			<td>THU</td>
+			<td>FRI</td>
+			<td>SAT</td>
+			<td>Total</td>
+		</tr>
+		<tr class="template">
+			<td><select class="w2ui-select w2ui-field"></select></td>
+			<td><input type="text" name='sun'></td>
+			<td><input type="text" name='mon'></td>
+			<td><input type="text" name='tue'></td>
+			<td><input type="text" name='wed'></td>
+			<td><input type="text" name='thu'></td>
+			<td><input type="text" name='fri'></td>
+			<td><input type="text" name='sat'></td>
+			<td><input type="text" name='total' readonly></td>
+		</tr>
+		<tr name="">
+			<td><select class="w2ui-select w2ui-field"></select></td>
+			<td><input type="text" name='sun'></td>
+			<td><input type="text" name='mon'></td>
+			<td><input type="text" name='tue'></td>
+			<td><input type="text" name='wed'></td>
+			<td><input type="text" name='thu'></td>
+			<td><input type="text" name='fri'></td>
+			<td><input type="text" name='sat'></td>
+			<td><input type="text" name='total' readonly></td>
+		</tr>
+		<tr name="total">
+			<td style="text-align: right">Total:</td>
+			<td><input type="text" id='total_sun' readonly></td>
+			<td><input type="text" id='total_mon' readonly></td>
+			<td><input type="text" id='total_tue' readonly></td>
+			<td><input type="text" id='total_wed' readonly></td>
+			<td><input type="text" id='total_thu' readonly></td>
+			<td><input type="text" id='total_fri' readonly></td>
+			<td><input type="text" id='total_sat' readonly></td>
+			<td><input type="text" id='total_total' readonly></td>
+		</tr>
+	</table>
+</div>

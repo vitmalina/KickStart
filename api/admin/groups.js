@@ -63,7 +63,7 @@ module.exports = {
         // prepend search fields with MST.
         w2ui.prependSearch(req.data.search, 'MST.');
 
-        var groupid = req.biport.params.id;
+        var groupid = req.info.route.id;
         var sql = 'SELECT \
                 MST.userid, \
                 MST.fname, \
@@ -101,7 +101,7 @@ module.exports = {
     },    
 
     '/api/admin/group/:id/add': function (req, res, next) {
-        var groupid = req.biport.params.id;
+        var groupid = req.info.route.id;
         var users   = req.data.users;
         var sql = 'SELECT userid FROM user_groups WHERE groupid = '+ groupid + ' AND userid IN ('+ users + ')';
         w2db.exec(sql, function (err, result) {
@@ -143,7 +143,7 @@ module.exports = {
     },
 
     '/api/admin/group/:id/remove': function (req, res, next) {
-        var groupid = req.biport.params.id;
+        var groupid = req.info.route.id;
         var users   = req.data.users;
         // prepare sql
         var sql = 'DELETE FROM user_groups WHERE groupid = '+ groupid +' AND userid IN ('+ users +')';

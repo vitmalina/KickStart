@@ -2,11 +2,34 @@
 *  Security module
 */
 
+var grid_list = {
+    "name"        : { type: "string",  required: true },
+    "cmd"         : { type: "string",  required: true },
+    "limit"       : { type: "integer", require: false },
+    "offset"      : { type: "integer", require: false },
+    "selected"    : { type: "array",   require: false },
+    "searchLogic" : { type: "string",  require: false, values: ['OR', 'AND'] },
+    "search"      : { type: "object",  require: false },
+    "sort"        : { type: "object",  require: false },
+};
+var grid_delete = {
+    "name"     : { type: "string",  required: true },
+    "cmd"      : { type: "string",  required: true },
+    "selected" : { type: "array",   require: false }
+}
+var form_get = {
+
+}
+var form_save = {
+    
+}
+
 // private scope
-var services = require('./_services.js');
+var services = {};
 
 // public scope
 module.exports = {
+    init            : init,
     check           : check,
     process         : process,
     getServices     : getServices,
@@ -18,6 +41,20 @@ module.exports = {
 };
 return;
 
+function init () {
+    var fs = require('fs');
+    // read all _services.js files
+    var files = fs.readdirSync(__dirname);
+    logger.info('READING SERVICES:');
+    for (var f in files) {
+        var isThere = fs.existsSync(__dirname + '/' + files[f] + '/_services.js');
+        if (isThere) {
+            logger.info(' - module: '+ files[f] + '/_services.js');
+            services = _.extend(services, eval(fs.readFileSync(__dirname + '/' + files[f] + '/_services.js', 'utf8')))
+        }
+    }
+}
+
 /**
 *  Check if services is allowed
 */
@@ -26,7 +63,7 @@ function check (req, res, next) {
     var path     = req._parsedUrl.pathname.replace(/\/{2,}/g, '/');    // remove double slashes if any
     var isFound  = false;
     req.data     = _.extend({}, req.body, req.query);
-    req.biport   = {};
+    req.info     = {};
     // loop thru all possible services
     for (var s in services) {
         var serv = services[s];
@@ -52,17 +89,17 @@ function check (req, res, next) {
         // match path
         var match = serv.regex.path.exec(path);
         if (match) {
-            // parse out params
-            var params = {}, i = 1;
+            // parse out route
+            var route = {}, i = 1;
             for (var k in serv.regex.keys) {
-                params[serv.regex.keys[k].name] = match[i];
+                route[serv.regex.keys[k].name] = match[i];
                 i++;
             }
             isFound = true;
-            req.biport.api      = s;
-            req.biport.url      = path;
-            req.biport.service  = services[s];
-            req.biport.params   = params;
+            req.info.api      = s;
+            req.info.url      = path;
+            req.info.service  = services[s];
+            req.info.route    = route;
             if (services[s].public === true || isAllowed(s) === true) { // path is allowed
                 next();
                 return;
@@ -82,16 +119,16 @@ function check (req, res, next) {
 
 function process (req, res, next) {
     var url = req._parsedUrl.pathname;
-    var service = require('./' + req.biport.service.path);
+    var service = require('./' + req.info.service.path);
     if (typeof service == 'function') {
-        service.process(req.biport.api, req, res, next);
+        service.process(req.info.api, req, res, next);
     } else {
-        if (service.hasOwnProperty(req.biport.api)) {
-            service[req.biport.api](req, res, next);
+        if (service.hasOwnProperty(req.info.api)) {
+            service[req.info.api](req, res, next);
         } else {
             res.send({
                 status  : 'error',
-                message : 'Service ' + req.biport.api + ' defined but not implemented'
+                message : 'Service ' + req.info.api + ' defined but not implemented'
             });            
         }
     }

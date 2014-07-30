@@ -1,6 +1,5 @@
 .DS_Store
-BUILD/*
-tmp/*
+build/*
 log/*
 node_modules/*
-_old/*
+tmp/*

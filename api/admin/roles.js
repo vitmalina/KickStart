@@ -46,7 +46,7 @@ module.exports = {
 
     '/api/admin/role/:id/members': function (req, res, next) {        
         w2ui.prependSearch(req.data.search, 'MST.'); // prepend search fields with MST.
-        var roleid = req.biport.params.id;
+        var roleid = req.info.route.id;
         var sql = 'SELECT \
                 MST.userid, \
                 MST.fname, \
@@ -84,7 +84,7 @@ module.exports = {
     },    
 
     '/api/admin/role/:id/add': function (req, res, next) {
-        var roleid = req.biport.params.id;
+        var roleid = req.info.route.id;
         var users  = req.data.users;
         // only add new
         var sql = 'SELECT userid FROM user_roles WHERE roleid = '+ roleid + ' AND userid IN ('+ users +')';
@@ -127,7 +127,7 @@ module.exports = {
     },
 
     '/api/admin/role/:id/remove': function (req, res, next) {
-        var roleid = req.biport.params.id;
+        var roleid = req.info.route.id;
         var users  = req.data.users;
         // prepare sql
         var sql = 'DELETE FROM user_roles WHERE roleid = '+ roleid +' AND userid IN ('+ users +')';
@@ -149,7 +149,7 @@ module.exports = {
 
     '/api/admin/role/:id/services': function (req, res, next) {        
         w2ui.prependSearch(req.data.search, 'MST.'); // prepend search fields with MST.
-        var roleid = req.biport.params.id;
+        var roleid = req.info.route.id;
         var sql = 'SELECT \
                 MST.permid, \
                 MST.module, \
@@ -169,7 +169,7 @@ module.exports = {
     },
 
     '/api/admin/role/:id/grant': function (req, res, next) {
-        var roleid   = req.biport.params.id;
+        var roleid   = req.info.route.id;
         var services = req.data.services;
         var servDSP  = [];
         for (var s in services) servDSP.push("'" + services[s].replace(/'/g, "\\'") + "'");
@@ -216,7 +216,7 @@ module.exports = {
     }, 
 
     '/api/admin/role/:id/revoke': function (req, res, next) {
-        var roleid   = req.biport.params.id;
+        var roleid   = req.info.route.id;
         var services = req.data.services;
         for (var s in services) services[s] = "'" + services[s].replace(/'/g, "\\'") + "'";
         var sql = 'DELETE FROM role_services WHERE roleid = '+ roleid +' AND service IN ('+ services +')';

@@ -1,7 +1,0 @@
-{
-	"name"	: "home",
-	"main"	: "home.js",
-	"assets": [
-		"home-config.js"
-	]
-}

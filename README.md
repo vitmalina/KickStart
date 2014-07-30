@@ -1,35 +1,54 @@
-KickStart (v 0.1)
-==================
+# KickStart
 
-Front-end template for building desktop-like SPAs. This repository servers as a 
-starting point and provides structure for your next project. It includes:
+To install all dependencies that are described in package.json file
+```
+sudo npm install --production             // for production
+sudo npm install                          // for development
+```
 
-- jQuery
-- w2ui
-- icomoon (icon font)
-- less
+To start the application do the following
+```
+node api/start.js
+```
 
-Directory Structure
---------------------
+or better
 
-The following directory structure is suggested for all projects
+```
+nodemon api/start.js
+```
 
-	/app                - main application folder
-	    /core           - core file for the application
-	        /conf	    - app configuration
-	        /css        - app core css files
-	        /img        - app core images
-	        /login      - login page scripts and css
-	    /home           - home module
-	    /mod1           - sample module
-	/libs               - all JavaScript libraries that you want to support
-	/media              - root folder for all UPLOADS
-	/server             - root folder for all SERVER SIDE scripts
-	index.html          - starting point
-	index.appcache      - cache manifest
-	login.html          - login page template
+To start mongodb (used for sessions)
+```
+mongod --dbpath /Users/vitali/Library/MongoDbData
+```
 
-Documentaion
---------------------
+## Directory Structure
 
-See /docs folder for documentation. If you would like to submit a bug, submit it through github.com
+```
+/api				- Server Side Code
+	/admin				- admin module
+	/shared				- shared components
+	/mod-1				- module 1
+	/mod-N				- module N
+	/w2ui				- server side w2ui library
+	/conf.js			- DB and other config
+	/security.js		- security file
+	/start.js			- server side STARTING POINT
+/build				- Build folder
+/log				- Logs
+/node_modules		- Node.JS modules
+/setup				- DB setup scripts
+/web				- Client Side Code (JavaScript/HTML/CSS)
+	/app				- Application
+		/mod-1				- module 1
+		/mod-N				- module N
+		/icons				- icon font icons
+		/modules.js			- description of all modules
+		/start.js			- client side STARTING POINT
+	/libs				- 3rd Party Libraries
+	index.html 			- SPA Staring Point
+	login.html 			- SPA Login
+Gruntfile.js		- Build tool config
+package.json		- npm dependencies
+README.md			- this read me file
+```
