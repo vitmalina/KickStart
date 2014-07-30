@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="http://w2ui.com/src/w2ui-1.3.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://w2ui.com/src/w2ui-1.3.min.js"></script>
+</head>
+<body style="margin: 0px; padding: 0px; overflow: hidden">
+    <div id="layout" style="position: absolute; width: 100%; height: 100%;"></div>
+</body>
+<script>
+var config = {
+    layout: {
+        name: 'layout',
+        panels: [
+            { type: 'top', size: 40,
+                style: 'overflow: hidden; background-color: white; padding: 7px; color: #666; border-bottom: 1px solid silver;', 
+                content: '<span style="font-size: 22px">API Explorer</span>' 
+            },
+            { type: 'left', size: 300, resizable: true },
+            { type: 'main', content: 'parameters will go here', style: 'padding: 10px;' },
+            { type: 'preview', size: '70%', style: 'overflow: hidden' }
+        ]
+    }, 
+    services: {
+        name: 'services',
+        style: 'border: 0px; border-right: 1px solid silver',
+        show: { toolbar: true, toolbarColumns: false },
+        recordHeight: 40,
+        columns: [
+            { field: 'service', caption: 'Service', size: '100%', sortable: true,
+                render: function (record) {
+                    var html = '<div style="line-height: 150%">'+
+                        '    <span style="font-weight: bold; color: #555">' + record.service + '</span><br>'+
+                        '    <span style="color: #999">' + record.desc + '</span>' +
+                        '</div>';
+                    return html;
+                }
+            }
+        ],
+        searches: [
+            { field: 'service', caption: 'Service', type: 'text' },
+            { field: 'desc', caption: 'Description', type: 'text' }
+        ],
+        onReload: function (event) {
+            refresh();
+        },
+        onClick: function (event) {
+            var rec = this.get(event.recid);
+            w2ui.layout.content('preview', '<iframe id="lframe" src="'+ rec.service +'" style="border: 0px; width: 100%; height: 100%;"></iframe>');
+        }
+    }
+}
+
+$(function () {
+    $('#layout').w2layout(config.layout);
+    $().w2grid(config.services);
+    w2ui.layout.content('left', w2ui.services);
+    refresh();
+});
+
+function refresh() {
+    // get services
+    $.ajax('/api').done(function (data, status, xhr) {
+        if (status == 'success') {
+            var records = [];
+            for (var s in data.services) {
+                records.push({ recid: records.length + 1, service: s, desc: data.services[s] });
+            }
+            w2ui.services.records = records;
+            w2ui.services.total   = records.length;
+            w2ui.services.refresh();
+        }
+    });    
+}
+</script>
+</html>
