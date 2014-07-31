@@ -1,0 +1,36 @@
+/*************************************************
+* ---- Global CSS ----
+*/
+
+textarea {
+    line-height: 140% !important;
+    padding: 4px 6px;
+}
+
+input[readonly], textarea[readonly] {
+    color: #777 !important;
+}
+
+input[type=text][disabled], input[type=password][disabled], textarea[disabled] {
+    background-color: #eee;
+}
+
+a {
+    color: #3379B8 !important;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;    
+    }
+}
+
+.preview-msg {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 30%;
+    font-size: 16px;
+    color: #aaa;
+    text-align: center;
+    text-shadow: 1px 1px 1px #fafafa;
+}

@@ -37,6 +37,8 @@ config = {
         name  : 'app_toolbar',
         items : [
             { id: 'home', caption: 'Home', type: 'radio', icon: 'icon-home', route: '/home' },
+            { id: 'project', caption: 'Projects', type: 'radio', icon: 'icon-flag', route: '/home' },
+            { id: 'helpdesk', caption: 'HelpDesk', type: 'radio', icon: 'icon-bug', route: '/home' },
             { id: 'spacer1', type: 'spacer' },
             { id: 'user', caption: '--', type: 'menu', 
                 items: [

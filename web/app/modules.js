@@ -23,11 +23,7 @@
             "app/home/user/view.html",
             "app/home/user/view.css",
             "app/home/group/view.html",
-            "app/home/group/view.css",
-            "app/home/time-sheets/add-new.html",
-            "app/home/time-sheets/add-new.css",
-            "app/home/time-sheets/preview.html",
-            "app/home/time-sheets/preview.css"
+            "app/home/group/view.css"
         ]
     },
     {

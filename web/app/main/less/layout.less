@@ -1,0 +1,90 @@
+// *************************************************
+// ---- Document Structure
+//
+
+body {
+    overflow: hidden;
+    background-color: #fff;
+    * { .box-sizing(border-box);  }
+}
+
+.w2ui-grid-toolbar {
+    background-color: #EEEFF1 !important;
+}
+
+#app-container {
+    position: absolute;
+    top     : 0px;
+    left    : 0px;
+    right   : 0px;
+    bottom  : 0px;
+    display : none;
+    // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
+}
+
+#app-top {
+    z-index : 3;
+    position: absolute;
+    top     : 0px;
+    left    : 0px;
+    right   : 0px;
+    height  : 0px;
+    display : none; 
+    padding : 0px; 
+    margin  : 0px;
+
+    #app-toolbar {
+        position: absolute;
+        top     : 0px;
+        left    : 0px;
+        height  : 0px;
+        width   : 100%;
+        display : none;
+        //.box-shadow(inset 0px 0px 55px rgba(10, 20, 30, 0.8));
+    }    
+        
+    #app-tabs {
+        position: absolute;
+        top     : 0px;
+        left    : 0px;
+        height  : 0px;
+        width   : 100%;
+        display : none;
+        border-top: 1px solid rgba(5,5,5,0.01);
+        background-color: rgba(255,255,255,0.1);
+        .box-shadow(inset 0px 0px 55px rgba(10, 20, 30, 0.7));
+        margin  : 0px;
+        padding : 4px 0px 0px 0px;
+    }
+}    
+
+#app-header {
+    z-index : 2;
+    position: absolute;
+    top     : 0px;
+    left    : 0px;
+    right   : 0px;
+    height  : 42px;
+    width   : 100%;
+    display : none;
+    padding : 17px 15px 0px 15px;
+    font-family: verdana;
+    font-size: 20px;
+    color: #EEF2F3;
+    background-color: #2F9695;
+    border-top: 1px solid #348377;
+    border-bottom: 1px solid #184640;
+    text-shadow: 1px 1px 1px #666;
+}
+
+#app-main {
+    z-index : 1;
+    position: absolute;
+    top     : 0px;
+    left    : 0px;
+    right   : 0px;
+    bottom  : 0px;
+    font-family: verdana;
+    font-size: 11px;
+    background-color: #EDF1F6 !important;
+}
