@@ -21,7 +21,9 @@ w2db.connect(_.extend({}, conf.postgres, { type: 'postgres' }));
 server.use(compress());
 server.use(cookieParser());
 server.use(bodyParser({ extended: true }));
-server.use('/favicon.ico', function (req, res, next) { res.end(); });
+server.use('/favicon.ico', function (req, res, next) { 
+    res.end(); 
+});
 
 // add headers
 server.use(function (req, res, next) {
@@ -34,6 +36,10 @@ server.use(session({
     store  : new MongoStore(conf.mongodb),
     secret : '91df48jdDufu40d841=9ifjhkdfdf'
 }));
+
+// create log folder
+var fs = require('fs');
+if (!fs.existsSync('log')) fs.mkdirSync('log');
 
 // logger: access
 var loggerAccess = new (winston.Logger) ({

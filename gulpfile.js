@@ -16,6 +16,11 @@ gulp.task('clean', function () {
         .pipe(shell('rm -rf build/'));
 });
 
+gulp.task('clean-log', function () {  
+    gulp.src('log', { read: false })
+        .pipe(shell('rm -rf log/'));
+});
+
 // LESS -> CSS
 gulp.task('less', function() {
     // all *.less in each modeule

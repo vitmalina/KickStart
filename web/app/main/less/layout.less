@@ -4,12 +4,14 @@
 
 body {
     overflow: hidden;
-    background-color: #fff;
-    * { .box-sizing(border-box);  }
+    background-color: #fefefe;
+    * { 
+        .box-sizing(border-box);  
+    }
 }
 
 .w2ui-grid-toolbar {
-    background-color: #EEEFF1 !important;
+    background-color: #F2F3F4 !important;
 }
 
 #app-container {
@@ -19,72 +21,46 @@ body {
     right   : 0px;
     bottom  : 0px;
     display : none;
-    // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAYAAABmWJ3mAAAASElEQVQIW2MsKq3+z8bGzvDr108GEPjy6QODkIg4A2NFddN/mCBIAqTo3ZuXDIxp6dn/efgEwKqRdTKCjIJpR9YJloBpR9YJALzhI+c9hccRAAAAAElFTkSuQmCC);
 }
 
-#app-top {
-    z-index : 3;
+#app-toolbar {
+    z-index : 1;
     position: absolute;
     top     : 0px;
     left    : 0px;
-    right   : 0px;
-    height  : 0px;
-    display : none; 
-    padding : 0px; 
-    margin  : 0px;
-
-    #app-toolbar {
-        position: absolute;
-        top     : 0px;
-        left    : 0px;
-        height  : 0px;
-        width   : 100%;
-        display : none;
-        //.box-shadow(inset 0px 0px 55px rgba(10, 20, 30, 0.8));
-    }    
-        
-    #app-tabs {
-        position: absolute;
-        top     : 0px;
-        left    : 0px;
-        height  : 0px;
-        width   : 100%;
-        display : none;
-        border-top: 1px solid rgba(5,5,5,0.01);
-        background-color: rgba(255,255,255,0.1);
-        .box-shadow(inset 0px 0px 55px rgba(10, 20, 30, 0.7));
-        margin  : 0px;
-        padding : 4px 0px 0px 0px;
-    }
+    height  : 32px;
+    width   : 100%;
+    .box-shadow(inset 0px 0px 55px rgba(10, 20, 30, 0.8));
 }    
 
 #app-header {
     z-index : 2;
     position: absolute;
-    top     : 0px;
+    top     : 32px;
     left    : 0px;
     right   : 0px;
-    height  : 42px;
+    height  : 60px;
     width   : 100%;
-    display : none;
     padding : 17px 15px 0px 15px;
     font-family: verdana;
     font-size: 20px;
-    color: #EEF2F3;
-    background-color: #2F9695;
-    border-top: 1px solid #348377;
-    border-bottom: 1px solid #184640;
-    text-shadow: 1px 1px 1px #666;
+    color: #606060;
+    text-shadow: 0px 1px 2px #fff;
+    .linear-gradient-vertical(#EBEBEB, #D2D4D4); 
+    border-bottom: 1px solid #999;
+    // .box-shadow(0 2px 5px #ccc);
 }
 
 #app-main {
     z-index : 1;
     position: absolute;
-    top     : 0px;
+    top     : 92px;
     left    : 0px;
     right   : 0px;
     bottom  : 0px;
     font-family: verdana;
     font-size: 11px;
-    background-color: #EDF1F6 !important;
+    border-top: 1px solid white;
+    background-color: #fefefe !important;
 }

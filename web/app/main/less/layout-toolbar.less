@@ -3,7 +3,7 @@
 */
 
 #app-toolbar {
-    background-color: #F2F3F4;
+    background-color: transparent;
     padding: 0px 10px;
     table {
         padding: 0px;
@@ -16,14 +16,14 @@
             margin: -1px 0px 0px 0px;
 
             .w2ui-tb-caption {
+                color: #bbb;
+                text-shadow: 1px 1px 1px #333;
                 padding-top: 2px;
-                color: #88969C;
-                text-shadow: 1px 1px 1px #fff;
             }
 
             .w2ui-tb-image > span {
-                color: #88969C;
-                text-shadow: 1px 1px 1px #fff;
+                color: #ddd;
+                text-shadow: 1px 1px 1px #333;
             }
 
             .w2ui-tb-down {
@@ -34,36 +34,36 @@
                 border: 1px solid rgba(255,255,255,0.2);
                 border-top: 1px solid transparent;
                 border-bottom: 1px solid transparent;
-                // background-color: rgba(255,255,255,0.1);
+                background-color: rgba(255,255,255,0.1);
                 & .w2ui-tb-caption, & .w2ui-tb-image > span {
-                    color: #444C50;
-                    text-shadow: 1px 1px 0px #fff;
+                    color: #fff;
+                    //text-shadow: none;
                 }
             }
 
             &.down {
-                border: 1px solid #ccc;
+                border: 1px solid rgba(0,0,0,0.6);
                 border-top: 1px solid transparent;
                 border-bottom: 1px solid transparent;
-                background-color: #E2E3E6;
+                background-color: rgba(0,0,0,0.5);
                 & .w2ui-tb-caption, & .w2ui-tb-image > span {
-                    color: #000;
-                    text-shadow: 1px 1px 1px #fff;
+                    //color: #DAF8FF;
+                    //text-shadow: none;
                 }
             }
 
             &.checked {
-                border: 1px solid #ccc;
+                border: 1px solid rgba(0,0,0,1);
                 border-top: 1px solid transparent;
                 border-bottom: 1px solid transparent;
-                background-color: #E2E3E6;
+                background-color: rgba(0,0,0,0.3);
                 & .w2ui-tb-caption {
-                    color: #444C50;
-                    text-shadow: 1px 1px 1px #fff;
+                    color: #fff;
+                    text-shadow: 1px 1px 0px #000;
                 }
                 & .w2ui-tb-image > span {
-                    color: #444C50;
-                    text-shadow: 1px 1px 1px #fff;
+                    color: #fff;
+                    text-shadow: 1px 1px 0px #000;
                 }
             }
         }

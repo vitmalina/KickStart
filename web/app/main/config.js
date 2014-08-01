@@ -5,13 +5,6 @@ config = {
     // context : 'http://w2ui.com:3000',
     context : 'http://localhost:3000',
 
-    // --- General settings
-    show: {
-        toolbar : true,
-        tabs    : false,
-        header  : true
-    },
-
     fail: function (mod) {
         w2alert('Failed to load module '+ mod.name, 'Error');
         console.log('ERROR: Failed to load module');
@@ -50,17 +43,5 @@ config = {
             }
         ],
         onClick: action
-    },
-
-    // --- Application Main Tabs (if any)    
-    app_tabs: {
-        name   : 'app_tabs',
-        active : 'home',
-        style  : 'padding 0px 3px 1px 3px;',
-        tabs   : [
-            { id: 'home', caption: 'Home' }
-        ],
-        onClose : function () { this.doClick('home'); },        
-        onClick : action
     }
 }
