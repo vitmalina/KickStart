@@ -109,6 +109,6 @@ gulp.task('watch', function() {
 });
 
 // default
-gulp.task('default', ['clean', 'iconfont', 'less']);
+gulp.task('default', ['clean', 'less']);
 
 // http://markgoodyear.com/2014/01/getting-started-with-gulp/
