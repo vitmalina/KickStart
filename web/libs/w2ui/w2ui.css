@@ -117,6 +117,7 @@ textarea {
   border-radius: 3px;
   color: #000000;
   background-color: #ffffff;
+  line-height: normal;
 }
 input:not([type=button]):focus,
 select:focus,
@@ -335,6 +336,9 @@ input[type=checkbox].w2ui-toggle:focus {
 .w2ui-overlay table.w2ui-drop-menu td.menu-icon {
   padding: 3px 0px 4px 6px;
   width: 20px;
+}
+.w2ui-overlay table.w2ui-drop-menu td.menu-icon > span {
+  height: 20px;
 }
 .w2ui-overlay table.w2ui-drop-menu td.menu-text {
   padding: 8px 10px 8px 5px;
@@ -1409,7 +1413,7 @@ button.btn-red.clicked {
 }
 .w2ui-layout > div .w2ui-resizer:hover,
 .w2ui-layout > div .w2ui-resizer.active {
-  background-color: #d7e4f2;
+  background-color: #c8cad1;
 }
 /*************************************************
 * ---- Grid ----
@@ -1868,6 +1872,7 @@ button.btn-red.clicked {
 }
 .w2ui-ss .w2ui-changed {
   background: inherit;
+  /* do not show changed for spreadsheet */
 }
 .w2ui-ss .w2ui-grid-body .w2ui-selection {
   position: absolute;
@@ -2099,7 +2104,7 @@ button.btn-red.clicked {
   left: 0px;
   right: 0px;
   top: 32px;
-  bottom: 55px;
+  bottom: 52px;
   z-index: 100;
 }
 .w2ui-popup .w2ui-msg-body {
