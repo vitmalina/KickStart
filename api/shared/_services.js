@@ -31,7 +31,7 @@ services = {
         "module" : "global",
         "access" : "common",
         "path"   : "shared/session.js",
-        "vars"   : null
+        "vars"   : { 'TODO': '' }
     },
 
     "/api/user/save-photo" : {
@@ -39,7 +39,7 @@ services = {
         "module" : "global",
         "access" : "common",
         "path"   : "shared/session.js",
-        "vars"   : null
+        "vars"   : { 'TODO': '' }
     },
 
     "/api/user/password" : {
@@ -48,8 +48,8 @@ services = {
         "access" : "common",
         "path"   : "shared/session.js",
         "vars"   : {
-            "pass_old" : { "type": "string", "default": true, "min": 6, "max": 32 },
-            "pass_new" : { "type": "string", "default": true, "min": 6, "max": 32 }
+            "pass_old" : { "type": "string", "required": true, "min": 6, "max": 32 },
+            "pass_new" : { "type": "string", "required": true, "min": 6, "max": 32 }
         }
     },
 
@@ -59,8 +59,8 @@ services = {
         "access" : "public",
         "path"   : "shared/session.js",
         "vars"   : {
-            "login" : { "type": "string", "default": true },
-            "pass"  : { "type": "string", "default": true, "min": 6, "max": 32 }
+            "login" : { "type": "string", "required": true },
+            "pass"  : { "type": "string", "required": true, "min": 6, "max": 32 }
         }
     },
 
@@ -114,7 +114,7 @@ services = {
         "module" : "global",
         "access" : "common",
         "path"   : "shared/common.js",
-        "vars"   : null
+        "vars"   : grid_list
     },
 
     "/api/user/:id/photo" : {
@@ -130,7 +130,7 @@ services = {
         "module" : "global",
         "access" : "common",
         "path"   : "shared/common.js",
-        "vars"   : null
+        "vars"   : grid_list
     },    
 
     "/api/group/:id/members" : {
@@ -146,7 +146,7 @@ services = {
         "module" : "global",
         "access" : "common",
         "path"   : "shared/common.js",
-        "vars"   : null
+        "vars"   : { 'TODO': '' }
     },
 
     "/api/group/:id/leave" : {
@@ -154,6 +154,6 @@ services = {
         "module" : "global",
         "access" : "common",
         "path"   : "shared/common.js",
-        "vars"   : null
+        "vars"   : { 'TODO': '' }
     }    
 };

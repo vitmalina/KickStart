@@ -3,19 +3,17 @@
 */
 
 var grid_list = {
-    "name"        : { type: "string",  required: true },
-    "cmd"         : { type: "string",  required: true },
-    "limit"       : { type: "integer", require: false },
-    "offset"      : { type: "integer", require: false },
-    "selected"    : { type: "array",   require: false },
-    "searchLogic" : { type: "string",  require: false, values: ['OR', 'AND'] },
-    "search"      : { type: "object",  require: false },
-    "sort"        : { type: "object",  require: false },
+    "cmd"         : { type: "string", required: true },
+    "limit"       : { type: "int", require: false },
+    "offset"      : { type: "int", require: false },
+    "search"      : { type: "array:object", require: false },
+    "sort"        : { type: "array:object", require: false },
+    "searchLogic" : { type: "string", require: false, values: ['OR', 'AND'] },
+    "selected"    : { type: "array", require: false }
 };
 var grid_delete = {
-    "name"     : { type: "string",  required: true },
-    "cmd"      : { type: "string",  required: true },
-    "selected" : { type: "array",   require: false }
+    "cmd"      : { type: "string", required: true },
+    "selected" : { type: "array:int", require: false }
 }
 var form_get = {
 
