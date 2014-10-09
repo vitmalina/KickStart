@@ -69,6 +69,7 @@ gulp.task('iconfont', function() {
                '</head>\n'+
                '<body>\n'+
                '    <h1 style="font-family: arial; padding-left: 15px;">icon-font $count</h1>';
+    var json = [];
 
     gulp.src(['web/app/icons/svg/*.svg'])
         .pipe(iconfont({
@@ -87,11 +88,13 @@ gulp.task('iconfont', function() {
                         '   <span>icon-'+ icons[i].name +'</span>\n'+
                         '</div>\n';
                 css  += '.icon-'+ icons[i].name + ':before { content: "\\e'+ (hex.length == 1 ? '00' : '') + (hex.length == 2 ? '0' : '') + hex +'" }\n';
+                json.push(icons[i].name);
             }
             html += '<div style="clear: both; height: 10px;"></div></body>\n</html>';
             html = html.replace('$count', ' - ' + cnt + ' icons');
             fs.writeFileSync('web/app/icons/icon-font.css', css);
             fs.writeFileSync('web/app/icons/preview.html', html);
+            fs.writeFileSync('web/app/icons/icons.json', JSON.stringify(json));
         })
         .pipe(gulp.dest('web/app/icons/'));
 });
