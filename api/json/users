@@ -1,0 +1,9 @@
+{
+	"records": [
+		{ "userid": 1, "login": "admin", "fname": "Sys", "lname": "Admin", "email": "no@email.net", "phone": "123-233-12312", "manager": { "userid": 1, "fname": "Sys", "lname": "Admin" } },
+		{ "userid": 2, "fname": "John", "lname": "Doe", "email": "jdoe@localhost.com", "manager": { "userid": 1, "fname": "Sys", "lname": "Admin" } },
+		{ "userid": 3, "fname": "Jane", "lname": "Doe", "email": "jdoe@localhost.com", "manager": { "userid": 1, "fname": "Sys", "lname": "Admin" } }
+	],
+	"status": "success",
+	"total": 3
+}
