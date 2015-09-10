@@ -9,6 +9,15 @@ var prompt      = require('gulp-prompt');
 var shell       = require('gulp-shell');
 var ssh         = require('gulp-ssh');
 var uglify      = require('gulp-uglify');
+var minimist    = require('minimist');
+
+var defaultOptions = {
+    string  : 'env',
+    default : { 
+        env : 'prod' 
+    }
+};
+var options = minimist(process.argv.slice(2), defaultOptions);
 
 // remove BUILD
 gulp.task('clean', function () {  
@@ -106,7 +115,7 @@ gulp.task('build', shell.task([
 ]));
 
 // watch
-gulp.task('watch', function() {
+gulp.task('dev', function() {
     gulp.watch('web/app/**/*.less', ['less']);
     gulp.watch('web/app/icons/svg/*.svg', ['iconfont']);
 });
@@ -114,4 +123,16 @@ gulp.task('watch', function() {
 // default
 gulp.task('default', ['clean', 'less']);
 
-// http://markgoodyear.com/2014/01/getting-started-with-gulp/
+// list tasks
+if (options.l === true || options.h === true || options.help === true) {
+    console.log('==> List of Tasks');
+    for (var i in gulp.tasks) {
+        var task = gulp.tasks[i];
+        console.log('   - ' + pad(task.name, 14) + (task.dep.length > 0 ?  ' depends: ' + task.dep : ''));
+    }
+    function pad(str, max) {
+        for (var i = str.length; i < max; i++) str += ' ';
+        return str;
+    }
+    process.exit(0);
+}
