@@ -2,14 +2,8 @@
 // -- Application Configuration
 
 config = {
-    // context : 'http://w2ui.com:3000',
-    context : 'http://localhost:3000',
-
-    fail: function (mod) {
-        w2alert('Failed to load module '+ mod.name, 'Error');
-        console.log('ERROR: Failed to load module');
-        console.log(mod);
-    },
+    context : '../api/json',
+    // context : 'http://localhost:3000',
 
     // --- Application  Layout
     app_layout: {
@@ -30,8 +24,8 @@ config = {
         name  : 'app_toolbar',
         items : [
             { id: 'home', caption: 'Home', type: 'radio', icon: 'icon-home', route: '/home' },
-            { id: 'project', caption: 'Projects', type: 'radio', icon: 'icon-flag', route: '/home' },
-            { id: 'helpdesk', caption: 'HelpDesk', type: 'radio', icon: 'icon-bug', route: '/home' },
+            { id: 'project', caption: 'Projects', type: 'radio', icon: 'icon-flag', route: '/projects' },
+            { id: 'helpdesk', caption: 'HelpDesk', type: 'radio', icon: 'icon-bug', route: '/helpdesk' },
             { id: 'spacer1', type: 'spacer' },
             { id: 'user', caption: '--', type: 'menu', 
                 items: [

@@ -11,7 +11,6 @@ config = {
         nodes: [
             { id: 'general', text: 'General', group: true, expanded: true, 
                 nodes: [
-                    { id: 'home', text: 'Home', icon: 'icon-home', selected: true, route: '/home' },
                     { id: 'people', text: 'People', icon: 'icon-user', route: '/home/people' },
                     { id: 'groups', text: 'Groups', icon: 'icon-users', route: '/home/groups' }
                 ]
@@ -28,7 +27,8 @@ config = {
 
     home_people: { 
         name : 'home_people',
-        url  : app.context + '/api/users',
+        url  : app.context + '/users',
+        recid: 'userid',
         show    : {
             header   : false,
             toolbar  : true,
@@ -37,11 +37,11 @@ config = {
         style: 'border: 0px',
         sortData: [{ field: 'lname', direction: 'asc' }],
         searches: [
-            { type: 'int', caption: 'Id', field: 'userid' },
+            { type: 'int', caption: 'ID', field: 'userid' },
             { type: 'text', caption: 'First Name', field: 'fname' },
             { type: 'text', caption: 'Last Name', field: 'lname' },
             { type: 'text', caption: 'Email', field: 'email' },
-            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/api/enum/users' }  },
+            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/enum/users' }  },
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true, hidden: true },
@@ -52,7 +52,7 @@ config = {
             },
             { field: 'email', caption: 'Email', size: '25%', sortable: true },
             { field: 'phone', caption: 'Phone', size: '25%', sortable: true },
-            { field: 'manager', caption: 'Reports To', size: '25%', sortable: true, 
+            { field: 'manager', caption: 'Reports To', size: '160px', sortable: true, 
                 render: function (record) {
                     if (record.manager.userid) {
                         return record.manager.lname + ', ' + record.manager.fname;
@@ -69,7 +69,8 @@ config = {
 
     home_groups: { 
         name : 'home_groups',
-        url  : app.context + '/api/groups',
+        url  : app.context + '/groups',
+        recid: 'groupid',
         show    : {
             header   : false,
             toolbar  : true,
@@ -84,8 +85,8 @@ config = {
         columns: [
             { field: 'groupid', caption: 'ID', size: '60px', sortable: true, hidden: true },
             { field: 'group_name', caption: 'Group', size: '100%', sortable: true },
-            { field: 'owner.name', caption: 'Owner', size: '120px', sortable: true },
-            { field: 'closed', caption: 'Closed', size: '80px', render: 'toggle', attr: 'align="center"' },
+            { field: 'owner.name', caption: 'Owner', size: '160px', sortable: true },
+            { field: 'restricted', caption: 'Restricted', size: '80px', render: 'toggle', attr: 'align="center"' },
             { field: 'published', caption: 'Published', size: '80px', render: 'toggle', attr: 'align="center"' }
         ],
         onClick: function (event) {
@@ -95,7 +96,7 @@ config = {
 
     home_group_members: { 
         name : 'home_group_members',
-        url  : app.context + '/api/group/:id/members',
+        url  : app.context + '/group/:id/members',
         show : {
             header  : false,
             toolbar : true,
@@ -108,7 +109,7 @@ config = {
             { type: 'text', caption: 'First Name', field: 'fname' },
             { type: 'text', caption: 'Last Name', field: 'lname' },
             { type: 'text', caption: 'Email', field: 'email' },
-            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/api/enum/users' }  },
+            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/enum/users' }  },
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true, hidden: true },

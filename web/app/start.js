@@ -1,12 +1,9 @@
 $(function () {
-    // define a shorter namespace
-    window.app = window.kickStart;
-
     // module definitions
     app.define('app/modules.js');
 
     // load main module
-    app.require(['main'], function () {        
+    app.require('main', function () {        
         // check session
         var info = app.main.getSession();
         if (info == null) document.location = 'login.html';

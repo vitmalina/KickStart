@@ -5,7 +5,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="libs/w2ui/w2ui.min.css" />
 	<link rel="stylesheet" type="text/css" href="app/main/global.css"/>
-	<script type="text/javascript" src="libs/jquery/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="libs/jquery/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="libs/kickstart/kickstart.min.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
 				<span>Password</span> 
 				<input type="password" id="password" size="25"> 
 				<div style="height: 25px; font-size: 1px;">&nbsp;</div> 
-				<button id="submit" class="btn" style="width: 60px;">Login</button>
+				<button id="submit" class="w2ui-btn" style="width: 60px;">Login</button>
 			</div>
 			<div style="text-align: center; padding-top: 10px;">
 			</div>
@@ -48,11 +48,12 @@
 
 		// load main interface
 		app.define({
-			name	: 'main',
-			main	: 'app/main/main.js',
-			assets	: [
-				'app/main/config.js'
-			]
+			main: {
+				start: 'app/main/main.js',
+				assets: [
+					'app/main/config.js'
+				]
+			}
 		});
 
 		// load main module

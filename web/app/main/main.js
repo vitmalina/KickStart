@@ -28,10 +28,11 @@ app.register('main', function (files) {
         $('#app-toolbar').w2toolbar(config.app_toolbar);
         $('#app-tabs').w2tabs(config.app_tabs);
         $('#app-main').w2layout(config.app_layout);
-        w2ui.app_toolbar.set('user', { caption: userInfo.fname + ' ' + userInfo.lname });
         // display
         $('#app-container').fadeIn(200);
         if (typeof app.start == 'function') app.start();
+        // user name
+        w2ui.app_toolbar.set('user', { text: userInfo.fname + ' ' + userInfo.lname });
     }
 
     function action (event) {
@@ -59,12 +60,12 @@ app.register('main', function (files) {
 
     function getSession (force) {
         // if already logged in
-        if (typeof userInfo != 'undefined' && force !== true) {
+        if (userInfo != null && force !== true) {
             return userInfo;
         }
         // login
         $.ajax({
-            url   : app.context + '/api/user',
+            url   : app.context + '/session',
             type  : 'post',
             async : false,
             complete: function (xhr, status) {
@@ -78,6 +79,10 @@ app.register('main', function (files) {
                     userInfo.groups   = tmp.groups;
                     userInfo.roles    = tmp.roles;
                     userInfo.services = tmp.services;
+                    // update toolbar name
+                    if (w2ui.app_toolbar) {
+                        w2ui.app_toolbar.set('user', { text: userInfo.fname + ' ' + userInfo.lname });
+                    }
                 }
             }
         });
@@ -86,11 +91,11 @@ app.register('main', function (files) {
 
     function login (login, pass) {
         var success = false;
-        if (typeof login == 'undefined') login = $('#login').val().toLowerCase();
-        if (typeof pass  == 'undefined') pass  = $('#password').val().toLowerCase();
+        if (login == null) login = $('#login').val().toLowerCase();
+        if (pass  == null) pass  = $('#password').val().toLowerCase();
         $('#submit').html('<div class="w2ui-spinner" style="position: absolute; width: 16px; height: 16px; margin-left: -5px;"></div>&nbsp;');
         $.ajax({
-            url   : app.context + '/api/login',
+            url   : app.context + '/login',
             type  : 'post',
             async : false,
             data  : {    login: login, pass: pass },
@@ -113,7 +118,7 @@ app.register('main', function (files) {
 
     function logout () {
         $.ajax({ 
-            url : app.context + '/api/logout', 
+            url : app.context + '/logout', 
             async: false 
         });
         return true;

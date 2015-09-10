@@ -40,20 +40,7 @@ app.register('home', function (files) {
             },
 
             "/home" : function (route, params) {
-                $('#app-header').html('Home');
-                sidebar.select('home');
-                layout.show('right', true);
-                layout.html('main', 'In progress...');
-                layout.html('right', '');
-            },
-
-            "/home/approvals" : function (route, params) {
-                $('#app-header').html('Home: Approvals');
-                sidebar.select('approvals');
-                layout.html('main', w2ui.home_approvals);
-                layout.show('right', true);
-                layout.set('right', { size: 450 });
-                layout.html('right', 'preview');
+                app.route.go('/home/people');
             },
 
             "/home/people" : function (route, params) {
@@ -86,13 +73,13 @@ app.register('home', function (files) {
             var user = grid.get(sel[0]);
             $dsp = $(layout.el('right'));
             $dsp.find('#name').html(user.fname + ' ' + user.lname);
-            $dsp.find('#email').html('<a href="mailto:'+ user.email +'">'+ user.email +'</a>');
             $dsp.find('#userid').val(user.userid);
             $dsp.find('#login').val(user.login);
-            $dsp.find('#photo').attr('src', app.context + '/api/user/'+ user.userid +'/photo');
+            $dsp.find('#photo').attr('src', app.context + '/user/'+ user.userid +'/photo');
             if (user.manager_userid) addDetail('Reports To', user.manager.name);
+            if (user.email)     addDetail('Email', '<a href="mailto:'+ user.email +'">'+ user.email +'</a>');
             if (user.email_alt) addDetail('Email (other)', '<a href="mailto:'+ user.email_alt +'">'+ user.email_alt +'</a>');
-            if (user.phone)     addDetail('Phone (primary)', user.phone);
+            if (user.phone)     addDetail('Phone', user.phone);
             if (user.phone_alt) addDetail('Phone (mobile)', user.phone_alt);
             if (user.im)        addDetail('IM', user.im);
             if (user.im_alt)    addDetail('IM (other)', user.im_alt);
@@ -107,7 +94,7 @@ app.register('home', function (files) {
         function addDetail (caption, body) {
             if (body == null || body == '') body = '&nbsp;';
             var html = '<div class="w2ui-field w2ui-span7">'+
-                       '     <label>'+ caption +'</label>'+
+                       '     <label>'+ caption +':</label>'+
                        '    <div id="groups" class="prof-details">'+ body +'</div>'+
                        '</div>';
             $dsp.find('#details').append(html);
@@ -158,7 +145,7 @@ app.register('home', function (files) {
                 var btn = $(this).html();
                 if (btn == 'Leave') {
                     $.ajax({
-                        url: app.context + '/api/group/'+ group.groupid + '/leave',
+                        url: app.context + '/group/'+ group.groupid + '/leave',
                         complete: function () {
                             app.main.getSession(true);
                             previewGroup();
@@ -167,7 +154,7 @@ app.register('home', function (files) {
                 }
                 if (btn == 'Join') {
                     $.ajax({
-                        url: app.context + '/api/group/'+ group.groupid + '/join',
+                        url: app.context + '/group/'+ group.groupid + '/join',
                         complete: function () {
                             app.main.getSession(true);
                             previewGroup();

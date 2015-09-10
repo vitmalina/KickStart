@@ -1,21 +1,20 @@
 <div class="prof-main">
     <div class="prof-col1">
         <div class="prof-photo">
-            <img id="photo">
+            <img id="photo" onerror="this.src = ''">
         </div>
     </div>
     <div class="prof-col2">
         <span id="name" class="prof-name"></span>
-        <span id="email" class="prof-email">&nbsp;</span>
         <div style="height: 20px;"></div>
 
-        <div class="w2ui-field w2ui-span2">
-            <label>User ID</label>
+        <div class="w2ui-field w2ui-span3">
+            <label>User ID:</label>
             <div><input id="userid" style="width: 150px;" readonly></div>
         </div>
         <div style="height: 1px"></div>
-        <div class="w2ui-field w2ui-span2">
-            <label>Login</label>
+        <div class="w2ui-field w2ui-span3">
+            <label>Login:</label>
             <div><input id="login" style="width: 150px;" readonly></div>
         </div>
     </div>
