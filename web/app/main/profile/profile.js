@@ -95,11 +95,11 @@ app.register('profile', function (files) {
     function editProfile () {
         w2popup.message({
             width   : 500,
-            height  : 355,
+            height  : 365,
             html    : '<div id="edit-profile" style="position: absolute; top: 0; left: 0; right: 0; bottom: 56px; margin: 7px;"></div>'+
                       '<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 55px; padding-top: 12px; text-align: center">'+
-                      '     <button class="btn btn-green" id="btn-save">Save</button>'+
-                      '     <button class="btn" id="btn-close" onclick="w2popup.message()">Cancel</button>'+
+                      '     <button class="w2ui-btn btn-blue" id="btn-save">Save</button>'+
+                      '     <button class="w2ui-btn" id="btn-close" onclick="w2popup.message()">Cancel</button>'+
                       '</div>',
             onOpen  : function () {
                 var user = app.main.getSession();
@@ -137,8 +137,8 @@ app.register('profile', function (files) {
                       '     </div>'+
                       '</div>'+
                       '<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 55px; padding-top: 12px; text-align: center">'+
-                      '     <button class="btn btn-green" id="btn-save">Save</button>'+
-                      '     <button class="btn" id="btn-close" onclick="w2popup.message()">Cancel</button>'+
+                      '     <button class="w2ui-btn w2ui-btn-blue" id="btn-save">Save</button>'+
+                      '     <button class="w2ui-btn" id="btn-close" onclick="w2popup.message()">Cancel</button>'+
                       '</div>',
             onOpen  : function () {
                 $('#w2ui-popup #btn-save').on('click', function () {
@@ -196,9 +196,9 @@ app.register('profile', function (files) {
                       '     <canvas id="canvas" style="display: none"></canvas>'+
                       '</div>'+
                       '<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 65px; padding-top: 12px; text-align: center">'+
-                      '     <button class="btn" id="btn-snap">Take Snapshot</button>'+
-                      '     <button class="btn btn-green" id="btn-save" disabled>Save</button>'+
-                      '     <button class="btn" id="btn-cancel">Cancel</button>'+
+                      '     <button class="w2ui-btn" id="btn-snap">Take Snapshot</button>'+
+                      '     <button class="w2ui-btn w2ui-btn-blue" id="btn-save" disabled>Save</button>'+
+                      '     <button class="w2ui-btn" id="btn-cancel">Cancel</button>'+
                       '</div>',
             onOpen  : function () {
                 video   = $('#change-photo #video')[0];
