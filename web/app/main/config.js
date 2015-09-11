@@ -2,8 +2,8 @@
 // -- Application Configuration
 
 config = {
-    context : '../api/json',
-    // context : 'http://localhost:3000',
+    // context : '../api/json',
+    context : 'http://localhost:3000/api',
 
     // --- Application  Layout
     app_layout: {

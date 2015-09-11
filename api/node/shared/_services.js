@@ -18,7 +18,7 @@ services = {
         "vars"   : null
     },
 
-    "/api/user" : {
+    "/api/session" : {
         "desc"   : "Current user information",
         "module" : "global",
         "access" : "common",

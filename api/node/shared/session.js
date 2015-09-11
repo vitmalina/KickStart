@@ -65,7 +65,7 @@ module.exports = {
         });
     },
 
-    '/api/user': function (req, res, next) {
+    '/api/session': function (req, res, next) {
         if (req.session.user) {
             var done    = [];
             var user    = {};

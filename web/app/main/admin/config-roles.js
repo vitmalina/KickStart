@@ -3,8 +3,8 @@ config_roles = {
     admin_roles: { 
         name : 'admin_roles',
         url  : {
-            get     : app.context + '/api/admin/roles',
-            remove  : app.context + '/api/admin/roles/delete'
+            get     : app.context + '/admin/roles',
+            remove  : app.context + '/admin/roles/delete'
         },
         show    : {
             header        : false,
@@ -43,7 +43,7 @@ config_roles = {
     admin_role_edit: { 
         name : 'admin_role_edit',
         url  : {
-            save : app.context + '/api/admin/roles/save',
+            save : app.context + '/admin/roles/save',
         },
         tabs: {
             tabs: [
@@ -108,8 +108,8 @@ config_roles = {
     admin_role_members: { 
         name : 'admin_role_members',
         url  : {
-            get     : app.context + '/api/admin/role/:id/members',
-            remove  : app.context + '/api/admin/role/:id/remove'
+            get     : app.context + '/admin/role/:id/members',
+            remove  : app.context + '/admin/role/:id/remove'
         },
         show    : {
             header        : false,
@@ -127,7 +127,7 @@ config_roles = {
             { type: 'text', caption: 'Login', field: 'login' },
             { type: 'text', caption: 'Email', field: 'email' },
             { type: 'date', caption: 'Expires', field: 'expires' },
-            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/api/enum/users' }  },
+            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/enum/users' }  },
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true },
@@ -160,12 +160,12 @@ config_roles = {
         },
         onAdd: function (event) {
             w2popup.message({
-                width   : 920,
-                height  : 620,
-                html    : '<div id="grid-find-members" style="position: absolute; top: 0; left: 0; right: 0; bottom: 56px; margin: 7px;"></div>'+
+                width   : -5,
+                height  : -10,
+                html    : '<div id="grid-find-members" style="position: absolute; top: 0; left: 0; right: 0; bottom: 56px; margin: 0px;"></div>'+
                           '<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 55px; padding-top: 12px; text-align: center">'+
-                          '     <button class="btn btn-green" id="btn-attach">Add Selected</button>'+
-                          '     <button class="btn" id="btn-close" onclick="w2popup.message()">Close</button>'+
+                          '     <button class="w2ui-btn w2ui-btn-blue" id="btn-attach">Add Selected</button>'+
+                          '     <button class="w2ui-btn" id="btn-close" onclick="w2popup.message()">Close</button>'+
                           '</div>',
                 onOpen  : function () {
                     var grid1 = w2ui.admin_role_members;
@@ -175,7 +175,7 @@ config_roles = {
                     $('#w2ui-popup #btn-attach').on('click', function () {
                         var sel = grid2.getSelection();
                         if (sel.length == 0) return;
-                        $.ajax({ url: app.context + '/api/admin/role/'+ w2ui.admin_role_edit.recid +'/add', data: { users: sel }})
+                        $.ajax({ url: app.context + '/admin/role/'+ w2ui.admin_role_edit.recid +'/add', data: { users: sel }})
                             .success(function (data, status, xhr) {
                                 if (data && data.status != 'error') {
                                     w2popup.message();
@@ -202,13 +202,14 @@ config_roles = {
     admin_role_find_members: { 
         name : 'admin_role_find_members',
         url  : {
-            get : app.context + '/api/admin/users',
+            get : app.context + '/admin/users',
         },
         show : {
             header    : false,
             toolbar   : true,
             footer    : true
         },
+        style: 'border: 0px; border-bottom: 1px solid silver;',
         sortData: [{ field: 'userid', direction: 'asc' }],
         searches: [
             { type: 'int', caption: 'Id', field: 'userid' },
@@ -217,7 +218,7 @@ config_roles = {
             { type: 'text', caption: 'Login', field: 'login' },
             { type: 'text', caption: 'Email', field: 'email' },
             { type: 'date', caption: 'Expires', field: 'expires' },
-            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/api/enum/users' }  },
+            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/enum/users' }  },
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true },
@@ -252,8 +253,8 @@ config_roles = {
     admin_role_services: { 
         name : 'admin_role_services',
         url  : {
-            get     : app.context + '/api/admin/role/:id/services',
-            remove  : app.context + '/api/admin/role/:id/revoke'
+            get     : app.context + '/admin/role/:id/services',
+            remove  : app.context + '/admin/role/:id/revoke'
         },
         show    : {
             header        : false,
@@ -285,12 +286,12 @@ config_roles = {
         },
         onAdd: function (event) {
             w2popup.message({
-                width   : 920,
-                height  : 620,
-                html    : '<div id="grid-find-services" style="position: absolute; top: 0; left: 0; right: 0; bottom: 56px; margin: 7px;"></div>'+
+                width   : -5,
+                height  : -10,
+                html    : '<div id="grid-find-services" style="position: absolute; top: 0; left: 0; right: 0; bottom: 56px; margin: 0px;"></div>'+
                           '<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 55px; padding-top: 12px; text-align: center">'+
-                          '     <button class="btn btn-green" id="btn-attach">Add Selected</button>'+
-                          '     <button class="btn" id="btn-close" onclick="w2popup.message()">Close</button>'+
+                          '     <button class="w2ui-btn w2ui-btn-blue" id="btn-attach">Add Selected</button>'+
+                          '     <button class="w2ui-btn" id="btn-close" onclick="w2popup.message()">Close</button>'+
                           '</div>',
                 onOpen  : function () {
                     var grid1 = w2ui.admin_role_services;
@@ -303,7 +304,7 @@ config_roles = {
                         if (sel.length == 0) return;
                         var services = [];
                         for (var s in sel) services.push(grid2.records[sel[s]].service);
-                        $.ajax({ url: app.context + '/api/admin/role/'+ w2ui.admin_role_edit.recid +'/grant', data: { services: services }})
+                        $.ajax({ url: app.context + '/admin/role/'+ w2ui.admin_role_edit.recid +'/grant', data: { services: services }})
                             .success(function (data, status, xhr) {
                                 if (data && data.status != 'error') {
                                     w2popup.message();
@@ -334,6 +335,7 @@ config_roles = {
             toolbar   : true,
             footer    : true
         },
+        style: 'border: 0px; border-bottom: 1px solid silver;',
         sortData: [{ field: 'module', direction: 'asc' }],
         searches: [
             { type: 'text', caption: 'Module', field: 'module' },

@@ -15,6 +15,15 @@
         ]
     },
 
+    "admin": {
+        "start": "app/main/admin/admin.js",
+        "assets": [
+            "app/main/admin/config.js",
+            "app/main/admin/config-groups.js",
+            "app/main/admin/config-roles.js"
+        ]
+    },
+
     "home": {
         "start": "app/home/home.js",
         "assets": [
@@ -23,15 +32,6 @@
             "app/home/user/view.css",
             "app/home/group/view.html",
             "app/home/group/view.css"
-        ]
-    },
-
-    "admin": {
-        "start": "app/admin/admin.js",
-        "assets": [
-            "app/admin/config.js",
-            "app/admin/config-groups.js",
-            "app/admin/config-roles.js"
         ]
     }
 }

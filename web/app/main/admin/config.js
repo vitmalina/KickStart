@@ -26,8 +26,8 @@ config = {
     admin_users: { 
         name : 'admin_users',
         url  : {
-            get     : app.context + '/api/admin/users',
-            remove  : app.context + '/api/admin/users/delete'
+            get     : app.context + '/admin/users',
+            remove  : app.context + '/admin/users/delete'
         },
         show    : {
             header        : false,
@@ -45,7 +45,7 @@ config = {
             { type: 'text', caption: 'Login', field: 'login' },
             { type: 'text', caption: 'Email', field: 'email' },
             { type: 'date', caption: 'Expires', field: 'expires' },
-            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/api/enum/users' }  },
+            { type: 'list', caption: 'Manager', field: 'manager_userid', options: { url: app.context + '/enum/users' }  },
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true },
@@ -91,7 +91,7 @@ config = {
     admin_user_edit: { 
         name : 'admin_user_edit',
         url  : {
-            save : app.context + '/api/admin/users/save',
+            save : app.context + '/admin/users/save',
         },
         fields : [
             { type: 'text', field: 'userid',
@@ -108,10 +108,10 @@ config = {
             },
             { type: 'text', field: 'email', required: true,
                 html: { caption: 'Email', attr: 'style="width: 200px;" maxlength="75"', span: 7, 
-                        text: '&nbsp;&nbsp;<button class="btn" href="mailto:">Email Temp Password</button>' }
+                        text: '&nbsp;&nbsp;<button class="w2ui-btn" href="mailto:">Email Temp Password</button>' }
             },
             { type: 'list', field: 'manager', required: true,
-                options: { url: app.context + '/api/enum/users' },
+                options: { url: app.context + '/enum/users' },
                 html: { caption: 'Manager', attr: 'style="width: 200px;"', span: 7 }
             },
             { type: 'date', field: 'expires',

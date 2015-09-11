@@ -18,9 +18,9 @@ app.register('admin', function (files) {
     };
 
     function init () {
-        eval(files['app/admin/config.js']);
-        eval(files['app/admin/config-groups.js']);
-        eval(files['app/admin/config-roles.js']);
+        eval(files['app/main/admin/config.js']);
+        eval(files['app/main/admin/config-groups.js']);
+        eval(files['app/main/admin/config-roles.js']);
 
         $().w2layout(config.admin_layout);
         $().w2sidebar(config.admin_sidebar);
