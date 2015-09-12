@@ -35,6 +35,10 @@ gulp.task('less', function() {
     // all *.less in each modeule
     gulp.src(['!web/app/main/less/*.less', '!web/app/main/less-alt/*.less', 'web/app/**/*.less'])
         .pipe(less({ cleancss : true }))
+        .on('error', function (err) {
+            console.log(err.toString());
+            this.emit('end');
+        })
         .pipe(header('/* generated file, do not change */\n'))
         .pipe(gulp.dest('web/app'));
 });
@@ -87,6 +91,10 @@ gulp.task('iconfont', function() {
             fixedWidth: true,
             centerHorizontally: true
         }))
+        .on('error', function (err) {
+            console.log(err.toString());
+            this.emit('end');
+        })
         .on('codepoints', function (icons, options) {
             var cnt = 0;
             for (var i in icons) {
