@@ -34,7 +34,7 @@ function prepare (sql, req) {
             var field  = search.field;
             var value  = "'" + search.value + "'";
 
-            if (searchStr != '') searchStr += ' ' + req.data.searchLogic + ' ';
+            if (searchStr != '') searchStr += ' ' + (req.data.searchLogic || 'OR') + ' ';
             switch (String(search.operator).toLowerCase()) {
 
                 case 'begins':
