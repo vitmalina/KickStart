@@ -58,9 +58,9 @@
 
 		// load main module
 		app.require('main', function () {
-			$('#login, #password').on('keypress', function () {
+			$('#login, #password').on('keypress', function (e) {
 				$('#message').html('&nbsp;'); 
-				if (event.keyCode == 13) $('#submit').click();
+				if (((typeof e.which == "number") ? e.which : e.keyCode) == 13) $('#submit').click();
 			});
 			$('#submit').on('click', function () {
 				var login = $('#login').val().toLowerCase();
