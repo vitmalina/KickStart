@@ -16,6 +16,8 @@ gulp dev
 ### JSON Back-End
 
 Since data is read from static JSON files and cannot be modified, JSON back-end is purely for demo purposes. It is enabled by default. You can change it in "/web/app/home/config.js" file by modifying "context" property.
+Configured work from yuorWwwwRoot/KickStart directory from (  for local web server -  http://localhost/KickStart/web/index.html  )
+
 
 ### NodeJS Back-End
 
@@ -25,6 +27,7 @@ To use NodeJS back-end you need to do a series of steps:
 - Run SQL scripts in "/setup" folder
 - Change DB configuration in "/api/node/conf.js" file
 - Change "context" property to 'http://localhost:3000'
+- Change "useApiMethod" property to  ''  
 
 To run NodeJS locally
 ```
