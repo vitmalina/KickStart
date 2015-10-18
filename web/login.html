@@ -58,7 +58,7 @@
 
 		// load main module
 		app.require('main', function () {
-			$('#login, #password').on('keypress', function () {
+			$('#login, #password').on('keypress', function (event) {
 				$('#message').html('&nbsp;'); 
 				if (event.keyCode == 13) $('#submit').click();
 			});
