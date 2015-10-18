@@ -10,9 +10,6 @@ app.register('main', function (files) {
     // init
     eval(files['app/main/config.js']);
     app.context = config.context;
-    app.apiMethod = function( method) {
-        return  config.useApiMethod || method;
-    }
     var loc = String(document.location);
     if (loc.substr(0, 5) != 'file:' && loc.substr(0, 16) != 'http://localhost') app.context = '';
 
@@ -69,7 +66,7 @@ app.register('main', function (files) {
         // login
         $.ajax({
             url   : app.context + '/session',
-            type  : app.apiMethod('POST'),
+            type  : 'post',
             async : false,
             complete: function (xhr, status) {
                 if (status != 'success') {
@@ -99,7 +96,7 @@ app.register('main', function (files) {
         $('#submit').html('<div class="w2ui-spinner" style="position: absolute; width: 16px; height: 16px; margin-left: -5px;"></div>&nbsp;');
         $.ajax({
             url   : app.context + '/login',
-            type  : app.apiMethod('POST'),
+            type  : 'post',
             async : false,
             data  : {    login: login, pass: pass },
             complete: function (xhr, status) {

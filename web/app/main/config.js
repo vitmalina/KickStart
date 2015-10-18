@@ -2,17 +2,8 @@
 // -- Application Configuration
 
 config = {
-    // Run with file system access has problem with new browsers
-    // context : '../api/json',  
-    // useApiMethod : 'get',  // but not working with new browsers
-    
-    // Run with HTTP web server, content in wwwroot/KickStart directory
-    context : 'http://localhost/KickStart/api/json',  
-    useApiMethod : 'get', 
-    
-    // Run with NodeJs, see project doc
+    context : '../api/json',
     // context : 'http://localhost:3000/api',
-    // useApiMethod : '' ,
 
     // --- Application  Layout
     app_layout: {

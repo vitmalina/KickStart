@@ -151,7 +151,7 @@ app.register('profile', function (files) {
                     }
                     $.ajax({ 
                             url: app.context + '/api/user/password', 
-                            method: app.apiMethod('POST'),
+                            method: 'POST',
                             data: {
                                 pass_old : pass_old,
                                 pass_new : pass_new
@@ -254,7 +254,7 @@ app.register('profile', function (files) {
                     // save photo
                     $.ajax({ 
                             url: app.context + '/api/user/save-photo', 
-                            method: app.apiMethod('POST'),
+                            method: 'POST',
                             data: { photo : imageData }
                         })
                         .done(function (data, status, xhr) {

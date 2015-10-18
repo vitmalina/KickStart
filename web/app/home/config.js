@@ -28,7 +28,6 @@ config = {
     home_people: { 
         name : 'home_people',
         url  : app.context + '/users',
-        method: app.apiMethod('POST'),
         recid: 'userid',
         show    : {
             header   : false,
@@ -71,7 +70,6 @@ config = {
     home_groups: { 
         name : 'home_groups',
         url  : app.context + '/groups',
-        method: app.apiMethod('POST'),
         recid: 'groupid',
         show    : {
             header   : false,
@@ -99,7 +97,6 @@ config = {
     home_group_members: { 
         name : 'home_group_members',
         url  : app.context + '/group/:id/members',
-        method: app.apiMethod('POST'),
         show : {
             header  : false,
             toolbar : true,
