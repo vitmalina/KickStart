@@ -15,7 +15,17 @@ gulp dev
 
 ### JSON Back-End
 
-Since data is read from static JSON files and cannot be modified, JSON back-end is purely for demo purposes. It is enabled by default. You can change it in "/web/app/home/config.js" file by modifying "context" property.
+Since data is read from static JSON files and cannot be modified, JSON back-end is purely for demo purposes. It is enabled by default. You can change it in "/web/app/home/config.js" file by modifying "context" property.  
+If you use Nginx as web server and you have problem with POST request - 405 Not Allowed , there is small hack: http://stackoverflow.com/questions/24415376/post-request-not-allowed-405-not-allowed-nginx-even-with-headers-included 
+	#nginx.conf
+	server {
+			listen       80;
+			...				
+			error_page  403     /403.html;			
+			# To allow POST on static pages
+			error_page  405     =200 $uri;			
+		    ...
+	}
 
 ### NodeJS Back-End
 
