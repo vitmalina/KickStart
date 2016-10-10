@@ -3,10 +3,10 @@
 */
 
 app.register('admin', function (files) {
-    // private 
-    var config;
-    var config_groups;
-    var config_roles;
+    // private
+    var conf;
+    var conf_groups;
+    var conf_roles;
     var sidebar;
     var layout  = w2ui.app_layout;
     var toolbar = w2ui.app_toolbar;
@@ -18,27 +18,27 @@ app.register('admin', function (files) {
     };
 
     function init () {
-        eval(files['app/main/admin/config.js']);
-        eval(files['app/main/admin/config-groups.js']);
-        eval(files['app/main/admin/config-roles.js']);
+        eval(files['app/main/admin/conf.js']);
+        eval(files['app/main/admin/conf-groups.js']);
+        eval(files['app/main/admin/conf-roles.js']);
 
-        $().w2layout(config.admin_layout);
-        $().w2sidebar(config.admin_sidebar);
+        $().w2layout(conf.admin_layout);
+        $().w2sidebar(conf.admin_sidebar);
         // users
-        $().w2grid(config.admin_users);
-        $().w2form(config.admin_user_edit);
+        $().w2grid(conf.admin_users);
+        $().w2form(conf.admin_user_edit);
         // groups
-        $().w2grid(config_groups.admin_groups);
-        $().w2form(config_groups.admin_group_edit);
-        $().w2grid(config_groups.admin_group_members);
-        $().w2grid(config_groups.admin_group_find_members);
+        $().w2grid(conf_groups.admin_groups);
+        $().w2form(conf_groups.admin_group_edit);
+        $().w2grid(conf_groups.admin_group_members);
+        $().w2grid(conf_groups.admin_group_find_members);
         // roles
-        $().w2grid(config_roles.admin_roles);
-        $().w2form(config_roles.admin_role_edit);
-        $().w2grid(config_roles.admin_role_members);
-        $().w2grid(config_roles.admin_role_find_members);
-        $().w2grid(config_roles.admin_role_services);
-        $().w2grid(config_roles.admin_role_find_services);
+        $().w2grid(conf_roles.admin_roles);
+        $().w2form(conf_roles.admin_role_edit);
+        $().w2grid(conf_roles.admin_role_members);
+        $().w2grid(conf_roles.admin_role_find_members);
+        $().w2grid(conf_roles.admin_role_services);
+        $().w2grid(conf_roles.admin_role_find_services);
     }
 
     function open (name) {
@@ -61,18 +61,18 @@ app.register('admin', function (files) {
                     setTimeout(function () { w2ui.admin_sidebar.click(name); }, 1);
                 }
             },
-            onToggle: function (event) { 
+            onToggle: function (event) {
                 event.onComplete = function () {
-                    setTimeout(function () { 
-                        w2ui.admin_layout.resize(); 
-                        w2ui.admin_group_edit.resize(); 
-                        w2ui.admin_group_members.resize(); 
-                        w2ui.admin_role_edit.resize(); 
-                        w2ui.admin_role_members.resize(); 
-                        w2ui.admin_role_services.resize(); 
+                    setTimeout(function () {
+                        w2ui.admin_layout.resize();
+                        w2ui.admin_group_edit.resize();
+                        w2ui.admin_group_members.resize();
+                        w2ui.admin_role_edit.resize();
+                        w2ui.admin_role_members.resize();
+                        w2ui.admin_role_services.resize();
                     }, 100);
                 }
-            }        
+            }
         });
     }
 
@@ -87,6 +87,6 @@ app.register('admin', function (files) {
             case 'roles':
                 w2ui.admin_layout.content('main', w2ui.admin_roles);
                 break;
-        }        
+        }
     }
 });

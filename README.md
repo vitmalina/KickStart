@@ -1,4 +1,4 @@
-KickStart is a boiler plate for Enterprise Web Applications. It is primarily a front-end solution and can be used with back-end written in any language. In addition the project includes few server side solutions located in "/api" folder. All front-end related source files are in "/web" folder.
+KickStart is a boiler plate for Enterprise Web Applications. It is primarily a front-end solution and can be used with back-end written in any language. The project includes few server side solutions located in "/api" folder. All front-end related source files are in "/web" folder.
 
 ## Installation
 
@@ -12,19 +12,20 @@ To run development tasks configured in gulpfile.js run:
 ```
 gulp dev
 ```
+This will auto compile all your LESS files as well as generated icon-font
 
 ### JSON Back-End
 
-Since data is read from static JSON files and cannot be modified, JSON back-end is purely for demo purposes. It is enabled by default. You can change it in "/web/app/home/config.js" file by modifying "context" property.  
-If you use Nginx as web server and you have problem with POST request - 405 Not Allowed , there is small hack: http://stackoverflow.com/questions/24415376/post-request-not-allowed-405-not-allowed-nginx-even-with-headers-included 
+Since data is read from static JSON files and cannot be modified, JSON back-end is purely for demo purposes. It is enabled by default. You can change it in "/web/app/home/config.js" file by modifying "context" property.
+If you use Nginx as web server and you have problem with POST request - 405 Not Allowed , there is small hack: http://stackoverflow.com/questions/24415376/post-request-not-allowed-405-not-allowed-nginx-even-with-headers-included
 ```
 #nginx.conf
 server {
 		listen       80;
-		...				
-		error_page  403     /403.html;			
+		...
+		error_page  403     /403.html;
 		# To allow POST on static pages
-		error_page  405     =200 $uri;			
+		error_page  405     =200 $uri;
 		...
 }
 ```
@@ -33,7 +34,7 @@ server {
 
 To use NodeJS back-end you need to do a series of steps:
 - Install and start MongoDB server (used for session storage)
-- Install and start PostgreSQL DB server 
+- Install and start PostgreSQL DB server
 - Run SQL scripts in "/setup" folder
 - Change DB configuration in "/api/node/conf.js" file
 - Change "context" property to 'http://localhost:3000'

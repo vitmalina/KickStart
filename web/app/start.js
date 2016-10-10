@@ -3,17 +3,13 @@ $(function () {
     app.define('app/modules.js');
 
     // load main module
-    app.require('main', function () {        
+    app.require('main', function () {
         // check session
         var info = app.main.getSession();
         if (info == null) document.location = 'login.html';
         // init layout and top menu
         app.main.init();
-        if (app.route.get() == '') {
-            app.route.go('/home');
-        } else {
-            app.route.process();
-        }
+        app.route.init('/home'); // default route
     });
 
     // ===========================================
@@ -26,13 +22,13 @@ $(function () {
                 document.location = 'login.html';
                 return;
                 break;
-            case 404: 
+            case 404:
                 error = 'File Not Found - '+ xhr.url;
                 break;
         }
-        setTimeout(function () { 
+        setTimeout(function () {
             if (xhr.status == 0) return; // canceled request
             w2alert('Error', xhr.status + ': '+ error);
         }, 100);
-    });    
+    });
 });

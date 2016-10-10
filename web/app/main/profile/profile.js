@@ -3,8 +3,8 @@
 */
 
 app.register('profile', function (files) {
-    // private 
-    var config;
+    // private
+    var conf;
     var layout  = w2ui.app_layout;
     var toolbar = w2ui.app_toolbar;
 
@@ -18,10 +18,10 @@ app.register('profile', function (files) {
     };
 
     function init () {
-        eval(files['app/main/profile/config.js']);
-        $().w2layout(config.profile_layout);
-        $().w2sidebar(config.profile_sidebar);
-        $().w2form(config.profile_edit);
+        eval(files['app/main/profile/conf.js']);
+        $().w2layout(conf.profile_layout);
+        $().w2sidebar(conf.profile_sidebar);
+        $().w2form(conf.profile_edit);
     }
 
     function open (name) {
@@ -43,10 +43,10 @@ app.register('profile', function (files) {
                     setTimeout(function () { w2ui.profile_sidebar.click(name); }, 1);
                 }
             },
-            onToggle: function (event) { 
+            onToggle: function (event) {
                 event.onComplete = function () {
                 }
-            }        
+            }
         });
     }
 
@@ -149,8 +149,8 @@ app.register('profile', function (files) {
                         $('#change-password #pass_new2').w2tag('Passwords do not match');
                         return;
                     }
-                    $.ajax({ 
-                            url: app.context + '/api/user/password', 
+                    $.ajax({
+                            url: app.context + '/api/user/password',
                             method: 'POST',
                             data: {
                                 pass_old : pass_old,
@@ -204,14 +204,14 @@ app.register('profile', function (files) {
                 video   = $('#change-photo #video')[0];
                 canvas  = $('#change-photo #canvas')[0];
                 var ctx     = canvas.getContext("2d");
-                var mImage  = $('#change-photo #mImage')[0]; 
+                var mImage  = $('#change-photo #mImage')[0];
                 // prepare camera
-                navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia 
+                navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia
                     || navigator.mozGetUserMedia || navigator.msGetUserMedia);
                 if (!navigator.getMedia) {
                     w2alert('Your browser does not support video stream.');
                     return;
-                } 
+                }
                 navigator.getMedia({
                     video : true,
                     audio : false
@@ -227,8 +227,8 @@ app.register('profile', function (files) {
                 }, function (e) {
                     w2popup.message();
                     w2alert("An error occured! " + (e.name || e));
-                });    
-                $('#w2ui-popup #btn-snap').on('click', function () {            
+                });
+                $('#w2ui-popup #btn-snap').on('click', function () {
                     if (!mStream) return;
                     var r  = 1.125; // ratio
                     var sw = video.videoWidth;
@@ -241,7 +241,7 @@ app.register('profile', function (files) {
                     canvas.height = dh;
                     // Draw on image
                     ctx.drawImage(video, (sw-dw)/2, 0, dw, dh, 0, 0, dw, dh);
-                    imageData = canvas.toDataURL("image/jpeg"); 
+                    imageData = canvas.toDataURL("image/jpeg");
                     mImage.src = imageData;
                     $('#w2ui-popup #btn-save').prop('disabled', false);
                 });
@@ -252,8 +252,8 @@ app.register('profile', function (files) {
                 $('#w2ui-popup #btn-save').on('click', function () {
                     if (!imageData) return;
                     // save photo
-                    $.ajax({ 
-                            url: app.context + '/api/user/save-photo', 
+                    $.ajax({
+                            url: app.context + '/api/user/save-photo',
                             method: 'POST',
                             data: { photo : imageData }
                         })

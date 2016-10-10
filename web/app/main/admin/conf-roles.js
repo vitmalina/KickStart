@@ -1,6 +1,6 @@
 conf_roles = {
 
-    admin_roles: { 
+    admin_roles: {
         name : 'admin_roles',
         url  : {
             get     : app.context + '/admin/roles',
@@ -25,22 +25,23 @@ conf_roles = {
             { field: 'last_update', caption: 'Last Update', hidden: true, render: 'date', size: '100px', gridMinWidth: 800 },
             { field: 'last_user.name', caption: 'Last User', hidden: true, size: '120px', gridMinWidth: 800 }
         ],
+        recid: 'roleid',
         onAdd: function (event) {
             var form = w2ui.admin_role_edit;
             form.recid = 0;
             w2ui.admin_layout.content('main', form);
-            setTimeout(function () { form.clear(); if (form.tabs.click) form.tabs.click('info'); }, 1); 
+            setTimeout(function () { form.clear(); if (form.tabs.click) form.tabs.click('info'); }, 1);
         },
         onDblClick: function (event) {
             var form = w2ui.admin_role_edit;
             form.recid  = event.recid;
-            form.record = $.extend(true, {}, this.get(event.recid)); 
+            form.record = $.extend(true, {}, this.get(event.recid));
             w2ui.admin_layout.content('main', form);
-            setTimeout(function () { if (form.tabs.click) form.tabs.click('info'); }, 1); 
+            setTimeout(function () { if (form.tabs.click) form.tabs.click('info'); }, 1);
         }
     },
 
-    admin_role_edit: { 
+    admin_role_edit: {
         name : 'admin_role_edit',
         url  : {
             save : app.context + '/admin/roles/save',
@@ -89,7 +90,7 @@ conf_roles = {
             { type: 'text', field: 'role_name', required: true,
                 html: { caption: 'Role Name', attr: 'style="width: 300px;" maxlength="100"', span: 7, page: 0 }
             },
-            { type: 'textarea', field: 'role_desc', 
+            { type: 'textarea', field: 'role_desc',
                 html: { caption: 'Description', attr: 'style="width: 95%; height: 90px;"', span: 7, page: 0 }
             }
         ],
@@ -105,7 +106,7 @@ conf_roles = {
         }
     },
 
-    admin_role_members: { 
+    admin_role_members: {
         name : 'admin_role_members',
         url  : {
             get     : app.context + '/admin/role/:id/members',
@@ -131,7 +132,7 @@ conf_roles = {
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true },
-            { field: 'lname', caption: 'Full Name', size: '150px', sortable: true, 
+            { field: 'lname', caption: 'Full Name', size: '150px', sortable: true,
                 render: function (record) {
                     return record.lname + ', ' + record.fname;
                 }
@@ -180,7 +181,7 @@ conf_roles = {
                                 if (data && data.status != 'error') {
                                     w2popup.message();
                                     grid1.reload(function (event) {
-                                        setTimeout(function () { 
+                                        setTimeout(function () {
                                             grid1.status(data.effected + ' user(s) added');
                                         }, 1);
                                     });
@@ -197,9 +198,9 @@ conf_roles = {
                 }
             });
         },
-    },   
+    },
 
-    admin_role_find_members: { 
+    admin_role_find_members: {
         name : 'admin_role_find_members',
         url  : {
             get : app.context + '/admin/users',
@@ -222,7 +223,7 @@ conf_roles = {
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true },
-            { field: 'lname', caption: 'Full Name', size: '150px', sortable: true, 
+            { field: 'lname', caption: 'Full Name', size: '150px', sortable: true,
                 render: function (record) {
                     return record.lname + ', ' + record.fname;
                 }
@@ -250,7 +251,7 @@ conf_roles = {
         }
     },
 
-    admin_role_services: { 
+    admin_role_services: {
         name : 'admin_role_services',
         url  : {
             get     : app.context + '/admin/role/:id/services',
@@ -309,7 +310,7 @@ conf_roles = {
                                 if (data && data.status != 'error') {
                                     w2popup.message();
                                     grid1.reload(function (event) {
-                                        setTimeout(function () { 
+                                        setTimeout(function () {
                                             grid1.status(data.effected + ' services(s) added');
                                         }, 1);
                                     });
@@ -328,7 +329,7 @@ conf_roles = {
         },
     },
 
-    admin_role_find_services: { 
+    admin_role_find_services: {
         name : 'admin_role_find_services',
         show : {
             header    : false,
@@ -367,5 +368,5 @@ conf_roles = {
                 grid.add(records);
             });
         }
-    },        
+    },
 }

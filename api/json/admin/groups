@@ -1,0 +1,8 @@
+{
+    "records": [
+        { "groupid": 1, "group_name": "Admins", "published": true, "owner": { "userid": 1, "fname": "Sys", "lname": "Admin", "name": "Sys Admin" } },
+        { "groupid": 2, "group_name": "Publishers", "published": true, "owner": { "userid": 1, "fname": "Sys", "lname": "Admin", "name": "Sys Admin" } }
+    ],
+    "status": "success",
+    "total": 2
+}

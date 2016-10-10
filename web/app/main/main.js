@@ -4,12 +4,12 @@
 
 app.register('main', function (files) {
     // private
-    var config;
+    var conf;
     var userInfo;
-    
+
     // init
-    eval(files['app/main/config.js']);
-    app.context = config.context;
+    eval(files['app/main/conf.js']);
+    app.context = conf.context;
     var loc = String(document.location);
     if (loc.substr(0, 5) != 'file:' && loc.substr(0, 16) != 'http://localhost') app.context = '';
 
@@ -25,9 +25,9 @@ app.register('main', function (files) {
 
     function init () {
         // init
-        $('#app-toolbar').w2toolbar(config.app_toolbar);
-        $('#app-tabs').w2tabs(config.app_tabs);
-        $('#app-main').w2layout(config.app_layout);
+        $('#app-toolbar').w2toolbar(conf.app_toolbar);
+        $('#app-tabs').w2tabs(conf.app_tabs);
+        $('#app-main').w2layout(conf.app_layout);
         // display
         $('#app-container').fadeIn(200);
         if (typeof app.start == 'function') app.start();
@@ -37,8 +37,8 @@ app.register('main', function (files) {
 
     function action (event) {
         // other main events are handled through routes
-        switch (event.target) {            
-            
+        switch (event.target) {
+
             case 'user:prefs':
                 app.require('profile', function () {
                     app.profile.open();
@@ -117,9 +117,9 @@ app.register('main', function (files) {
     }
 
     function logout () {
-        $.ajax({ 
-            url : app.context + '/logout', 
-            async: false 
+        $.ajax({
+            url : app.context + '/logout',
+            async: false
         });
         return true;
     }
@@ -142,7 +142,7 @@ app.register('main', function (files) {
                         var email = $('#w2ui-popup #email').val();
                         if (email == '' || email == null) {
                             $('#w2ui-popup #email').w2tag('Cannot be empty')[0].focus();
-                            return; 
+                            return;
                         }
                         $().w2popup('close');
 
@@ -152,6 +152,6 @@ app.register('main', function (files) {
                     });
                 }
             }
-        });        
+        });
     }
 });

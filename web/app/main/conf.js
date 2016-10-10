@@ -2,6 +2,8 @@
 // -- Application Configuration
 
 conf = {
+    context : '../api/json',
+    // context : 'http://localhost:3000/api',
 
     // --- Application  Layout
     app_layout: {
@@ -25,13 +27,13 @@ conf = {
             { id: 'project', caption: 'Projects', type: 'radio', icon: 'icon-flag', route: '/projects' },
             { id: 'helpdesk', caption: 'HelpDesk', type: 'radio', icon: 'icon-bug', route: '/helpdesk' },
             { id: 'spacer1', type: 'spacer' },
-            { id: 'user', caption: '--', type: 'menu', 
+            { id: 'user', caption: '--', type: 'menu',
                 items: [
                     { id: 'admin', text: 'Administration', icon: 'icon-users' },
                     { id: 'prefs', text: 'Preferences', icon: 'icon-cog' },
                     { id: 'break', text: '--' },
                     { id: 'logout', text: 'Logout', icon: 'icon-off' },
-                ] 
+                ]
             }
         ],
         onClick: action

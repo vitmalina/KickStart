@@ -1,0 +1,8 @@
+{
+    "records": [
+        { "userid": 1, "fname": "Jane", "lname": "Doe", "login": "jdoe", "manager": false, "super": true, "expires": 1234567890121, email: "jdoe@email.com" },
+        { "userid": 2, "fname": "John", "lname": "Smith", "login": "jsmith", "manager": false, "super": false, "expires": 1234567890121, email: "some@email.com"  }
+    ],
+    "status": "success",
+    "total": 2
+}

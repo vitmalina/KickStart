@@ -3,8 +3,8 @@
 */
 
 app.register('home', function (files) {
-    // private 
-    var config;
+    // private
+    var conf;
     var model;
     var sidebar;
     var layout  = w2ui.app_layout;
@@ -17,13 +17,13 @@ app.register('home', function (files) {
 
     function init () {
         // process files
-        eval(files['app/home/config.js']);
-        
+        eval(files['app/home/conf.js']);
+
         // init grids
-        $().w2sidebar(config.home_sidebar);
-        $().w2grid(config.home_people);
-        $().w2grid(config.home_groups);
-        $().w2grid(config.home_group_members);
+        $().w2sidebar(conf.home_sidebar);
+        $().w2grid(conf.home_people);
+        $().w2grid(conf.home_groups);
+        $().w2grid(conf.home_group_members);
         sidebar = w2ui.home_sidebar;
 
         // define routes
@@ -133,7 +133,7 @@ app.register('home', function (files) {
                         .html('Leave')
                         .removeClass('btn-green')
                         .prop('disabled', false);
-                } else { 
+                } else {
                     $dsp.find('#btn-join')
                         .html('Join')
                         .removeClass('btn-red')

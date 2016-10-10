@@ -2,14 +2,14 @@
 // -- Configuration for the home module
 
 conf = {
-    
+
     // ==============================
     // --- Home Sidebar
-    
+
     home_sidebar: {
         name: 'home_sidebar',
         nodes: [
-            { id: 'general', text: 'General', group: true, expanded: true, 
+            { id: 'general', text: 'General', group: true, expanded: true,
                 nodes: [
                     { id: 'people', text: 'People', icon: 'icon-user', route: '/home/people' },
                     { id: 'groups', text: 'Groups', icon: 'icon-users', route: '/home/groups' }
@@ -25,7 +25,7 @@ conf = {
         }
     },
 
-    home_people: { 
+    home_people: {
         name : 'home_people',
         url  : app.context + '/users',
         recid: 'userid',
@@ -45,16 +45,16 @@ conf = {
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true, hidden: true },
-            { field: 'lname', caption: 'Full Name', size: '50%', sortable: true, 
+            { field: 'lname', caption: 'Full Name', size: '50%', sortable: true,
                 render: function (record) {
                     return record.lname + ', ' + record.fname;
                 }
             },
             { field: 'email', caption: 'Email', size: '25%', sortable: true },
             { field: 'phone', caption: 'Phone', size: '25%', sortable: true },
-            { field: 'manager', caption: 'Reports To', size: '160px', sortable: true, 
+            { field: 'manager', caption: 'Reports To', size: '160px', sortable: true,
                 render: function (record) {
-                    if (record.manager.userid) {
+                    if (record.manager && record.manager.userid) {
                         return record.manager.lname + ', ' + record.manager.fname;
                     } else {
                         return '';
@@ -65,9 +65,9 @@ conf = {
         onClick: function (event) {
             event.onComplete = function () { previewPerson(); }
         }
-    },    
+    },
 
-    home_groups: { 
+    home_groups: {
         name : 'home_groups',
         url  : app.context + '/groups',
         recid: 'groupid',
@@ -94,7 +94,7 @@ conf = {
         }
     },
 
-    home_group_members: { 
+    home_group_members: {
         name : 'home_group_members',
         url  : app.context + '/group/:id/members',
         show : {
@@ -113,7 +113,7 @@ conf = {
         ],
         columns: [
             { field: 'userid', caption: 'Id', size: '60px', sortable: true, hidden: true },
-            { field: 'lname', caption: 'Full Name', size: '150px', sortable: true, 
+            { field: 'lname', caption: 'Full Name', size: '150px', sortable: true,
                 render: function (record) {
                     return record.lname + ', ' + record.fname;
                 }

@@ -1,0 +1,8 @@
+{
+    "records": [
+        { "roleid": 1, "role_name": "Admins", "published": true, "owner": { "userid": 1, "fname": "Sys", "lname": "Admin", "name": "Sys Admin" } },
+        { "roleid": 2, "role_name": "Publishers", "published": true, "owner": { "userid": 1, "fname": "Sys", "lname": "Admin", "name": "Sys Admin" } }
+    ],
+    "status": "success",
+    "total": 2
+}
