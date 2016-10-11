@@ -1,4 +1,6 @@
 $(function () {
+    // application name
+    app._conf.name = "MyApp";
     // module definitions
     app.define('app/modules.js');
 

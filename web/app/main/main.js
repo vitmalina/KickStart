@@ -1,7 +1,3 @@
-/****************************************************
-*  ---  Main Module: general staff
-*/
-
 app.register('main', function (files) {
     // private
     var conf;

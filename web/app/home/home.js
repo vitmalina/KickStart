@@ -1,7 +1,3 @@
-/****************************************************
-*  --- Home Module
-*/
-
 app.register('home', function (files) {
     // private
     var conf;
