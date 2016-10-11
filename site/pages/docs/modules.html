@@ -1,0 +1,75 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li><a href="#/overview">Overview</a></li>
+                <li><a href="#/overview/main">Getting Started</a></li>
+                <li><a href="#/overview/layout">App Layout</a></li>
+                <li><a href="#/overview/toolbar">App Toolbar</a></li>
+                <li class="nav-header" style="margin-top: 20px">Modules</li>
+                <li class="active"><a href="#/modules/overview">Create New</a></li>
+                <li><a href="#/modules/config">Assets</a></li>
+                <li class="nav-header" style="margin-top: 20px">Router</li>
+                <li><a href="#/routes">Overview</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+            <h3>Create New</h3>
+			<p>
+                To create a new module, you need to do 2 things.
+            </p>
+            <div style="height: 5px"></div>
+
+            <h4>1. Create Module File</h4>
+
+            <p>
+                Crate a folder in <span class="method">/app</span> directory and name it <span class="method">mod1</span>. Then create a file <span class="method">mod1.js</span> in that directory with the following content.
+            </p>
+
+            <textarea class="javascript">
+app.register('mod1', function (files) {
+    // private scope
+
+    init();
+    return {
+        // public methods and properties
+    }
+
+    // implementation
+
+    function init() {
+        app.route.add({
+            "/mod1" : function (route, params) {
+                console.log('do something');
+            }
+        });
+    }
+})  </textarea>
+
+            <p>
+            Whatever you return in the module funtion will be available to other modules in <span class="method">app.mod1.[method_name]</span> notation. Everything else will be private for the module and only available inside the module function.
+            </p>
+
+            <div style="height: 20px"></div>
+
+            <h4>2. Register Module</h4>
+
+            <p>
+                Add the following block of code in the <span class="method">/app/modules.js</span> in a way similar to other modules already there.
+            </p>
+
+            <pre>
+"mod1": {
+    "route": "/mod1*",
+    "start": "app/mod1/mod1.js"
+}</pre>
+
+            <div style="height: 5px"></div>
+
+            <p>
+                Navigate to <span class="method">index.html#/mod1</span> and your modules will be loaded and route event triggered.
+            </p>
+
+	</div>
+</div>

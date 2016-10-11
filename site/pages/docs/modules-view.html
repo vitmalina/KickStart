@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="span2 left-menu">
+            <ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li><a href="#/overview">Overview</a></li>
+                <li><a href="#/overview/main">Getting Started</a></li>
+                <li><a href="#/overview/layout">App Layout</a></li>
+                <li><a href="#/overview/toolbar">App Toolbar</a></li>
+                <li class="nav-header" style="margin-top: 20px">Modules</li>
+                <li><a href="#/modules/overview">Create New</a></li>
+                <li class="active"><a href="#/modules/config">Assets</a></li>
+                <li class="nav-header" style="margin-top: 20px">Router</li>
+                <li><a href="#/routes">Overview</a></li>
+            </ul>
+        </div>
+        <div class="span10">
+            <h3>Assets</h3>
+            <p>
+                A module is a collection of related files (js, html, css, json, etc.) that implements a particular functionality. It should occupy its own folder where all the module files and resources are located. Below is the sample folder structure of the module that has many resources
+            </p>
+
+            <pre>
+/app
+    /mod1
+        /views                  - module resources
+            /create.html
+            /create.css
+            /overview.html
+            /overview.css
+            ...
+        conf.js                  - all w2ui widget configurations
+        myModule.js              - main module file
+</pre>
+
+            <div style="height: 15px"></div>
+
+            <p>
+                You need to define these resources in <span class="method">/app/modules.js</span> in the following way:
+            </p>
+            <pre>
+"mod1": {
+    "assets": [
+        "app/mod1/cond.js",
+        "app/mod1/views/create.html",
+        "app/mod1/views/create.css",
+        "app/mod1/views/overview.html",
+        "app/mod1/views/overview.css"
+    ],
+    "route": "/mod1*",
+    "start": "app/mod1/mod1.js"
+}</pre>
+
+            <div style="height: 15px"></div>
+
+            <p>
+                All assets will be passed to the module function as first argument, which is an onbject with content of all files:
+            </p>
+
+            <pre>
+app.register('mod1', function (files) {
+    // private scope
+
+    init();
+    return {
+        // public methods and properties
+    }
+
+    function init() {
+        console.log('Assets:', assets);
+    }
+})</pre>
+
+            <h3>Loading the Module</h3>
+            <p>
+                The module will be loaded if you follow a module route or can be loaded directly with <span class="method">app.require</span> method in the following way.
+            </p>
+            <textarea class="javascript">
+app.required('modName', function () {
+    // called when module and all its assets are loaded
+});</textarea>
+        </div>
+    </div>
+</div>

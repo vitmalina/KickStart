@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li><a href="#/overview">Overview</a></li>
+                <li><a href="#/overview/main">Getting Started</a></li>
+                <li><a href="#/overview/layout">App Layout</a></li>
+                <li class="active"><a href="#/overview/toolbar">App Toolbar</a></li>
+                <li class="nav-header" style="margin-top: 20px">Modules</li>
+                <li><a href="#/modules/overview">Create New</a></li>
+                <li><a href="#/modules/config">Assets</a></li>
+                <li class="nav-header" style="margin-top: 20px">Router</li>
+                <li><a href="#/routes">Overview</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+            <h3>Toolbar</h3>
+			<p>
+				The main application toolbar is initialized on the start. You may change it to fit the needs of your application in
+				<span class="method">/app/main/conf.js</span>. The toolbar is created using
+				<a href="http://w2ui.com/web/docs/toolbar">w2toolbar</a> widget from w2ui library. See
+				<a href="http://w2ui.com">w2ui.com</a> for more information.
+			</p>
+
+			<h3>Common Actions</h3>
+			<p>
+				Add button to the toolbar:
+				<textarea class="javascript">
+w2ui.app_toolbar.insert('spacer1',
+    { id: 'id1', type: 'button', caption: 'Button 1', icon: 'fa-star-empty' }
+);
+				</textarea>
+				<br>
+
+				Add item to the User menu:
+				<textarea class="javascript">
+w2ui.app_toolbar.get('user-menu').items.push(
+    { id: 'my-item', text: 'My Item', icon: 'fa-home' }
+);
+w2ui.app_toolbar.refresh();
+				</textarea>
+			</p>
+			<p>
+				Thought you can customize toolbar any where in the code, it is probably better to define it in the
+				<span class="method">/app/conf.js</span> because it is unlikely your main toolbar will change
+				during the course of the application.
+		</div>
+	</div>
+</div>

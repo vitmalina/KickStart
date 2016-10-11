@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li class="active"><a href="#/overview">Overview</a></li>
+                <li><a href="#/overview/main">Getting Started</a></li>
+                <li><a href="#/overview/layout">App Layout</a></li>
+                <li><a href="#/overview/toolbar">App Toolbar</a></li>
+                <li class="nav-header" style="margin-top: 20px">Modules</li>
+                <li><a href="#/modules/overview">Create New</a></li>
+                <li><a href="#/modules/config">Assets</a></li>
+                <li class="nav-header" style="margin-top: 20px">Router</li>
+                <li><a href="#/routes">Overview</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+            <h3>Overview</h3>
+            <p>
+                If you are using W2UI widgets and looking for a small, non-oppininated framework to orginze your code - look no further. KickStart is small, modular, easily extensible mini-framework to build apps with W2UI.
+            </p>
+			<p>
+				The purpose of this framework is to give structure to your project. It is primarely a front-end framework and does not care what server side language you use. I have included sample back-ends code (static json files and node.js) for you to play with (experimentatl at this point). The front-end code is completely separated from the back-end code. All communication is done passing JSON files.
+			</p>
+			<p>
+				I have included jQuery and W2UI in the <span class="method">/lib</span> folder. You are welcome to add any other library you want. I often include some charting library (D3 or Highcharts), CodeMirror, Underscore or Lodash. In the past I have used it with ReactJS, RivetsJS, VueJS and many other libraries. I would not recomment including any major framework such as Angular, Ember, Flux, etc. as they work better when they take over your application logic completely, though it is up to you.
+			</p>
+
+			<h3>File Structure</h3>
+
+			<p>
+				Clone github repository and open <span class="method">/web</span> folder. You will find the following strucutre:</p>
+			<pre>
+/app                - all front-end code is here
+    /home           - sample module
+    /icons          - svg files for icons and generated icon font
+    /main           - layout and main menus
+        modules.js  - config for all modules
+        start.js    - starting point
+/libs               - JS libraries that you want to use
+index.html          - starting point
+login.html          - login page template
+</pre>
+			Open index.html in your browser to see the framework.
+
+            <h3>Gulp</h3>
+
+            <p>
+                You will find <span class="method">gulfile.js</span> in the project that configured to compile you LESS files, icon-font and bundle up your application. If you run gulp without params it will compile LESS files in place. You can also run
+                <pre>
+gulp dev       # start watching .less and .svg files
+gulp build     # bundles project into <span class="method">/build</span> folder
+</pre>
+            </p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,102 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li><a href="#/overview">Overview</a></li>
+                <li class="active"><a href="#/overview/main">Getting Started</a></li>
+                <li><a href="#/overview/layout">App Layout</a></li>
+                <li><a href="#/overview/toolbar">App Toolbar</a></li>
+                <li class="nav-header" style="margin-top: 20px">Modules</li>
+                <li><a href="#/modules/overview">Create New</a></li>
+                <li><a href="#/modules/config">Assets</a></li>
+                <li class="nav-header" style="margin-top: 20px">Router</li>
+                <li><a href="#/routes">Overview</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+            <h3>Getting Started</h3>
+            <p>
+                Open <span class="method">/app/index.html</span> in the browser to see the app. The index file is minimal and just loads all necessary libraries and global css files. All application logic start with <span class="method">app/start.js</span> file. You can see annotated version of that file below.
+            </p>
+            <textarea class="javascript">
+$(function () {
+    // application name
+    app._conf.name = "MyApp";
+    // loads module definitions
+    app.define('app/modules.js');
+
+    // loads main module
+    app.require('main', function () {
+        // check session, part of the main module
+        var info = app.main.getSession();
+        if (info == null) document.location = 'login.html';
+        // init layout and top menu
+        app.main.init(); // will show all panels
+        app.route.init('/home'); // if no route is defined, it will open /home
+    });
+
+    // ===========================================
+    // Global AJAX Error catcher
+
+    $(document).ajaxError(function (event, xhr, options) {
+        var error = '';
+        switch (xhr.status) {
+            case 403: // if access denied error happens, forward to login page
+                document.location = 'login.html';
+                return;
+                break;
+            case 404:
+                error = 'File Not Found - '+ xhr.url;
+                break;
+        }
+        // displays all error messages so that you do not need to worry about them in your code
+        setTimeout(function () {
+            if (xhr.status == 0) return; // canceled request
+            w2alert('Error', xhr.status + ': '+ error);
+        }, 100);
+    });
+});
+</textarea>
+
+            <h3>Global Variables</h3>
+            <p>
+                KickStart.js will register one global variable <span class="method">app</span> that holds references to all modules loaded for your application. Remember that modules are lazy-loaded, which means it will not exists if it was not loaded. There are a few methods in app that KickStart.js core adds, which are:
+            </p>
+
+            <div class="property">
+                <span class="deff">app._conf</span>
+            </div>
+            <div class="prop-desc">
+                Holds information about all registered modules and whether they are loaded or not.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.define(module)</span>
+            </div>
+            <div class="prop-desc">
+                Defines a module and its assets. You can pass an object with module definition or a string. If it is a string it will assume it is a file path to module definitions. See <span class="method">/app/modules.js</span> for a sample.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.require(name, callBack)</span>
+            </div>
+            <div class="prop-desc">
+                Loads a module and its assets asyncronously. The <span class="method">name</span> can be a string or an array of strings. And it will load a single module or a set of modules (all asynchronously) before executing the <span class="method">callBack</span>. If you need to ensure specific order in which modules should be loaded - nest app.require() in the <span class="method">callBack</span> of another app.required().
+            </div>
+
+            <div class="property">
+                <span class="deff">app.register(name, moduleFunction)</span>
+            </div>
+            <div class="prop-desc">
+                Registers a module with <span class="method">name</span> and its corresponding <span class="method">moduleFunction</span>, which holds the logic of your module.
+            </div>
+
+            <div style="height: 20px"></div>
+
+            <p>
+                Modules can be loaded automatically by setting up a route, if route pattern is defined in module definition. See <span class="method">/app/modules.js</span> for an example.
+            </p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,127 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li><a href="#/overview">Overview</a></li>
+                <li><a href="#/overview/main">Getting Started</a></li>
+                <li><a href="#/overview/layout">App Layout</a></li>
+                <li><a href="#/overview/toolbar">App Toolbar</a></li>
+                <li class="nav-header" style="margin-top: 20px">Modules</li>
+                <li><a href="#/modules/overview">Create New</a></li>
+                <li><a href="#/modules/config">Assets</a></li>
+                <li class="nav-header" style="margin-top: 20px">Router</li>
+                <li class="active"><a href="#/routes">Overview</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+			<h3>Routes</h3>
+
+            <p>
+                The <span class="method">app.route</span> module is part of the core of KickStart.js and immediately available. There are a number of methods and events available to you.
+            </p>
+
+            <div class="property">
+				<span class="deff">app.route.add(route, callBack)</span>
+			</div>
+			<div class="prop-desc">
+				Adds a route to the routed and registeres its callBack.
+			</div>
+
+            <div class="property">
+                <span class="deff">app.route.get()</span>
+            </div>
+            <div class="prop-desc">
+                Returns currnet route.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.route.go(route)</span>
+            </div>
+            <div class="prop-desc">
+                Navigate to the <span class="method">route</span> and triggers change enent.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.route.init([defaultRoute])</span>
+            </div>
+            <div class="prop-desc">
+                Initializes router module and sets <span class="method">defaultRoute</span>.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.route.list()</span>
+            </div>
+            <div class="prop-desc">
+                Returns all registered routes.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.route.remove(route)</span>
+            </div>
+            <div class="prop-desc">
+                Removes specified <span class="method">route</span>.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.route.set(route)</span>
+            </div>
+            <div class="prop-desc">
+                Sets <span class="method">route</span> silently without triggering change events.
+            </div>
+
+            <h3>Events</h3>
+
+            <p>
+                Events are only available is you include W2UI as it takes them from w2utils.
+            </p>
+
+            <div class="property">
+                <span class="deff">app.route.on('add', callBack)</span>
+            </div>
+            <div class="prop-desc">
+                Event that is triggered when a new route is added. Callback function will receive an event object with additional information.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.route.on('remove', callBack)</span>
+            </div>
+            <div class="prop-desc">
+                Event that is triggered when a route is removed. Callback function will receive an event object with additional information.
+            </div>
+
+            <div class="property">
+                <span class="deff">app.route.on('route', callBack)</span>
+            </div>
+            <div class="prop-desc">
+                Event that is triggered when a route is processed. Callback function will receive an event object with additional information
+            </div>
+
+            <h3>Example</h3>
+
+            <p>
+                Routes should be added in the main module file, however a module might not be loaded yet. You can specify a pattern for module routes in the modules.js and if a route is not yet registered, but matches module pattern, then the module will be loaded automatically. Below is an example how to add routes:
+            </p>
+
+            <textarea class="javascript">
+app.route.add({
+    // exact route
+    "/home" : function (route, params) {
+        console.log(route, params);
+    },
+    // wild card route
+    "/home/*" : function (route, params) {
+        console.log(route, params);
+    },
+    // route with variables
+    "/home/:id/view/:class" : function (route, params) {
+        console.log(route, params);
+    }
+});
+</textarea>
+
+
+
+		</div>
+	</div>
+</div>

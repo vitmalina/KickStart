@@ -1,0 +1,80 @@
+<div class="container">
+	<div class="row">
+		<div class="span2 left-menu">
+			<ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li><a href="#/overview">Overview</a></li>
+                <li><a href="#/overview/main">Getting Started</a></li>
+                <li class="active"><a href="#/overview/layout">App Layout</a></li>
+                <li><a href="#/overview/toolbar">App Toolbar</a></li>
+                <li class="nav-header" style="margin-top: 20px">Modules</li>
+                <li><a href="#/modules/overview">Create New</a></li>
+                <li><a href="#/modules/config">Assets</a></li>
+                <li class="nav-header" style="margin-top: 20px">Router</li>
+                <li><a href="#/routes">Overview</a></li>
+			</ul>
+		</div>
+		<div class="span10">
+            <h3>Layout</h3>
+			<p>
+				The main application layout is initialized on the start. By default all panels are defined, but only 3 are visible. The default layout is defined in <span class="method">/app/main/conf.js</span>. The layout is created using <a href="http://w2ui.com/web/docs/layout">w2layout</a> from w2ui library. See
+				<a href="http://w2ui.com">w2ui.com</a> for more information.
+			</p>
+
+			<h3>Common Actions</h3>
+			<p>
+				Show the right panel and render some HTML in it:
+				<textarea class="javascript">
+w2ui.app_layout.show('right');
+w2ui.app_layout.html('right', '<div style="padding: 10px;">Some HTML</div>');
+				</textarea>
+				<br>
+
+				Hide right panel:
+				<textarea class="javascript">
+w2ui.app_layout.hide('right');
+				</textarea>
+				<br>
+
+				Load some HTML from a file into the right panel:
+				<textarea class="javascript">
+w2ui.app_layout.show('right');
+w2ui.app_layout.load('right', 'path/to/the/file.html');
+				</textarea>
+				<br>
+
+				Chage size of the right panel and make it not resizable:
+				<textarea class="javascript">
+w2ui.app_layout.set('right', { size: 150, resizable: false });
+w2ui.app_layout.show('right');
+				</textarea>
+				<br>
+
+				Display a grid in a main panel:
+				<textarea class="javascript">
+w2ui.app_layout.content('main', w2ui.grid1);
+				</textarea>
+				Where <span class="method">grid1</span> is the name of the grid that you already initialized.
+			</p>
+
+			<h3>Nested Layouts</h3>
+			<p>
+				If you need more layout panels in the defaul application layout (not common), you may create additional layouts and
+				nest them in the main panel.
+				<textarea class="javascript">
+$().w2layout({
+	name: 'other_layout',
+	padding: 6,
+	panels: [
+		{ type: 'top', size: 60, resizable: true },
+		{ type: 'left', size: 150, resizable: true },
+		{ type: 'main' },
+		{ type: 'right', size: 150, resizable: true }
+	]
+});
+w2ui.app_layout.content('main', w2ui.other_layout);
+ 			</textarea>
+			</p>
+		</div>
+	</div>
+</div>
