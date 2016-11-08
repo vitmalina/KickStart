@@ -17,7 +17,37 @@
 		<div class="span10">
             <h3>Getting Started</h3>
             <p>
-                Open <span class="method">/app/index.html</span> in the browser to see the app. The index file is minimal and just loads all necessary libraries and global css files. All application logic start with <span class="method">app/start.js</span> file. You can see annotated version of that file below.
+                Open <span class="method">/app/index.html</span> in the browser to see the app. The index file is minimal and provides generic structure for the application layout, includes all necessary JS libraries and global css files.
+            </p>
+            <textarea class="html">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KickStart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0 maximum-scale=1.0"/>
+    <!-- link rel="icon" href="app/logo.png" type="image/png" -->
+    <!-- Link CSS and JS here for speed -->
+    <link rel="stylesheet" type="text/css" href="libs/w2ui/w2ui.css" />
+    <link rel="stylesheet" type="text/css" href="app/icons/icon-font.css" />
+    <link rel="stylesheet" type="text/css" href="app/main/global.css" />
+    <script type="text/javascript" src="libs/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="libs/w2ui/w2ui.min.js"></script>
+    <script type="text/javascript" src="libs/kickstart/kickstart.js"></script>
+    <!-- Start here -->
+    <script type="text/javascript" src="app/start.js"></script>
+</head>
+<body>
+    <div id="app-container">
+        <div id="app-toolbar"></div>
+        <div id="app-header"></div>
+        <div id="app-main"></div>
+    </div>
+</body>
+</html>
+</textarea>
+            <p>
+                All application logic start with <span class="method">app/start.js</span> file. You can see annotated version of that file below.
             </p>
             <textarea class="javascript">
 $(function () {
