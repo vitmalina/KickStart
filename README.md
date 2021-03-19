@@ -1,3 +1,5 @@
+This project is **`DISCONTINUED`**. Use https://github.com/vitmalina/w2ui-starter instead.
+
 KickStart is a boiler plate for Enterprise Web Applications. It is primarily a front-end solution and can be used with back-end written in any language. The project includes few server side solutions located in "/api" folder. All front-end related source files are in "/web" folder.
 
 ## Installation
