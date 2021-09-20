@@ -1,4 +1,7 @@
-This project is **`DISCONTINUED`**. Use https://github.com/vitmalina/w2ui-starter instead.
+This project is **`DISCONTINUED`**. It is superseded by
+- [w2ui-starter-es6](https://github.com/vitmalina/w2ui-starter-es6)
+- [w2ui-starter-react](https://github.com/vitmalina/w2ui-starter-react)
+- [w2ui-starter-vue](https://github.com/vitmalina/w2ui-starter-vue)
 
 ---
 
